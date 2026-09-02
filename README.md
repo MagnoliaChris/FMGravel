@@ -1,6 +1,3 @@
-[README.md](https://github.com/user-attachments/files/31761718/README.md)
-# FMGravel
-Building out FM Gravel site 
 # fmgravel.com
 
 Texas gravel race data. Static site, no database, no server.

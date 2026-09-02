@@ -1,0 +1,17 @@
+{
+  "id": "purgatory",
+  "lat": 30.2752,
+  "lon": -98.872,
+  "name": "Purgatory Road Race",
+  "town": "Fredericksburg",
+  "county": "Gillespie",
+  "month": "April",
+  "m": 4,
+  "date": "April",
+  "d": [
+    65
+  ],
+  "org": "",
+  "url": "",
+  "note": "Hill Country mixed surface. Classified as gravel by some calendars, road by others."
+}

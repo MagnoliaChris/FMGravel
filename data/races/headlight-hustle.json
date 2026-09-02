@@ -1,0 +1,21 @@
+{
+  "id": "headlight-hustle",
+  "lat": 29.6672,
+  "lon": -97.4913,
+  "gpx": "https://capitalcityracingtexas.com/texas-headlight-hustle-gps-files-maps/",
+  "name": "Texas Headlight Hustle",
+  "town": "Harwood",
+  "county": "Gonzales",
+  "month": "August",
+  "m": 8,
+  "date": "August 8",
+  "night": 1,
+  "d": [
+    20,
+    38,
+    46
+  ],
+  "org": "Capital City Racing",
+  "url": "https://www.bikereg.com/texas-headlight-hustle",
+  "note": "Uses the Lit Whizzy and Palmetto gravel routes at night."
+}

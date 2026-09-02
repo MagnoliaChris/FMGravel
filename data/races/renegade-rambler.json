@@ -1,0 +1,19 @@
+{
+  "id": "renegade-rambler",
+  "lat": 33.1637,
+  "lon": -96.36,
+  "name": "Renegade Rambler",
+  "town": "Farmersville",
+  "county": "Collin",
+  "month": "February",
+  "m": 2,
+  "date": "February 28",
+  "d": [
+    35,
+    65,
+    105
+  ],
+  "org": "",
+  "url": "https://www.bikereg.com/renegade-rambler-100",
+  "note": "North Texas blackland prairie. The 105 is the long option."
+}

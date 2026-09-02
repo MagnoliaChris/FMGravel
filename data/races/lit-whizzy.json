@@ -1,0 +1,21 @@
+{
+  "id": "lit-whizzy",
+  "lat": 29.6672,
+  "lon": -97.4913,
+  "gpx": "https://capitalcityracingtexas.com/1036-2/",
+  "name": "The Lit Whizzy",
+  "town": "Harwood",
+  "county": "Gonzales",
+  "month": "February",
+  "m": 2,
+  "date": "February 7",
+  "d": [
+    18,
+    34,
+    46,
+    61
+  ],
+  "org": "Capital City Racing",
+  "url": "https://www.bikereg.com/lit-whizzy",
+  "note": "Fast, low-elevation gravel. Routes originated as a 2022 Uvalde benefit ride."
+}

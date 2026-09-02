@@ -1,0 +1,22 @@
+{
+  "id": "rattlesnake",
+  "lat": 32.4709,
+  "lon": -100.4059,
+  "gpx": "https://rattlesnakegravelgrind.bike/schedule",
+  "name": "Rattlesnake Gravel Grind",
+  "town": "Sweetwater",
+  "county": "Nolan",
+  "month": "March",
+  "m": 3,
+  "date": "March 18–22",
+  "d": [
+    15,
+    30,
+    50,
+    70,
+    100
+  ],
+  "org": "",
+  "url": "https://www.bikereg.com/rattlesnake-gravel-grind",
+  "note": "West Texas, wind-exposed. Five distances plus trail runs; full support until 5pm."
+}

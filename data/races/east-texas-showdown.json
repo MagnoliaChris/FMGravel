@@ -1,0 +1,21 @@
+{
+  "id": "east-texas-showdown",
+  "lat": 30.7477,
+  "lon": -95.2166,
+  "name": "East Texas Showdown",
+  "town": "Point Blank",
+  "county": "San Jacinto",
+  "month": "March",
+  "m": 3,
+  "date": "March 27–29",
+  "d": [
+    42,
+    69,
+    165,
+    275,
+    395
+  ],
+  "org": "",
+  "url": "https://www.bikereg.com/east-texas-showdown",
+  "note": "Bikepacking race. The 395 is multi-day and self-supported."
+}

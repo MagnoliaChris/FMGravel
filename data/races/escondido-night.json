@@ -1,0 +1,20 @@
+{
+  "id": "escondido-night",
+  "lat": 29.503,
+  "lon": -97.452,
+  "gpx": "https://capitalcityracingtexas.com/leesville-night-shot-gps-files-and-outlines-copy/",
+  "name": "Escondido Night Gravel",
+  "town": "Gonzales",
+  "county": "Gonzales",
+  "month": "Varies",
+  "m": 13,
+  "date": "Varies",
+  "night": 1,
+  "d": [
+    39,
+    51
+  ],
+  "org": "Capital City Racing",
+  "url": "https://www.bikereg.com/escondido-night-gravel",
+  "note": "Gonzo Graveler routes reversed at night. The 51 is about 70% gravel."
+}

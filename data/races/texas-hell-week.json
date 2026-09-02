@@ -1,0 +1,17 @@
+{
+  "id": "texas-hell-week",
+  "lat": 29.9366,
+  "lon": -96.8611,
+  "name": "Texas Hell Week",
+  "town": "Warda",
+  "county": "Fayette",
+  "month": "March",
+  "m": 3,
+  "date": "March",
+  "d": [
+    200
+  ],
+  "org": "",
+  "url": "",
+  "note": "200 miles. The longest single-day gravel event in the state."
+}

@@ -1,0 +1,21 @@
+{
+  "id": "graffiti-grinder",
+  "lat": 29.493,
+  "lon": -97.7386,
+  "gpx": "https://capitalcityracingtexas.com/the-graffiti-grinder-gps-files-and-outlines/",
+  "name": "The Graffiti Grinder",
+  "town": "Leesville",
+  "county": "Gonzales",
+  "month": "December",
+  "m": 12,
+  "date": "December 13",
+  "d": [
+    16,
+    37,
+    47,
+    62
+  ],
+  "org": "Capital City Racing",
+  "url": "https://www.bikereg.com/graffiti-grinder",
+  "note": "Successor to the Stockdale Gravel Roundup. Scenic gravel, rolling hills, and sand."
+}

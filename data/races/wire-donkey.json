@@ -1,0 +1,21 @@
+{
+  "id": "wire-donkey",
+  "lat": 30.0269,
+  "lon": -96.3011,
+  "gpx": "https://capitalcityracingtexas.com/the-wire-donkey-drahtesel-gpx-tcx-files/",
+  "name": "The Wire Donkey",
+  "town": "Kenney",
+  "county": "Austin",
+  "month": "April",
+  "m": 4,
+  "date": "April 25",
+  "d": [
+    14,
+    34,
+    47,
+    62
+  ],
+  "org": "Capital City Racing",
+  "url": "https://www.bikereg.com/the-wire-donkey",
+  "note": "Heavy gravel, just over 3,400 ft on the 100k. Named from the German for bicycle."
+}

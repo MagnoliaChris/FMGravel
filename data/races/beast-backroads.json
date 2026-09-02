@@ -1,0 +1,19 @@
+{
+  "id": "beast-backroads",
+  "lat": 32.5007,
+  "lon": -94.7405,
+  "name": "Beast Of The Backroads",
+  "town": "Longview",
+  "county": "Gregg",
+  "month": "March",
+  "m": 3,
+  "date": "March 14–15",
+  "d": [
+    25,
+    65,
+    100
+  ],
+  "org": "",
+  "url": "https://www.bikereg.com/beast",
+  "note": "East Texas piney woods. Mixed-surface with a 100-mile option."
+}

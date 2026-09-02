@@ -1,0 +1,21 @@
+{
+  "id": "zimmerhanzel-express",
+  "lat": 30.008,
+  "lon": -97.155,
+  "name": "Zimmerhanzel Express",
+  "town": "Smithville",
+  "county": "Bastrop",
+  "month": "February",
+  "m": 2,
+  "date": "February 1",
+  "d": [
+    20,
+    30,
+    50,
+    60,
+    100
+  ],
+  "org": "",
+  "url": "https://www.bikereg.com/zimmerhanzelexpress",
+  "note": "Gran fondo format with a 100-mile option. Season opener in the Lost Pines area."
+}

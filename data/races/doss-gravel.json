@@ -1,0 +1,19 @@
+{
+  "id": "doss-gravel",
+  "name": "Doss Gravel",
+  "lat": 30.3596,
+  "lon": -99.057,
+  "town": "Doss",
+  "county": "Gillespie",
+  "month": "September",
+  "m": 9,
+  "date": "September 12",
+  "d": [
+    34,
+    60,
+    105
+  ],
+  "org": "Jack & Adam's Fredericksburg",
+  "url": "https://www.dossgravel.com/",
+  "note": "Hill Country gravel just west of Fredericksburg — low-traffic ranch roads, creek crossings, and long vistas. Routes are NOT marked; every rider needs the RideWithGPS files loaded before the start. Full SAG and stocked rest stops. Proceeds support the Doss Volunteer Fire Department and Community Center. Falls during Fredericksburg's Oktoberfest. Moved from early October to September for 2026."
+}

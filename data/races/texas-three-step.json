@@ -1,0 +1,19 @@
+{
+  "id": "texas-three-step",
+  "lat": 29.7269,
+  "lon": -99.762,
+  "gpx": "https://capitalcityracingtexas.com/texas-three-step-gps-files-and-maps/",
+  "name": "Texas Three Step",
+  "town": "Leakey",
+  "county": "Real",
+  "month": "November",
+  "m": 11,
+  "date": "November 7",
+  "d": [
+    35,
+    50
+  ],
+  "org": "Capital City Racing",
+  "url": "https://www.bikereg.com/texas-three-step",
+  "note": "Private ranch access in the Frio River valley. Dirt, caliche, and chip seal; 40mm tubeless minimum recommended."
+}

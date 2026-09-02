@@ -1,0 +1,6 @@
+[build]
+  command = "python3 scripts/build.py --base https://fmgravel.com"
+  publish = "dist"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
