@@ -305,6 +305,152 @@ def race_page(r, weather, routes, reports, base, races):
                  base, race_schema(r, base))
 
 
+RATING_QS = [
+    ("course", "Course quality", "Was it worth driving to?"),
+    ("surface", "Surface difficulty", "How technical was it?"),
+    ("organization", "Organization", "Start, signage, timing, comms"),
+    ("aid", "Aid stations", "Spacing, stocking, staffing"),
+    ("value", "Value for the fee", ""),
+    ("suffering", "How much it hurt", ""),
+]
+
+WIDTHS = ["Under 40mm", "40-42mm", "45mm", "50mm", "55mm", "Don't remember"]
+WEIGHTS = ["Under 150 lb", "150-175 lb", "175-200 lb", "200 lb+", "Rather not say"]
+FLATS = ["No flats", "One", "Two or more"]
+CAUSES = ["Sidewall cut", "Thorn / goathead", "Pinch flat", "Rim strike", "Not sure", "N/A"]
+CONDITIONS = ["Dry and fast", "Dry and loose", "Dusty", "Damp and tacky", "Muddy", "Washed out"]
+
+
+def report_page(races, base):
+    from datetime import date
+    y0 = date.today().year
+    years = "".join(f'<option>{y}</option>' for y in range(y0, y0 - 9, -1))
+    opts = "".join(f'<option value="{r["id"]}">{e(r["name"])} — {e(r["town"])}</option>' for r in races)
+
+    sliders = "".join(f"""
+    <div class="slider-row">
+      <label for="{k}">{lab}{f' <span class="hint-inline">{hint}</span>' if hint else ''}
+        <output id="out-{k}">5</output></label>
+      <input type="range" id="{k}" name="{k}" min="1" max="10" step="1" value="5">
+    </div>""" for k, lab, hint in RATING_QS)
+
+    def radios(name, items):
+        return "".join(
+            f'<label class="pill"><input type="radio" name="{name}" value="{e(v)}"><span>{e(v)}</span></label>'
+            for v in items)
+
+    body = f"""<p class="crumb"><a href="/">All races</a></p>
+<h1>Add your report</h1>
+<p class="sub">Any race, any year you rode it. Old memories still count — we record when you
+submitted so the data can be weighted honestly. Two minutes.</p>
+
+<form name="race-report" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+      action="/report/thanks/" id="report-form">
+  <input type="hidden" name="form-name" value="race-report">
+  <p class="hidden-field"><label>Leave this empty: <input name="bot-field"></label></p>
+
+  <fieldset>
+    <legend>The basics</legend>
+    <label for="race_id">Which race?</label>
+    <select id="race_id" name="race_id" required>
+      <option value="">Choose a race…</option>
+      {opts}
+    </select>
+    <label for="year">Which year did you ride it?</label>
+    <select id="year" name="year" required>{years}</select>
+    <label for="distance">Which distance? <span class="hint-inline">miles, roughly</span></label>
+    <input type="text" id="distance" name="distance" inputmode="numeric" placeholder="62">
+  </fieldset>
+
+  <fieldset>
+    <legend>Rate it</legend>
+    <p class="hint">One to ten. Drag and move on.</p>
+    {sliders}
+    <label>Would you do it again?</label>
+    <div class="opts">{radios("again", ["Yes", "No", "Only in better conditions"])}</div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tires</legend>
+    <p class="hint">The part everyone wants. Skip anything you don't remember.</p>
+    <label for="tire_model">Tire model</label>
+    <input type="text" id="tire_model" name="tire_model" placeholder="Pathfinder Pro">
+    <label>Width</label>
+    <div class="opts">{radios("width", WIDTHS)}</div>
+    <label>Pressure <span class="hint-inline">front / rear, psi — only if you actually remember</span></label>
+    <div class="pair">
+      <input type="text" name="psi_front" inputmode="numeric" placeholder="Front">
+      <input type="text" name="psi_rear" inputmode="numeric" placeholder="Rear">
+    </div>
+    <label>Your riding weight <span class="hint-inline">pressure data is meaningless without it</span></label>
+    <div class="opts">{radios("rider_weight", WEIGHTS)}</div>
+    <label>Did you flat? <span class="req">required</span></label>
+    <div class="opts">{radios("flats", FLATS)}</div>
+    <label>What caused it?</label>
+    <div class="opts">{radios("flat_cause", CAUSES)}</div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Conditions</legend>
+    <label for="conditions">Surface that day</label>
+    <select id="conditions" name="conditions">
+      <option value="">Choose…</option>
+      {"".join(f'<option>{c}</option>' for c in CONDITIONS)}
+    </select>
+    <label for="water">Did you run out of water?</label>
+    <div class="opts">{radios("water", ["No", "Yes", "Close"])}</div>
+    <label for="tip">One thing you'd tell someone riding it next year</label>
+    <input type="text" id="tip" name="tip" maxlength="200"
+           placeholder="Fresh sealant. The thorns are real.">
+  </fieldset>
+
+  <fieldset>
+    <legend>Credit</legend>
+    <p class="hint">Optional. Your handle goes on the race page next to the data you helped build.</p>
+    <label for="handle">Name or handle</label>
+    <input type="text" id="handle" name="handle" placeholder="@yourhandle">
+    <label for="email">Email <span class="hint-inline">to get the results — never sold, never spammed</span></label>
+    <input type="email" id="email" name="email" placeholder="you@example.com">
+  </fieldset>
+
+  <button class="cta" type="submit">Submit report</button>
+  <p class="err" id="err" role="alert"></p>
+</form>
+
+<script>
+document.querySelectorAll('input[type=range]').forEach(function (s) {{
+  var o = document.getElementById('out-' + s.id);
+  s.addEventListener('input', function () {{ o.textContent = s.value; }});
+}});
+var q = new URLSearchParams(location.search).get('race');
+if (q) {{ var sel = document.getElementById('race_id');
+  if ([].some.call(sel.options, function (o) {{ return o.value === q; }})) sel.value = q; }}
+document.getElementById('report-form').addEventListener('submit', function (ev) {{
+  var err = document.getElementById('err');
+  if (!document.getElementById('race_id').value) {{
+    ev.preventDefault(); err.textContent = 'Pick a race first.'; return; }}
+  if (!document.querySelector('input[name=flats]:checked')) {{
+    ev.preventDefault();
+    err.textContent = "Tell us whether you flatted — it's the one field the data needs."; return; }}
+  err.textContent = '';
+}});
+</script>"""
+    return shell("Add a race report | Farm to Market",
+                 "Report the tires, pressure, flats and conditions from any Texas gravel race, any year.",
+                 "/report/", body, base)
+
+
+def thanks_page(base):
+    body = """<h1>Report added</h1>
+<div class="empty ok">
+<p>Thank you — that is now part of the record for that race.</p>
+<p>Every figure on this site is built from reports like yours, and every one shows its sample size.</p>
+</div>
+<p style="margin-top:1.4rem"><a href="/">Back to all races</a></p>"""
+    return shell("Report added | Farm to Market", "Thanks for adding a race report.",
+                 "/report/thanks/", body, base)
+
+
 CSS = """:root{--green:#1F3B2C;--green-mid:#3C6349;--caliche:#E9E3D6;--caliche-dk:#D6CDBB;
 --rust:#A8481F;--ink:#1A1917;--ink-mid:#5C5850;--paper:#FBF9F4}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -373,6 +519,29 @@ border:1px solid var(--caliche-dk);margin-bottom:6px}
 .links{list-style:none;font-size:14px}
 .links li{padding:7px 0;border-bottom:1px solid var(--caliche-dk)}
 .note{font-size:12px;color:var(--ink-mid);margin-top:10px}
+form{max-width:60ch}
+fieldset{border:0;padding:0;margin:0 0 26px}
+legend{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;
+border-bottom:1.5px solid var(--green);width:100%;padding-bottom:5px;margin-bottom:12px}
+form label{display:block;font-size:14px;margin:14px 0 6px}
+.hint{font-size:13px;color:var(--ink-mid);margin-bottom:4px}
+.hint-inline{font-size:12px;color:var(--ink-mid);font-weight:400}
+.req{font-size:11px;color:var(--rust)}
+input[type=text],input[type=email],select{width:100%;padding:9px 10px;
+border:1px solid var(--caliche-dk);background:#fff;font-family:inherit;font-size:15px;border-radius:3px}
+.pair{display:flex;gap:10px}
+.slider-row{margin-bottom:4px}
+.slider-row output{float:right;font-variant-numeric:tabular-nums;color:var(--rust);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--green)}
+.opts{display:flex;gap:7px;flex-wrap:wrap}
+.pill input{position:absolute;opacity:0;width:0;height:0}
+.pill span{display:inline-block;border:1px solid var(--caliche-dk);background:#fff;
+padding:8px 14px;font-size:14px;border-radius:3px;cursor:pointer}
+.pill input:checked+span{background:var(--green);color:var(--caliche);border-color:var(--green)}
+.pill input:focus-visible+span{outline:2px solid var(--rust);outline-offset:2px}
+.hidden-field{position:absolute;left:-9999px}
+.err{color:var(--rust);font-size:14px;margin-top:10px;min-height:20px}
+button.cta{margin-top:6px}
 .warn{color:var(--rust)}
 footer{background:var(--green);color:var(--caliche-dk);font-size:12px;padding:20px 0;margin-top:36px}
 footer .wrap{padding-top:0;padding-bottom:0;max-width:62ch;margin:0 auto}
@@ -403,7 +572,12 @@ def main():
         d.mkdir(parents=True)
         (d / "index.html").write_text(race_page(r, weather, routes, reports, base, races))
 
-    urls = ["/"] + [f"/races/{r['id']}/" for r in races]
+    rd = DIST / "report"; rd.mkdir()
+    (rd / "index.html").write_text(report_page(races, base))
+    (rd / "thanks").mkdir()
+    (rd / "thanks" / "index.html").write_text(thanks_page(base))
+
+    urls = ["/", "/report/"] + [f"/races/{r['id']}/" for r in races]
     sm = "".join(f"<url><loc>{base}{u}</loc></url>" for u in urls)
     (DIST / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>'
