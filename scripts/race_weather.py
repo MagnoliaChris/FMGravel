@@ -133,6 +133,11 @@ def profile(race, years=15, pad=3, offline=None):
 def verdict(p):
     """One plain sentence a rider can act on."""
     bits = []
+    spread = p["high_p90"] - p["high_p10"]
+    if spread >= 25:
+        bits.append(f"wildly variable — race-day highs run {p['high_p10']}\u2013{p['high_p90']}\u00b0F, so pack for both")
+    elif spread >= 18:
+        bits.append(f"variable — typically {p['high_p10']}\u2013{p['high_p90']}\u00b0F")
     if p["hot_day_pct"] >= 50:
         bits.append(f"expect heat — {p['hot_day_pct']}% of race-window days hit 90°F or more")
     elif p["hot_day_pct"] >= 20:
@@ -146,7 +151,10 @@ def verdict(p):
     elif p["wet_day_pct"] <= 10:
         bits.append("usually dry")
     base = f"Typically {p['high_median']}°F"
-    return base + ". " + "; ".join(bits).capitalize() + "." if bits else base + " and unremarkable."
+    if not bits:
+        return base + ", and consistent year to year."
+    body = "; ".join(bits)
+    return base + ". " + body[0].upper() + body[1:] + "."
 
 
 def main():

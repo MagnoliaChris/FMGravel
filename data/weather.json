@@ -80,7 +80,7 @@
       "2025": 82
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 70\u00b0F and unremarkable."
+    "verdict": "Typically 70\u00b0F. Variable \u2014 typically 59\u201379\u00b0F."
   },
   "castell-grind": {
     "race_id": "castell-grind",
@@ -175,7 +175,7 @@
       "2025": 89
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 81\u00b0F. Heat is a real possibility (20% of days at 90\u00b0f+); wind is the defining factor \u2014 median max 15 mph."
+    "verdict": "Typically 81\u00b0F. Variable \u2014 typically 72\u201392\u00b0F; heat is a real possibility (20% of days at 90\u00b0F+); wind is the defining factor \u2014 median max 15 mph."
   },
   "doss-gravel": {
     "race_id": "doss-gravel",
@@ -264,7 +264,7 @@
       "2025": 90
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 87\u00b0F. Heat is a real possibility (22% of days at 90\u00b0f+)."
+    "verdict": "Typically 87\u00b0F. Heat is a real possibility (22% of days at 90\u00b0F+)."
   },
   "east-texas-showdown": {
     "race_id": "east-texas-showdown",
@@ -347,7 +347,7 @@
       "2025": 68
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 75\u00b0F and unremarkable."
+    "verdict": "Typically 75\u00b0F, and consistent year to year."
   },
   "headlight-hustle": {
     "race_id": "headlight-hustle",
@@ -424,7 +424,7 @@
       "2025": 101
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 99\u00b0F. Expect heat \u2014 95% of race-window days hit 90\u00b0f or more."
+    "verdict": "Typically 99\u00b0F. Expect heat \u2014 95% of race-window days hit 90\u00b0F or more."
   },
   "jailbreak": {
     "race_id": "jailbreak",
@@ -507,7 +507,7 @@
       "2025": 87
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 78\u00b0F and unremarkable."
+    "verdict": "Typically 78\u00b0F. Variable \u2014 typically 68\u201386\u00b0F."
   },
   "lit-whizzy": {
     "race_id": "lit-whizzy",
@@ -620,7 +620,7 @@
       "2025": 82
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 67\u00b0F and unremarkable."
+    "verdict": "Typically 67\u00b0F. Wildly variable \u2014 race-day highs run 50\u201379\u00b0F, so pack for both."
   },
   "mcdade-night-raid": {
     "race_id": "mcdade-night-raid",
@@ -703,7 +703,7 @@
       "2025": 92
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 95\u00b0F. Expect heat \u2014 82% of race-window days hit 90\u00b0f or more."
+    "verdict": "Typically 95\u00b0F. Expect heat \u2014 82% of race-window days hit 90\u00b0F or more."
   },
   "renegade-rambler": {
     "race_id": "renegade-rambler",
@@ -816,7 +816,7 @@
       "2025": 69
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 64\u00b0F. Freezing starts happen (15% of mornings at or below 32\u00b0f)."
+    "verdict": "Typically 64\u00b0F. Wildly variable \u2014 race-day highs run 44\u201374\u00b0F, so pack for both; freezing starts happen (15% of mornings at or below 32\u00b0F)."
   },
   "texas-three-step": {
     "race_id": "texas-three-step",
@@ -905,7 +905,7 @@
       "2025": 88
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 73\u00b0F and unremarkable."
+    "verdict": "Typically 73\u00b0F. Variable \u2014 typically 62\u201380\u00b0F."
   },
   "wire-donkey": {
     "race_id": "wire-donkey",
@@ -982,7 +982,7 @@
       "2025": 81
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 82\u00b0F and unremarkable."
+    "verdict": "Typically 82\u00b0F, and consistent year to year."
   },
   "central-texas-showdown": {
     "race_id": "central-texas-showdown",
@@ -1071,7 +1071,7 @@
       "2025": 90
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 82\u00b0F and unremarkable."
+    "verdict": "Typically 82\u00b0F. Variable \u2014 typically 70\u201388\u00b0F."
   },
   "gonzo-graveler": {
     "race_id": "gonzo-graveler",
@@ -1154,7 +1154,7 @@
       "2025": 81
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 85\u00b0F. Heat is a real possibility (22% of days at 90\u00b0f+); wind is the defining factor \u2014 median max 15 mph; wet roughly 31% of the time."
+    "verdict": "Typically 85\u00b0F. Heat is a real possibility (22% of days at 90\u00b0F+); wind is the defining factor \u2014 median max 15 mph; wet roughly 31% of the time."
   },
   "leesville-night-shot": {
     "race_id": "leesville-night-shot",
@@ -1231,7 +1231,7 @@
       "2025": 92
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 93\u00b0F. Expect heat \u2014 70% of race-window days hit 90\u00b0f or more."
+    "verdict": "Typically 93\u00b0F. Expect heat \u2014 70% of race-window days hit 90\u00b0F or more."
   },
   "rattlesnake": {
     "race_id": "rattlesnake",
@@ -1332,6 +1332,6 @@
       "2025": 93
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 72\u00b0F. Wind is the defining factor \u2014 median max 18 mph."
+    "verdict": "Typically 72\u00b0F. Wildly variable \u2014 race-day highs run 57\u201385\u00b0F, so pack for both; wind is the defining factor \u2014 median max 18 mph."
   }
 }
