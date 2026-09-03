@@ -1,0 +1,134 @@
+{
+  "name": "Doss Gravel 60",
+  "total_miles": 61.44,
+  "segment_count": 12,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 23.86,
+      "pct": 38.8
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 16.83,
+      "pct": 27.4
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 16.18,
+      "pct": 26.3
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 4.56,
+      "pct": 7.4
+    }
+  ],
+  "unverified_pct": 38.8,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 4.69,
+      "start_mi": 0.0,
+      "end_mi": 4.69,
+      "road": "Ranch Road 783"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.72,
+      "start_mi": 4.69,
+      "end_mi": 14.41,
+      "road": "Salt Branch Loop"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 2.46,
+      "start_mi": 14.41,
+      "end_mi": 16.87,
+      "road": "Salt Branch Loop"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.37,
+      "start_mi": 16.87,
+      "end_mi": 17.24,
+      "road": ""
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 13.72,
+      "start_mi": 17.24,
+      "end_mi": 30.96,
+      "road": "James River Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.21,
+      "start_mi": 30.96,
+      "end_mi": 33.17,
+      "road": "Ranch to Market Road 2389"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 4.05,
+      "start_mi": 33.17,
+      "end_mi": 37.22,
+      "road": "Ranch to Market Road 2389"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.26,
+      "start_mi": 37.22,
+      "end_mi": 41.49,
+      "road": "Simonsville Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.56,
+      "start_mi": 41.49,
+      "end_mi": 46.05,
+      "road": "Simonsville Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.18,
+      "start_mi": 46.05,
+      "end_mi": 47.23,
+      "road": "Ranch Road 783"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.51,
+      "start_mi": 47.23,
+      "end_mi": 56.74,
+      "road": "Salt Branch Loop"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 4.7,
+      "start_mi": 56.74,
+      "end_mi": 61.44,
+      "road": "Ranch Road 783"
+    }
+  ]
+}

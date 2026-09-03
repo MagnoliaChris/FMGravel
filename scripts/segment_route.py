@@ -101,7 +101,7 @@ def fetch_ways(bb, offline=None):
         import requests
         q = overpass_query(bb)
         for attempt in range(3):
-            r = requests.post(OVERPASS, data={"data": q}, timeout=200)
+            r = requests.post(OVERPASS, data={"data": q}, timeout=300, headers={"User-Agent": "fmgravel.com surface tool"})
             if r.status_code == 200:
                 data = r.json()
                 break
@@ -126,7 +126,7 @@ def fetch_ways(bb, offline=None):
     return ways
 
 
-def densify(pts, step_m=12.0):
+def densify(pts, step_m=25.0):
     """OSM way vertices can sit hundreds of metres apart on straight rural roads.
     Insert intermediate points so nearest-vertex snapping behaves like
     nearest-segment snapping."""
@@ -159,7 +159,7 @@ def snap(coords, ways, max_m=35.0):
     P, V = proj(coords), proj(verts)
 
     surfaces, names = [], []
-    CH = 2000  # chunk track points to keep the distance matrix small
+    CH = 250  # chunk track points to keep the distance matrix small
     for i in range(0, len(P), CH):
         blk = P[i:i + CH]
         d = np.sqrt(((blk[:, None, :] - V[None, :, :]) ** 2).sum(-1))

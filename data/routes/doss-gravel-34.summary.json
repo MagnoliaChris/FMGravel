@@ -1,0 +1,79 @@
+{
+  "name": "Doss Gravel 34",
+  "total_miles": 33.84,
+  "segment_count": 6,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 22.14,
+      "pct": 65.4
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 10.56,
+      "pct": 31.2
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 1.14,
+      "pct": 3.4
+    }
+  ],
+  "unverified_pct": 65.4,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 4.7,
+      "start_mi": 0.0,
+      "end_mi": 4.7,
+      "road": "Ranch Road 783"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 12.61,
+      "start_mi": 4.7,
+      "end_mi": 17.31,
+      "road": "Loeffler Lane"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 1.14,
+      "start_mi": 17.31,
+      "end_mi": 18.45,
+      "road": "Simonsville Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.16,
+      "start_mi": 18.45,
+      "end_mi": 19.6,
+      "road": "Ranch Road 783"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.53,
+      "start_mi": 19.6,
+      "end_mi": 29.13,
+      "road": "Salt Branch Loop"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 4.7,
+      "start_mi": 29.13,
+      "end_mi": 33.84,
+      "road": "Ranch Road 783"
+    }
+  ]
+}
