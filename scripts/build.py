@@ -345,7 +345,7 @@ def report_page(races, base):
 submitted so the data can be weighted honestly. Two minutes.</p>
 
 <form name="race-report" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-      action="/report/thanks/" id="report-form">
+      action="/thanks/" id="report-form">
   <input type="hidden" name="form-name" value="race-report">
   <p class="hidden-field"><label>Leave this empty: <input name="bot-field"></label></p>
 
@@ -448,7 +448,7 @@ def thanks_page(base):
 </div>
 <p style="margin-top:1.4rem"><a href="/">Back to all races</a></p>"""
     return shell("Report added | Farm to Market", "Thanks for adding a race report.",
-                 "/report/thanks/", body, base)
+                 "/thanks/", body, base)
 
 
 CSS = """:root{--green:#1F3B2C;--green-mid:#3C6349;--caliche:#E9E3D6;--caliche-dk:#D6CDBB;
@@ -574,8 +574,8 @@ def main():
 
     rd = DIST / "report"; rd.mkdir()
     (rd / "index.html").write_text(report_page(races, base))
-    (rd / "thanks").mkdir()
-    (rd / "thanks" / "index.html").write_text(thanks_page(base))
+    td = DIST / "thanks"; td.mkdir()
+    (td / "index.html").write_text(thanks_page(base))
 
     urls = ["/", "/report/"] + [f"/races/{r['id']}/" for r in races]
     sm = "".join(f"<url><loc>{base}{u}</loc></url>" for u in urls)
