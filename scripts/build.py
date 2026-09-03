@@ -35,8 +35,8 @@ LABEL_OF = {"caliche": "Caliche / gravel", "chip_seal": "Chip seal",
             "sand": "Sand", "unknown": "Unverified"}
 
 SURFACE_COLOR = {"caliche": "#C98A24", "chip_seal": "#A8481F",
-                 "two_track": "#7A7266", "pavement": "#D6CDBB",
-                 "sand": "#E0C88A", "unknown": "#B9B2A4"}
+                 "two_track": "#6B5A45", "pavement": "#4A5568",
+                 "sand": "#E0C88A", "unknown": "#9A9389"}
 
 MONTHS = ["", "January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
@@ -338,6 +338,7 @@ def apply_verifications(slug, geo, verifs):
     for i, f in enumerate(geo["features"]):
         rows = verifs.get((slug, i), [])
         p = f["properties"]
+        p["color"] = SURFACE_COLOR.get(p.get("surface"), "#9A9389")
         p["votes"] = len(rows)
         p["state"] = "draft"
         if not rows:
@@ -448,6 +449,7 @@ def route_viewer(r, geo_exists):
 <div id="routemap" data-src="/routes/{r['id']}.geojson"></div>
 <svg id="routeprofile" role="img" aria-label="Elevation profile coloured by road surface"></svg>
 <p class="readout" id="routereadout">Hover or drag across the profile to trace the course.</p>
+<p class="note" id="gradenote"></p>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -456,8 +458,11 @@ def route_viewer(r, geo_exists):
   if (!el || !window.L) return;
   fetch(el.dataset.src).then(function (r) {{ return r.json(); }}).then(function (geo) {{
     var map = L.map('routemap', {{ scrollWheelZoom: false }});
-    L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png',
-      {{ maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }}).addTo(map);
+    L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_nolabels/{{z}}/{{x}}/{{y}}{{r}}.png',
+      {{ maxZoom: 19, subdomains: 'abcd',
+         attribution: '&copy; OpenStreetMap contributors &copy; CARTO' }}).addTo(map);
+    L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_only_labels/{{z}}/{{x}}/{{y}}{{r}}.png',
+      {{ maxZoom: 19, subdomains: 'abcd', pane: 'shadowPane' }}).addTo(map);
 
     var bounds = [], pts = [], mi = 0;
     geo.features.forEach(function (f) {{
@@ -465,7 +470,10 @@ def route_viewer(r, geo_exists):
       var per = c.length > 1 ? f.properties.miles / (c.length - 1) : 0;
       var ll = c.map(function (xy) {{ return [xy[1], xy[0]]; }});
       ll.forEach(function (p) {{ bounds.push(p); }});
-      L.polyline(ll, {{ color: f.properties.color, weight: 5, opacity: .95 }})
+      var unk = f.properties.surface === 'unknown';
+      L.polyline(ll, {{ color: '#231F1C', weight: 8, opacity: .35 }}).addTo(map);
+      L.polyline(ll, {{ color: f.properties.color, weight: 4.5, opacity: 1,
+                       dashArray: unk ? '9,7' : null }})
         .bindTooltip(f.properties.label + (f.properties.road ? ' · ' + f.properties.road : '')
                      + ' · ' + f.properties.miles + ' mi').addTo(map);
       c.forEach(function (xy, i) {{
@@ -478,6 +486,18 @@ def route_viewer(r, geo_exists):
     map.fitBounds(bounds, {{ padding: [16, 16] }});
     var cursor = L.circleMarker(bounds[0],
       {{ radius: 6, color: '#1F3B2C', fillColor: '#FBF9F4', fillOpacity: 1, weight: 2 }});
+
+    // smoothed grade: rise over run across a ~0.06 mi window centred on each point
+    (function () {{
+      var WIN = 0.03;
+      for (var k = 0; k < pts.length; k++) {{
+        var i = k, j = k;
+        while (i > 0 && pts[k].mi - pts[i].mi < WIN) i--;
+        while (j < pts.length - 1 && pts[j].mi - pts[k].mi < WIN) j++;
+        var run = (pts[j].mi - pts[i].mi) * 5280;
+        pts[k].grade = run > 30 ? ((pts[j].ele - pts[i].ele) / run) * 100 : 0;
+      }}
+    }})();
 
     var svg = document.getElementById('routeprofile');
     var total = pts[pts.length - 1].mi;
@@ -492,9 +512,10 @@ def route_viewer(r, geo_exists):
     function band(seg) {{
       if (seg.length < 2) return '';
       var top = seg.map(function (p) {{ return X(p.mi).toFixed(1) + ',' + Y(p.ele).toFixed(1); }}).join(' ');
+      var fill = seg[0].label === 'Unverified' ? 'url(#unkhatch)' : seg[0].color;
       return '<polygon points="' + X(seg[0].mi).toFixed(1) + ',' + (H - padB) + ' ' + top + ' '
              + X(seg[seg.length - 1].mi).toFixed(1) + ',' + (H - padB)
-             + '" fill="' + seg[0].color + '" opacity=".92"/>';
+             + '" fill="' + fill + '" opacity=".95"/>';
     }}
     for (var i = 1; i < pts.length; i++) {{
       if (pts[i].color !== run[0].color) {{ bands += band(run); run = [pts[i]]; }}
@@ -509,7 +530,11 @@ def route_viewer(r, geo_exists):
     }}).join('');
 
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    svg.innerHTML = '<line x1="' + padL + '" y1="' + (H - padB) + '" x2="' + (W - 8)
+    svg.innerHTML = '<defs><pattern id="unkhatch" width="7" height="7"'
+      + ' patternTransform="rotate(45)" patternUnits="userSpaceOnUse">'
+      + '<rect width="7" height="7" fill="#CFC8BC"/>'
+      + '<line x1="0" y1="0" x2="0" y2="7" stroke="#9A9389" stroke-width="3"/></pattern></defs>'
+      + '<line x1="' + padL + '" y1="' + (H - padB) + '" x2="' + (W - 8)
       + '" y2="' + (H - padB) + '" stroke="#D6CDBB"/>' + bands
       + '<text x="2" y="' + (Y(hi) + 4) + '" font-size="11" fill="#5C5850">' + Math.round(hi) + '</text>'
       + '<text x="2" y="' + (Y(lo) + 4) + '" font-size="11" fill="#5C5850">' + Math.round(lo) + '</text>'
@@ -518,6 +543,22 @@ def route_viewer(r, geo_exists):
 
     var cur = svg.querySelector('#rp-cur');
     var out = document.getElementById('routereadout');
+
+    (function () {{
+      var gn = document.getElementById('gradenote');
+      if (!gn) return;
+      var up = 0, steep = 0, maxg = 0;
+      for (var k = 1; k < pts.length; k++) {{
+        var d = pts[k].ele - pts[k - 1].ele;
+        if (d > 0) up += d;
+        var g = pts[k].grade || 0;
+        if (g > maxg) maxg = g;
+        if (g >= 8) steep += (pts[k].mi - pts[k - 1].mi);
+      }}
+      gn.innerHTML = Math.round(up).toLocaleString() + ' ft of climbing · steepest '
+        + maxg.toFixed(1) + '%'
+        + (steep > 0.05 ? ' · ' + steep.toFixed(1) + ' mi at 8% or more' : '');
+    }})();
     function move(clientX) {{
       var box = svg.getBoundingClientRect();
       var m = ((clientX - box.left) / box.width * W - padL) / (W - padL - 8) * total;
@@ -529,8 +570,14 @@ def route_viewer(r, geo_exists):
       }}
       cur.setAttribute('x1', X(best.mi)); cur.setAttribute('x2', X(best.mi));
       cur.setAttribute('opacity', 1);
+      var g = best.grade || 0;
+      var gs = (g >= 0 ? '+' : '') + g.toFixed(1) + '%';
+      var word = Math.abs(g) < 2 ? '' : (g >= 8 ? ' steep climb'
+                : g >= 4 ? ' climbing' : g <= -8 ? ' steep descent'
+                : g <= -4 ? ' descending' : '');
       out.innerHTML = '<b>Mile ' + best.mi.toFixed(1) + '</b> · ' + Math.round(best.ele)
-                    + ' ft · ' + best.label + (best.road ? ' · ' + best.road : '');
+                    + ' ft · <b>' + gs + '</b>' + word
+                    + ' · ' + best.label + (best.road ? ' · ' + best.road : '');
       cursor.setLatLng([best.lat, best.lon]).addTo(map);
     }}
     svg.addEventListener('mousemove', function (ev) {{ move(ev.clientX); }});

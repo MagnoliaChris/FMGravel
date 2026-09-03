@@ -25,7 +25,7 @@ from collections import Counter
 
 import numpy as np
 
-OVERPASS = "https://overpass.kumi.systems/api/interpreter"
+OVERPASS = "https://overpass-api.de/api/interpreter"
 
 # OSM surface tag -> our category. Anything unlisted falls through to unknown.
 SURFACE_MAP = {
@@ -58,7 +58,8 @@ LABEL = {"caliche": "Caliche / gravel", "chip_seal": "Chip seal",
          "unknown": "Unverified"}
 
 COLOR = {"caliche": "#C98A24", "chip_seal": "#A8481F",
-         "two_track": "#7A7266", "pavement": "#D6CDBB", "unknown": "#B9B2A4"}
+         "two_track": "#6B5A45", "pavement": "#4A5568",
+         "sand": "#E0C88A", "unknown": "#9A9389"}
 
 R_EARTH_MI = 3958.8
 
@@ -100,7 +101,7 @@ def fetch_ways(bb, offline=None):
         import requests
         q = overpass_query(bb)
         for attempt in range(3):
-            r = requests.post(OVERPASS, data={"data": q}, timeout=300, headers={"User-Agent": "fmgravel.com surface tool"})
+            r = requests.post(OVERPASS, data={"data": q}, timeout=200)
             if r.status_code == 200:
                 data = r.json()
                 break
