@@ -1,0 +1,537 @@
+{
+ "source": "John Karrasch \u2014 Chung / Virtual Elevation method",
+ "source_url": "https://docs.google.com/spreadsheets/d/1DfeSw0IISbcN1nn9Id_ovxiioIuemJle9sC0nuDa6WA/htmlview",
+ "test_conditions": "CRR measured on real surfaces. Watts in the source sheet are for the pair of tires at 190 lb system weight and 18 mph.",
+ "permission": "NOT YET GRANTED \u2014 do not publish until John agrees",
+ "tread_note": "tread class is our own editorial call, not part of the source data",
+ "tires": [
+  {
+   "name": "Hutchinson Caracal Race 700 x 40",
+   "width_mm": 40,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0037,
+    "cat1": 0.0086,
+    "cat2": 0.0118,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Conti Terra Competition Rapid Race 700 x 45",
+   "width_mm": 45,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0047,
+    "cat1": 0.0089,
+    "cat2": 0.012,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Hutchinson Caracal Race 700 x 45",
+   "width_mm": 45,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0037,
+    "cat1": 0.0076,
+    "cat2": 0.0108,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Maxxis Rambler HYPR-X 700 x 45",
+   "width_mm": 45,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0057,
+    "cat1": 0.0098,
+    "cat2": 0.0129,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Maxxis Reaver HYPR-X 700 x 45",
+   "width_mm": 45,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.005,
+    "cat1": 0.009,
+    "cat2": 0.0125,
+    "cat3": 0.0184
+   }
+  },
+  {
+   "name": "Schwalbe G ONE RS PRO 700 x 45",
+   "width_mm": 45,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0042,
+    "cat1": 0.0082,
+    "cat2": 0.0113,
+    "cat3": 0.0172
+   }
+  },
+  {
+   "name": "Schwalbe G ONE RX PRO 700 x 45",
+   "width_mm": 45,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0046,
+    "cat1": 0.0088,
+    "cat2": 0.0119,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Vittoria Terreno Pro T30 700 x 45",
+   "width_mm": 45,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0048,
+    "cat1": 0.0088,
+    "cat2": 0.0121,
+    "cat3": 0.0174
+   }
+  },
+  {
+   "name": "Enve Hex Race 700 x 48",
+   "width_mm": 48,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0048,
+    "cat1": 0.0091,
+    "cat2": 0.0118,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Rene Herse Oracle Ridge Standard 700 x 48",
+   "width_mm": 48,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0057,
+    "cat1": 0.0096,
+    "cat2": 0.0133,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Hutchinson Caracal Race 700 x 50",
+   "width_mm": 50,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0036,
+    "cat1": 0.0079,
+    "cat2": 0.0104,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Hutchinson Touareg Race 700 x 50",
+   "width_mm": 50,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0038,
+    "cat1": 0.0082,
+    "cat2": 0.0107,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Schwalbe G ONE RX PRO 700 x 50",
+   "width_mm": 50,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0043,
+    "cat1": 0.0086,
+    "cat2": 0.0116,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Schwalbe G ONE RS PRO 700 x 55",
+   "width_mm": 55,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0043,
+    "cat1": 0.0083,
+    "cat2": 0.011,
+    "cat3": 0.0153
+   }
+  },
+  {
+   "name": "Schwalbe G ONE RX PRO 700 x 55",
+   "width_mm": 55,
+   "tread": "knob",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0047,
+    "cat1": 0.0087,
+    "cat2": 0.0116,
+    "cat3": 0.0157
+   }
+  },
+  {
+   "name": "Silca Protocol RCG-1 700 x 55",
+   "width_mm": 55,
+   "tread": "file",
+   "mtb": false,
+   "crr": {
+    "pavement": 0.0038,
+    "cat1": 0.0078,
+    "cat2": 0.0102,
+    "cat3": 0.015
+   }
+  },
+  {
+   "name": "Conti Dubnital Rapid Race 29 x 2.0",
+   "width_mm": 51,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0043,
+    "cat1": 0.0087,
+    "cat2": 0.0116,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Conti Race King Pure Grip 29 x 2.0",
+   "width_mm": 51,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.006,
+    "cat1": 0.0106,
+    "cat2": 0.0135,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Schwalbe Racing Ralph Liteskin PaceStar 29 x 2.1",
+   "width_mm": 53,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0041,
+    "cat1": 0.0084,
+    "cat2": 0.0109,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Scwhalbe Thunder Burt SG 29 x 2.1",
+   "width_mm": 53,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0042,
+    "cat1": 0.0081,
+    "cat2": 0.0103,
+    "cat3": 0.0157
+   }
+  },
+  {
+   "name": "Vittoria Peyote XC Trail 29 x 2.1",
+   "width_mm": 53,
+   "tread": "aggressive",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.006,
+    "cat1": 0.0106,
+    "cat2": 0.0136,
+    "cat3": null
+   }
+  },
+  {
+   "name": "Vittoria Terreno XCR 29 x 2.1",
+   "width_mm": 53,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.005,
+    "cat1": 0.0097,
+    "cat2": 0.0125,
+    "cat3": 0.0165
+   }
+  },
+  {
+   "name": "Maxxis Aspent ST 32 x 2.15",
+   "width_mm": 55,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0052,
+    "cat1": 0.0084,
+    "cat2": 0.0109,
+    "cat3": 0.0148
+   }
+  },
+  {
+   "name": "Conti Dubnital Rapid Race 29 x 2.2",
+   "width_mm": 56,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0048,
+    "cat1": 0.0094,
+    "cat2": 0.0115,
+    "cat3": 0.0155
+   }
+  },
+  {
+   "name": "Conti Race King Black Chili 29 x 2.2",
+   "width_mm": 56,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0047,
+    "cat1": 0.0091,
+    "cat2": 0.0114,
+    "cat3": 0.0155
+   }
+  },
+  {
+   "name": "Kenda Rush Pro SCT 29 x 2.2",
+   "width_mm": 56,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0056,
+    "cat1": 0.0097,
+    "cat2": 0.0119,
+    "cat3": 0.0156
+   }
+  },
+  {
+   "name": "Maxxis Aspen ST 170 29 x 2.25",
+   "width_mm": 57,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.006,
+    "cat1": 0.0096,
+    "cat2": 0.0115,
+    "cat3": 0.0154
+   }
+  },
+  {
+   "name": "Schwalbe Rick XC Pro Speed 29 x 2.25",
+   "width_mm": 57,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0047,
+    "cat1": 0.0092,
+    "cat2": 0.0115,
+    "cat3": 0.0154
+   }
+  },
+  {
+   "name": "Schwalbe Thunder Burt SG 29 x 2.25",
+   "width_mm": 57,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0042,
+    "cat1": 0.0081,
+    "cat2": 0.0103,
+    "cat3": 0.0151
+   }
+  },
+  {
+   "name": "Scwhalbe Thunder Burt SG 29 x 2.25",
+   "width_mm": 57,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0042,
+    "cat1": 0.0081,
+    "cat2": 0.0103,
+    "cat3": 0.0151
+   }
+  },
+  {
+   "name": "Vittoria Peyote XC Race 29 x 2.25",
+   "width_mm": 57,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0049,
+    "cat1": 0.0096,
+    "cat2": 0.0116,
+    "cat3": 0.0152
+   }
+  },
+  {
+   "name": "Vittoria Terreno XC Race 29 x 2.25",
+   "width_mm": 57,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0045,
+    "cat1": 0.0085,
+    "cat2": 0.0109,
+    "cat3": 0.015
+   }
+  },
+  {
+   "name": "Schwalbe G-One Speed PRO 29 x 2.35",
+   "width_mm": 60,
+   "tread": "file",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0036,
+    "cat1": 0.0072,
+    "cat2": 0.0094,
+    "cat3": 0.0137
+   }
+  },
+  {
+   "name": "Specialized Air Trak Flex Lite 29 x 2.35",
+   "width_mm": 60,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0058,
+    "cat1": 0.0099,
+    "cat2": 0.0121,
+    "cat3": 0.0154
+   }
+  },
+  {
+   "name": "Conti Dubnital Rapid Race 29 x 2.4",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0049,
+    "cat1": 0.0094,
+    "cat2": 0.0117,
+    "cat3": 0.0147
+   }
+  },
+  {
+   "name": "Maxxis Aspen 29 x 2.4",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0067,
+    "cat1": 0.01,
+    "cat2": 0.0132,
+    "cat3": 0.0159
+   }
+  },
+  {
+   "name": "Maxxis Aspen 32 x 2.4",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0057,
+    "cat1": 0.0085,
+    "cat2": 0.0115,
+    "cat3": 0.0144
+   }
+  },
+  {
+   "name": "Pirelli Scorpion XC RC Team 29 x 2.4",
+   "width_mm": 61,
+   "tread": "aggressive",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0067,
+    "cat1": 0.0112,
+    "cat2": 0.0136,
+    "cat3": 0.0165
+   }
+  },
+  {
+   "name": "Pirelli Scorpion XC RH 29 x 2.4 - Race",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0052,
+    "cat1": 0.0096,
+    "cat2": 0.0118,
+    "cat3": 0.015
+   }
+  },
+  {
+   "name": "Schwalbe Rick XC Pro Speed 29 x 2.4",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0049,
+    "cat1": 0.0086,
+    "cat2": 0.0109,
+    "cat3": 0.0145
+   }
+  },
+  {
+   "name": "VIttoria Barzo XC Race 29 x 2.4",
+   "width_mm": 61,
+   "tread": "aggressive",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0055,
+    "cat1": 0.0098,
+    "cat2": 0.012,
+    "cat3": 0.0147
+   }
+  },
+  {
+   "name": "Vittoria Peyote XC Race 29 x 2.4",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0051,
+    "cat1": 0.0097,
+    "cat2": 0.0119,
+    "cat3": 0.0146
+   }
+  },
+  {
+   "name": "Vittoria Peyote XC Race 32 x 2.4",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0044,
+    "cat1": 0.0079,
+    "cat2": 0.0103,
+    "cat3": 0.0136
+   }
+  },
+  {
+   "name": "Vittoria Terreno XC Race 29 x 2.4",
+   "width_mm": 61,
+   "tread": "knob",
+   "mtb": true,
+   "crr": {
+    "pavement": 0.0044,
+    "cat1": 0.0081,
+    "cat2": 0.0105,
+    "cat3": 0.0144
+   }
+  }
+ ]
+}

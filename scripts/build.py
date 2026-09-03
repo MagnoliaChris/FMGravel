@@ -84,7 +84,7 @@ def load():
     for r in rows:
         reports[r["race_id"]].append(r)
 
-    return races, weather, routes, reports, load_verifications()
+    return races, weather, routes, reports, load_verifications(), load_tires()
 
 
 
@@ -369,6 +369,167 @@ def recompute(geo):
             "segment_count": len(geo["features"]),
             "unverified_pct": round(by.get("unknown", 0) / total * 100, 1),
             "rider_verified_pct": round(verified_mi / total * 100, 1)}
+
+
+
+def load_tires():
+    f = DATA / "tires.json"
+    return json.loads(f.read_text()) if f.exists() else None
+
+
+def course_profile(geo, weather):
+    """What this course demands, derived from data we already hold."""
+    if not geo:
+        return None
+    feats = geo["features"]
+    total = sum(f["properties"]["miles"] for f in feats) or 1
+    by = defaultdict(float)
+    for f in feats:
+        by[f["properties"]["surface"]] += f["properties"]["miles"]
+
+    paved_mi = by.get("pavement", 0) + by.get("chip_seal", 0)
+    loose_mi = by.get("sand", 0) + by.get("two_track", 0)
+
+    # steep unpaved descents — where a near-slick actually costs you
+    steep = 0.0
+    for f in feats:
+        pr = f["properties"]
+        if pr["surface"] in ("pavement", "unknown"):
+            continue
+        e = pr.get("elev_ft") or []
+        if len(e) < 3:
+            continue
+        per_ft = pr["miles"] / (len(e) - 1) * 5280
+        for i in range(1, len(e)):
+            if per_ft > 20 and (e[i] - e[i - 1]) / per_ft * 100 <= -8:
+                steep += per_ft / 5280
+
+    flags = []
+    if loose_mi / total >= 0.15:
+        flags.append(f"{loose_mi:.1f} mi of loose surface — file treads give up grip here")
+    if steep >= 1.0:
+        flags.append(f"about {steep:.1f} mi of unpaved descending at 8% or steeper")
+    if weather and weather.get("wet_day_pct", 0) >= 25:
+        flags.append(f"wet {weather['wet_day_pct']}% of race-window days")
+    if by.get("unknown", 0) / total >= 0.25:
+        flags.append(f"{by['unknown'] / total * 100:.0f}% of the surface is unconfirmed, "
+                     "so treat these numbers as provisional")
+
+    return {"paved_pct": round(paved_mi / total * 100),
+            "total_mi": round(total, 1), "flags": flags}
+
+
+def tire_tool(r, prof, tires, base):
+    """Rolling-resistance model. Deterministic physics only — no probabilities."""
+    if not tires:
+        return ""
+    rows = json.dumps([{"n": t["name"], "w": t["width_mm"], "t": t["tread"],
+                        "m": 1 if t["mtb"] else 0, "c": t["crr"]} for t in tires["tires"]],
+                      separators=(",", ":"))
+    flags = "".join(f"<li>{e(x)}</li>" for x in (prof["flags"] if prof else []))
+    fl = f'<ul class="flags">{flags}</ul>' if flags else ""
+    dist = r["d"][-1] if r.get("d") else 60
+    pav = prof["paved_pct"] if prof else 40
+
+    return f"""
+<h2>What to run here</h2>
+<p class="sub">Modeled from measured rolling resistance over this course's surface mix.
+Physics only — this is time you will lose to the road, not a prediction of your race.</p>
+{fl}
+<div class="tt" id="tt" data-tires='{rows}'>
+  <div class="ttrow">
+    <label for="tt-cl">Your frame clears</label>
+    <select id="tt-cl">
+      <option value="40">40 mm</option><option value="45">45 mm</option>
+      <option value="50" selected>50 mm</option><option value="55">55 mm</option>
+      <option value="61">2.4 in / 61 mm</option>
+    </select>
+  </div>
+  <div class="ttrow">
+    <label>Gravel roughness</label>
+    <div class="ttbtns" id="tt-cat">
+      <button type="button" data-c="cat1">Cat 1 smooth</button>
+      <button type="button" data-c="cat2" class="on">Cat 2 medium</button>
+      <button type="button" data-c="cat3">Cat 3 rough</button>
+    </div>
+  </div>
+  <details class="ttmore">
+    <summary>Adjust for you</summary>
+    <div class="ttrow"><label for="tt-w">Rider + bike, lb <output id="o-w">190</output></label>
+      <input type="range" id="tt-w" min="130" max="290" step="5" value="190"></div>
+    <div class="ttrow"><label for="tt-p">Typical race power, W <output id="o-p">200</output></label>
+      <input type="range" id="tt-p" min="110" max="330" step="5" value="200"></div>
+    <div class="ttrow"><label for="tt-d">Distance, mi <output id="o-d">{dist}</output></label>
+      <input type="range" id="tt-d" min="10" max="130" step="1" value="{dist}"></div>
+    <div class="ttrow"><label for="tt-v">Paved or chip seal, % <output id="o-v">{pav}</output></label>
+      <input type="range" id="tt-v" min="0" max="90" step="1" value="{pav}"></div>
+    <div class="ttrow"><label><input type="checkbox" id="tt-g" checked> Gravel tires only</label></div>
+  </details>
+  <div id="tt-out"></div>
+</div>
+<p class="note">CRR measured by John Karrasch using the Chung / Virtual Elevation method.
+Time is rolling-energy difference divided by your power. Aerodynamics, gradient, grip and
+handling are not modeled — a faster-rolling tire you cannot corner is not faster.
+Tread class is our own call, not part of the source data.</p>
+<script>
+(function () {{
+  var box = document.getElementById('tt');
+  if (!box) return;
+  var T = JSON.parse(box.dataset.tires), cat = 'cat2';
+  var TL = {{file: 'file tread', knob: 'knobs', aggressive: 'aggressive', unclassified: ''}};
+  function g(id) {{ return document.getElementById(id); }}
+
+  function draw() {{
+    var w = +g('tt-w').value, pw = +g('tt-p').value, d = +g('tt-d').value,
+        pv = +g('tt-v').value, cl = +g('tt-cl').value, gravOnly = g('tt-g').checked;
+    ['w', 'p', 'd', 'v'].forEach(function (k) {{ g('o-' + k).textContent = g('tt-' + k).value; }});
+    var N = w * 0.4536 * 9.81, MI = 1609.34;
+    var dp = d * pv / 100 * MI, dg = d * (100 - pv) / 100 * MI;
+
+    var rows = [];
+    for (var i = 0; i < T.length; i++) {{
+      var t = T[i];
+      if (t.w > cl || t.c[cat] == null) continue;
+      if (gravOnly && t.m) continue;
+      rows.push({{ n: t.n, t: t.t, w: t.w,
+                  e: t.c.pavement * N * dp + t.c[cat] * N * dg }});
+    }}
+    rows.sort(function (a, b) {{ return a.e - b.e; }});
+    var out = g('tt-out');
+    if (!rows.length) {{
+      out.innerHTML = '<p class="ttnone">Nothing tested fits ' + cl +
+        ' mm on Cat ' + cat.slice(3) + '. Widen the clearance or pick a smoother category.</p>';
+      return;
+    }}
+    var best = rows[0].e, span = Math.max(rows[rows.length - 1].e - best, 1);
+    var h = '<ol class="ttlist">';
+    for (var k = 0; k < Math.min(8, rows.length); k++) {{
+      var r = rows[k], sec = (r.e - best) / pw;
+      var lab = k === 0 ? 'fastest' : (sec < 60 ? '+' + Math.round(sec) + ' sec'
+        : '+' + Math.floor(sec / 60) + ':' + String(Math.round(sec % 60)).padStart(2, '0'));
+      h += '<li><span class="ttn">' + r.n + '</span>'
+        + '<span class="tttag">' + (TL[r.t] || '') + '</span>'
+        + '<span class="ttbar"><i style="width:' +
+          Math.max(2, (r.e - best) / span * 100).toFixed(1) + '%"></i></span>'
+        + '<span class="ttd' + (k === 0 ? ' win' : '') + '">' + lab + '</span></li>';
+    }}
+    out.innerHTML = h + '</ol><p class="note">' + rows.length +
+      ' tested tires fit ' + cl + ' mm.</p>';
+  }}
+
+  box.addEventListener('input', draw);
+  box.addEventListener('change', draw);
+  g('tt-cat').addEventListener('click', function (ev) {{
+    var b = ev.target.closest('button[data-c]');
+    if (!b) return;
+    cat = b.dataset.c;
+    var bs = g('tt-cat').querySelectorAll('button');
+    for (var i = 0; i < bs.length; i++) bs[i].className = bs[i] === b ? 'on' : '';
+    draw();
+  }});
+  draw();
+}})();
+</script>"""
 
 
 def verify_ui(r, geo):
@@ -677,7 +838,7 @@ def tire_block(rows):
 <p class="note">{len(rows)} rider reports. Widths under 15 reports are directional only.</p>"""
 
 
-def race_page(r, weather, routes, reports, base, races, verifs=None):
+def race_page(r, weather, routes, reports, base, races, verifs=None, tires=None):
     w = weather.get(r["id"])
     route = routes.get(r["id"])
     rows = reports.get(r["id"], [])
@@ -711,6 +872,7 @@ def race_page(r, weather, routes, reports, base, races, verifs=None):
 {facts}
 {weather_block(w)}
 {route_block(r, route, geo)}
+{tire_tool(r, course_profile(geo, w), tires, base)}
 {tire_block(rows)}
 {verify_ui(r, geo) if geo else ""}
 <h2>Add your report</h2>
@@ -949,6 +1111,35 @@ margin:14px 0 12px;background:var(--caliche)}
 .readout{font-size:13px;color:var(--ink-mid);min-height:22px;margin-top:4px;font-variant-numeric:tabular-nums}
 .readout b{color:var(--ink);font-weight:500}
 @media (max-width:620px){#routemap{height:240px}#routeprofile{height:120px}}
+.tt{background:var(--caliche);padding:14px 16px;margin-bottom:6px}
+.ttrow{margin-bottom:12px}
+.tt label{display:block;font-size:13px;color:var(--ink-mid);margin-bottom:5px}
+.tt select{width:100%;max-width:220px;padding:8px 10px;border:1px solid var(--caliche-dk);
+background:#fff;font-family:inherit;font-size:14px;border-radius:3px}
+.tt input[type=range]{width:100%;max-width:320px;accent-color:var(--green)}
+.tt output{float:none;color:var(--ink);font-weight:500}
+.ttbtns{display:flex;gap:6px;flex-wrap:wrap}
+.ttbtns button{background:#fff;border:1px solid var(--caliche-dk);padding:7px 12px;
+font-size:13px;border-radius:3px;cursor:pointer;color:var(--ink)}
+.ttbtns button.on{background:var(--green);color:var(--caliche);border-color:var(--green)}
+.ttmore{margin:14px 0 6px}
+.ttmore summary{font-size:13px;color:var(--rust);cursor:pointer}
+.ttmore .ttrow{margin-top:10px}
+.ttlist{list-style:none;margin:14px 0 0}
+.ttlist li{display:grid;grid-template-columns:minmax(0,1fr) 76px 92px 62px;gap:10px;
+align-items:center;padding:7px 0;border-bottom:1px solid var(--caliche-dk)}
+.ttn{font-size:14px}
+.tttag{font-size:11px;color:var(--ink-mid)}
+.ttbar{height:14px;background:var(--paper);border-radius:2px;overflow:hidden}
+.ttbar i{display:block;height:14px;background:var(--green-mid)}
+.ttd{text-align:right;font-size:13px;font-variant-numeric:tabular-nums}
+.ttd.win{color:var(--green-mid)}
+.ttnone{font-size:14px;color:var(--rust)}
+.flags{list-style:none;margin:0 0 14px}
+.flags li{font-size:13px;padding:7px 0 7px 12px;border-left:3px solid var(--amber);
+background:var(--caliche);margin-bottom:4px}
+@media (max-width:620px){.ttlist li{grid-template-columns:minmax(0,1fr) 74px;row-gap:2px}
+.tttag,.ttbar{display:none}}
 .verifybox{background:var(--caliche);border-left:3px solid var(--green);padding:14px 16px}
 .verifybox label{display:block;font-size:13px;color:var(--ink-mid);margin:0 0 6px}
 .verifybox label+.segopts,.verifybox select+label{margin-top:12px}
@@ -1001,7 +1192,7 @@ def main():
     args = ap.parse_args()
     base = args.base.rstrip("/")
 
-    races, weather, routes, reports, verifs = load()
+    races, weather, routes, reports, verifs, tires = load()
     if not races:
         sys.exit("No races found in data/races/")
 
@@ -1015,7 +1206,7 @@ def main():
     for r in races:
         d = DIST / "races" / r["id"]
         d.mkdir(parents=True)
-        (d / "index.html").write_text(race_page(r, weather, routes, reports, base, races, verifs))
+        (d / "index.html").write_text(race_page(r, weather, routes, reports, base, races, verifs, tires))
 
     rd = DIST / "report"; rd.mkdir()
     (rd / "index.html").write_text(report_page(races, base))
