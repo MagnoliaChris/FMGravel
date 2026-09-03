@@ -458,11 +458,8 @@ def route_viewer(r, geo_exists):
   if (!el || !window.L) return;
   fetch(el.dataset.src).then(function (r) {{ return r.json(); }}).then(function (geo) {{
     var map = L.map('routemap', {{ scrollWheelZoom: false }});
-    L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_nolabels/{{z}}/{{x}}/{{y}}{{r}}.png',
-      {{ maxZoom: 19, subdomains: 'abcd',
-         attribution: '&copy; OpenStreetMap contributors &copy; CARTO' }}).addTo(map);
-    L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_only_labels/{{z}}/{{x}}/{{y}}{{r}}.png',
-      {{ maxZoom: 19, subdomains: 'abcd', pane: 'shadowPane' }}).addTo(map);
+    L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png',
+      {{ maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }}).addTo(map);
 
     var bounds = [], pts = [], mi = 0;
     geo.features.forEach(function (f) {{
@@ -486,6 +483,16 @@ def route_viewer(r, geo_exists):
     map.fitBounds(bounds, {{ padding: [16, 16] }});
     var cursor = L.circleMarker(bounds[0],
       {{ radius: 6, color: '#1F3B2C', fillColor: '#FBF9F4', fillOpacity: 1, weight: 2 }});
+
+    // median-filter elevation first: a single bad GPS sample otherwise reads as a 20% wall
+    (function () {{
+      var raw = pts.map(function (p) {{ return p.ele; }});
+      for (var k = 0; k < pts.length; k++) {{
+        var a = Math.max(0, k - 2), b = Math.min(raw.length, k + 3);
+        var win = raw.slice(a, b).sort(function (x, y) {{ return x - y; }});
+        pts[k].ele = win[Math.floor(win.length / 2)];
+      }}
+    }})();
 
     // smoothed grade: rise over run across a ~0.06 mi window centred on each point
     (function () {{
@@ -547,15 +554,22 @@ def route_viewer(r, geo_exists):
     (function () {{
       var gn = document.getElementById('gradenote');
       if (!gn) return;
-      var up = 0, steep = 0, maxg = 0;
+      var up = 0, steep = 0, maxg = 0, LONG = 0.05;
       for (var k = 1; k < pts.length; k++) {{
         var d = pts[k].ele - pts[k - 1].ele;
         if (d > 0) up += d;
-        var g = pts[k].grade || 0;
-        if (g > maxg) maxg = g;
-        if (g >= 8) steep += (pts[k].mi - pts[k - 1].mi);
+        if ((pts[k].grade || 0) >= 8) steep += (pts[k].mi - pts[k - 1].mi);
+        // sustained grade over ~0.1 mi, so one bad sample can't set the record
+        var i2 = k, j2 = k;
+        while (i2 > 0 && pts[k].mi - pts[i2].mi < LONG) i2--;
+        while (j2 < pts.length - 1 && pts[j2].mi - pts[k].mi < LONG) j2++;
+        var run2 = (pts[j2].mi - pts[i2].mi) * 5280;
+        if (run2 > 100) {{
+          var g2 = ((pts[j2].ele - pts[i2].ele) / run2) * 100;
+          if (g2 > maxg) maxg = g2;
+        }}
       }}
-      gn.innerHTML = Math.round(up).toLocaleString() + ' ft of climbing · steepest '
+      gn.innerHTML = Math.round(up).toLocaleString() + ' ft of climbing · steepest sustained '
         + maxg.toFixed(1) + '%'
         + (steep > 0.05 ? ' · ' + steep.toFixed(1) + ' mi at 8% or more' : '');
     }})();
@@ -929,6 +943,8 @@ border:1px solid var(--caliche-dk);margin-bottom:6px}
 .axis small{display:block;color:#B9B2A4}
 #routemap{height:320px;border:1px solid var(--caliche-dk);border-radius:3px;
 margin:14px 0 12px;background:var(--caliche)}
+/* wash out the basemap so the coloured route is the loudest thing on it */
+#routemap .leaflet-tile-pane{filter:grayscale(.85) brightness(1.12) contrast(.82) opacity(.75)}
 #routeprofile{width:100%;height:150px;display:block;cursor:crosshair;touch-action:none}
 .readout{font-size:13px;color:var(--ink-mid);min-height:22px;margin-top:4px;font-variant-numeric:tabular-nums}
 .readout b{color:var(--ink);font-weight:500}
