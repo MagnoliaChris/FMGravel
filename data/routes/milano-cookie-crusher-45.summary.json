@@ -1,0 +1,103 @@
+{
+  "name": "Milano Cookie Crusher 45",
+  "total_miles": 46.54,
+  "segment_count": 9,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 25.51,
+      "pct": 54.8
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 12.21,
+      "pct": 26.2
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 8.82,
+      "pct": 19.0
+    }
+  ],
+  "unverified_pct": 54.8,
+  "segments": [
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.35,
+      "start_mi": 0.0,
+      "end_mi": 0.35,
+      "road": ""
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.41,
+      "start_mi": 0.35,
+      "end_mi": 4.76,
+      "road": "County Road 330"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.31,
+      "start_mi": 4.76,
+      "end_mi": 9.07,
+      "road": "County Road 328"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.33,
+      "start_mi": 9.07,
+      "end_mi": 10.39,
+      "road": "County Road 344"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 17.76,
+      "start_mi": 10.39,
+      "end_mi": 28.15,
+      "road": "County Road 364"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 10.19,
+      "start_mi": 28.15,
+      "end_mi": 38.34,
+      "road": "County Road 327"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.44,
+      "start_mi": 38.34,
+      "end_mi": 41.78,
+      "road": "County Road 328"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.41,
+      "start_mi": 41.78,
+      "end_mi": 46.19,
+      "road": "County Road 330"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.34,
+      "start_mi": 46.19,
+      "end_mi": 46.54,
+      "road": ""
+    }
+  ]
+}

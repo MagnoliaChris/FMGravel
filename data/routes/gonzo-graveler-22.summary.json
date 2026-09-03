@@ -1,0 +1,87 @@
+{
+  "name": "The Gonzo Graveler 22",
+  "total_miles": 22.08,
+  "segment_count": 7,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 20.11,
+      "pct": 91.1
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 1.32,
+      "pct": 6.0
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 0.66,
+      "pct": 3.0
+    }
+  ],
+  "unverified_pct": 91.1,
+  "segments": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.02,
+      "start_mi": 0.0,
+      "end_mi": 1.02,
+      "road": "Saint Paul Street"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.33,
+      "start_mi": 1.02,
+      "end_mi": 1.35,
+      "road": "Harwood Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.43,
+      "start_mi": 1.35,
+      "end_mi": 8.78,
+      "road": "County Road 238"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.32,
+      "start_mi": 8.78,
+      "end_mi": 10.1,
+      "road": "County Road 240"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 10.37,
+      "start_mi": 10.1,
+      "end_mi": 20.46,
+      "road": "County Road 239"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.33,
+      "start_mi": 20.46,
+      "end_mi": 20.79,
+      "road": "Harwood Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.29,
+      "start_mi": 20.79,
+      "end_mi": 22.08,
+      "road": "Saint Paul Street"
+    }
+  ]
+}

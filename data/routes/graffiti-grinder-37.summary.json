@@ -1,0 +1,135 @@
+{
+  "name": "The Graffiti Grinder 37",
+  "total_miles": 35.99,
+  "segment_count": 13,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 20.2,
+      "pct": 56.1
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 14.95,
+      "pct": 41.5
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 0.83,
+      "pct": 2.3
+    }
+  ],
+  "unverified_pct": 56.1,
+  "segments": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.43,
+      "start_mi": 0.0,
+      "end_mi": 1.43,
+      "road": "County Road 157"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 6.63,
+      "start_mi": 1.43,
+      "end_mi": 8.06,
+      "road": "County Road 114"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.83,
+      "start_mi": 8.06,
+      "end_mi": 12.88,
+      "road": "County Road 117"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.83,
+      "start_mi": 12.88,
+      "end_mi": 16.72,
+      "road": "County Road 477"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.47,
+      "start_mi": 16.72,
+      "end_mi": 20.19,
+      "road": "County Road 473"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.21,
+      "start_mi": 20.19,
+      "end_mi": 20.4,
+      "road": "FM 1107"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.12,
+      "start_mi": 20.4,
+      "end_mi": 21.52,
+      "road": "County Road 474"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.62,
+      "start_mi": 21.52,
+      "end_mi": 22.15,
+      "road": "FM 1107"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.85,
+      "start_mi": 22.15,
+      "end_mi": 26.0,
+      "road": "County Road 448"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 1.69,
+      "start_mi": 26.0,
+      "end_mi": 27.68,
+      "road": "County Road 115"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.26,
+      "start_mi": 27.68,
+      "end_mi": 27.95,
+      "road": "County Road 117"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 6.63,
+      "start_mi": 27.95,
+      "end_mi": 34.57,
+      "road": "County Road 114"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.41,
+      "start_mi": 34.57,
+      "end_mi": 35.99,
+      "road": "County Road 157"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "The Graffiti Grinder 16",
+  "total_miles": 16.02,
+  "segment_count": 3,
+  "composition": [
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 13.2,
+      "pct": 82.4
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 2.82,
+      "pct": 17.6
+    }
+  ],
+  "unverified_pct": 17.6,
+  "segments": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.41,
+      "start_mi": 0.0,
+      "end_mi": 1.41,
+      "road": "County Road 157"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 13.2,
+      "start_mi": 1.41,
+      "end_mi": 14.61,
+      "road": "County Road 114"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.41,
+      "start_mi": 14.61,
+      "end_mi": 16.02,
+      "road": "County Road 157"
+    }
+  ]
+}

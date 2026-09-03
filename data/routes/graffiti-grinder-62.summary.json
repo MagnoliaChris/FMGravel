@@ -1,0 +1,222 @@
+{
+  "name": "The Graffiti Grinder 62",
+  "total_miles": 62.4,
+  "segment_count": 23,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 44.2,
+      "pct": 70.8
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 13.24,
+      "pct": 21.2
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 4.24,
+      "pct": 6.8
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 0.72,
+      "pct": 1.2
+    }
+  ],
+  "unverified_pct": 70.8,
+  "segments": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.42,
+      "start_mi": 0.0,
+      "end_mi": 1.42,
+      "road": "County Road 157"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 6.61,
+      "start_mi": 1.42,
+      "end_mi": 8.03,
+      "road": "County Road 114"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.83,
+      "start_mi": 8.03,
+      "end_mi": 12.86,
+      "road": "County Road 117"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.71,
+      "start_mi": 12.86,
+      "end_mi": 16.56,
+      "road": "County Road 477"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.23,
+      "start_mi": 16.56,
+      "end_mi": 16.79,
+      "road": "FM 1107"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.73,
+      "start_mi": 16.79,
+      "end_mi": 20.52,
+      "road": "County Road 476"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.2,
+      "start_mi": 20.52,
+      "end_mi": 21.72,
+      "road": "FM 1681"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.66,
+      "start_mi": 21.72,
+      "end_mi": 25.38,
+      "road": "County Road 475"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.47,
+      "start_mi": 25.38,
+      "end_mi": 26.85,
+      "road": "FM 1107"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.47,
+      "start_mi": 26.85,
+      "end_mi": 30.32,
+      "road": "County Road 473"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.21,
+      "start_mi": 30.32,
+      "end_mi": 30.53,
+      "road": "FM 1107"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.12,
+      "start_mi": 30.53,
+      "end_mi": 31.66,
+      "road": "County Road 474"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.62,
+      "start_mi": 31.66,
+      "end_mi": 32.28,
+      "road": "FM 1107"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.87,
+      "start_mi": 32.28,
+      "end_mi": 36.15,
+      "road": "County Road 448"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.66,
+      "start_mi": 36.15,
+      "end_mi": 37.81,
+      "road": "County Road 444"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.72,
+      "start_mi": 37.81,
+      "end_mi": 38.54,
+      "road": "County Road 442"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.46,
+      "start_mi": 38.54,
+      "end_mi": 42.0,
+      "road": "County Road 434"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.22,
+      "start_mi": 42.0,
+      "end_mi": 42.22,
+      "road": "County Road 434"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.49,
+      "start_mi": 42.22,
+      "end_mi": 43.71,
+      "road": "County Road 432"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.29,
+      "start_mi": 43.71,
+      "end_mi": 43.99,
+      "road": "County Road 434"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.68,
+      "start_mi": 43.99,
+      "end_mi": 53.67,
+      "road": "County Road 117"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 6.63,
+      "start_mi": 53.67,
+      "end_mi": 60.3,
+      "road": "County Road 114"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.1,
+      "start_mi": 60.3,
+      "end_mi": 62.4,
+      "road": "County Road 157"
+    }
+  ]
+}

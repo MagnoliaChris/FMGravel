@@ -1,0 +1,158 @@
+{
+  "name": "The Wire Donkey 34",
+  "total_miles": 33.87,
+  "segment_count": 15,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 19.9,
+      "pct": 58.8
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 7.45,
+      "pct": 22.0
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 3.77,
+      "pct": 11.1
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 2.75,
+      "pct": 8.1
+    }
+  ],
+  "unverified_pct": 58.8,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.46,
+      "start_mi": 0.0,
+      "end_mi": 1.46,
+      "road": "Loop 497"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 3.36,
+      "start_mi": 1.46,
+      "end_mi": 4.82,
+      "road": "Rocky Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 2.84,
+      "start_mi": 4.82,
+      "end_mi": 7.66,
+      "road": "South Rocky Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.64,
+      "start_mi": 7.66,
+      "end_mi": 8.3,
+      "road": "Farm-to-Market Road 2754"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.01,
+      "start_mi": 8.3,
+      "end_mi": 10.32,
+      "road": "Arning Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.5,
+      "start_mi": 10.32,
+      "end_mi": 10.81,
+      "road": "Old 36 Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.25,
+      "start_mi": 10.81,
+      "end_mi": 12.06,
+      "road": "Albert Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.98,
+      "start_mi": 12.06,
+      "end_mi": 14.04,
+      "road": "Glaeser Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.55,
+      "start_mi": 14.04,
+      "end_mi": 14.59,
+      "road": "Farm-to-Market Road 2754"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.19,
+      "start_mi": 14.59,
+      "end_mi": 18.78,
+      "road": "West Ueckert Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.77,
+      "start_mi": 18.78,
+      "end_mi": 19.56,
+      "road": "Bleiblerville Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.13,
+      "start_mi": 19.56,
+      "end_mi": 22.68,
+      "road": "New Wehdem Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 1.25,
+      "start_mi": 22.68,
+      "end_mi": 23.93,
+      "road": "Dabney Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.32,
+      "start_mi": 23.93,
+      "end_mi": 33.25,
+      "road": "Lynn Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.62,
+      "start_mi": 33.25,
+      "end_mi": 33.87,
+      "road": "Loop 497"
+    }
+  ]
+}

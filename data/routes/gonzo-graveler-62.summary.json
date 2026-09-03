@@ -1,0 +1,207 @@
+{
+  "name": "The Gonzo Graveler 62",
+  "total_miles": 61.96,
+  "segment_count": 22,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 33.54,
+      "pct": 54.1
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 23.49,
+      "pct": 37.9
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 4.92,
+      "pct": 7.9
+    }
+  ],
+  "unverified_pct": 54.1,
+  "segments": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.03,
+      "start_mi": 0.0,
+      "end_mi": 1.03,
+      "road": "Saint Paul Street"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.33,
+      "start_mi": 1.03,
+      "end_mi": 1.37,
+      "road": "Harwood Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.43,
+      "start_mi": 1.37,
+      "end_mi": 8.8,
+      "road": "County Road 238"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.31,
+      "start_mi": 8.8,
+      "end_mi": 10.11,
+      "road": "County Road 240"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.29,
+      "start_mi": 10.11,
+      "end_mi": 14.4,
+      "road": "County Road 433"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.34,
+      "start_mi": 14.4,
+      "end_mi": 14.74,
+      "road": "TX 97"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.08,
+      "start_mi": 14.74,
+      "end_mi": 15.82,
+      "road": "County Road 384"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 2.85,
+      "start_mi": 15.82,
+      "end_mi": 18.67,
+      "road": "County Road 385"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 6.43,
+      "start_mi": 18.67,
+      "end_mi": 25.1,
+      "road": "County Road 407"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.8,
+      "start_mi": 25.1,
+      "end_mi": 25.9,
+      "road": "FM 2814"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.96,
+      "start_mi": 25.9,
+      "end_mi": 26.86,
+      "road": "County Road 397"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 5.35,
+      "start_mi": 26.86,
+      "end_mi": 32.2,
+      "road": "County Road 397"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.32,
+      "start_mi": 32.2,
+      "end_mi": 32.52,
+      "road": "FM 532"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.44,
+      "start_mi": 32.52,
+      "end_mi": 33.96,
+      "road": "County Road 381"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 2.44,
+      "start_mi": 33.96,
+      "end_mi": 36.41,
+      "road": "County Road 393"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.83,
+      "start_mi": 36.41,
+      "end_mi": 37.24,
+      "road": "County Road 290"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.6,
+      "start_mi": 37.24,
+      "end_mi": 40.84,
+      "road": "County Road 351"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 5.55,
+      "start_mi": 40.84,
+      "end_mi": 46.39,
+      "road": "County Road 363"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 7.94,
+      "start_mi": 46.39,
+      "end_mi": 54.33,
+      "road": "County Road 354"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.31,
+      "start_mi": 54.33,
+      "end_mi": 57.65,
+      "road": "County Road 344"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 3.13,
+      "start_mi": 57.65,
+      "end_mi": 60.77,
+      "road": "FM 532"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.19,
+      "start_mi": 60.77,
+      "end_mi": 61.96,
+      "road": "Saint Lawrence Street"
+    }
+  ]
+}

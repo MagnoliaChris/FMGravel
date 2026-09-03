@@ -1,0 +1,135 @@
+{
+  "name": "Milano Cookie Crusher 61",
+  "total_miles": 60.86,
+  "segment_count": 13,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 31.02,
+      "pct": 51.0
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 21.01,
+      "pct": 34.5
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 8.82,
+      "pct": 14.5
+    }
+  ],
+  "unverified_pct": 51.0,
+  "segments": [
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.35,
+      "start_mi": 0.0,
+      "end_mi": 0.35,
+      "road": ""
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.41,
+      "start_mi": 0.35,
+      "end_mi": 4.76,
+      "road": "County Road 330"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.31,
+      "start_mi": 4.76,
+      "end_mi": 9.07,
+      "road": "County Road 328"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.23,
+      "start_mi": 9.07,
+      "end_mi": 10.3,
+      "road": "County Road 344"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 17.81,
+      "start_mi": 10.3,
+      "end_mi": 28.11,
+      "road": "County Road 364"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 11.16,
+      "start_mi": 28.11,
+      "end_mi": 39.27,
+      "road": "County Road 327"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.02,
+      "start_mi": 39.27,
+      "end_mi": 43.3,
+      "road": "County Road 320"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 4.11,
+      "start_mi": 43.3,
+      "end_mi": 47.4,
+      "road": "County Road 322"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.44,
+      "start_mi": 47.4,
+      "end_mi": 48.84,
+      "road": "County Road 322"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.82,
+      "start_mi": 48.84,
+      "end_mi": 52.67,
+      "road": "County Road 322"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.44,
+      "start_mi": 52.67,
+      "end_mi": 56.11,
+      "road": "County Road 328"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.41,
+      "start_mi": 56.11,
+      "end_mi": 60.52,
+      "road": "County Road 330"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.34,
+      "start_mi": 60.52,
+      "end_mi": 60.86,
+      "road": ""
+    }
+  ]
+}

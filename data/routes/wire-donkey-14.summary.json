@@ -1,0 +1,94 @@
+{
+  "name": "The Wire Donkey 14",
+  "total_miles": 13.99,
+  "segment_count": 7,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 7.55,
+      "pct": 54.0
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 4.33,
+      "pct": 31.0
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 1.47,
+      "pct": 10.5
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 0.63,
+      "pct": 4.5
+    }
+  ],
+  "unverified_pct": 54.0,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.47,
+      "start_mi": 0.0,
+      "end_mi": 1.47,
+      "road": "Loop 497"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 3.08,
+      "start_mi": 1.47,
+      "end_mi": 4.55,
+      "road": "Rocky Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.8,
+      "start_mi": 4.55,
+      "end_mi": 5.35,
+      "road": "New Wehdem Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.63,
+      "start_mi": 5.35,
+      "end_mi": 5.99,
+      "road": "Bleiblerville Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.15,
+      "start_mi": 5.99,
+      "end_mi": 9.13,
+      "road": "New Wehdem Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 1.25,
+      "start_mi": 9.13,
+      "end_mi": 10.39,
+      "road": "Dabney Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.6,
+      "start_mi": 10.39,
+      "end_mi": 13.99,
+      "road": "Phillipsburg Church Road"
+    }
+  ]
+}

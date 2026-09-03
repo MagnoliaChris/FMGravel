@@ -1,0 +1,87 @@
+{
+  "name": "Milano Cookie Crusher 16",
+  "total_miles": 16.0,
+  "segment_count": 7,
+  "composition": [
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 8.82,
+      "pct": 55.1
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 3.7,
+      "pct": 23.1
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 3.48,
+      "pct": 21.8
+    }
+  ],
+  "unverified_pct": 23.1,
+  "segments": [
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.56,
+      "start_mi": 0.0,
+      "end_mi": 0.56,
+      "road": "West Avenue E"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.41,
+      "start_mi": 0.56,
+      "end_mi": 4.97,
+      "road": "County Road 330"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.44,
+      "start_mi": 4.97,
+      "end_mi": 8.41,
+      "road": "County Road 328"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 2.38,
+      "start_mi": 8.41,
+      "end_mi": 10.79,
+      "road": "County Road 328"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.26,
+      "start_mi": 10.79,
+      "end_mi": 11.05,
+      "road": "County Road 330"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.41,
+      "start_mi": 11.05,
+      "end_mi": 15.46,
+      "road": "County Road 330"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.54,
+      "start_mi": 15.46,
+      "end_mi": 16.0,
+      "road": "West Avenue E"
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "name": "The Wire Donkey 62",
+  "total_miles": 61.16,
+  "segment_count": 21,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 39.55,
+      "pct": 64.7
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 12.58,
+      "pct": 20.6
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 7.17,
+      "pct": 11.7
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 1.86,
+      "pct": 3.0
+    }
+  ],
+  "unverified_pct": 64.7,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.47,
+      "start_mi": 0.0,
+      "end_mi": 1.47,
+      "road": "Loop 497"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 3.36,
+      "start_mi": 1.47,
+      "end_mi": 4.83,
+      "road": "Rocky Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 2.84,
+      "start_mi": 4.83,
+      "end_mi": 7.66,
+      "road": "South Rocky Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.64,
+      "start_mi": 7.66,
+      "end_mi": 8.31,
+      "road": "Farm-to-Market Road 2754"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.01,
+      "start_mi": 8.31,
+      "end_mi": 10.32,
+      "road": "Arning Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.5,
+      "start_mi": 10.32,
+      "end_mi": 10.82,
+      "road": "Old 36 Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 6.15,
+      "start_mi": 10.82,
+      "end_mi": 16.97,
+      "road": "Albert Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.29,
+      "start_mi": 16.97,
+      "end_mi": 18.26,
+      "road": "Farm-to-Market Road 2502"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.66,
+      "start_mi": 18.26,
+      "end_mi": 22.93,
+      "road": "West Ueckert Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.77,
+      "start_mi": 22.93,
+      "end_mi": 23.7,
+      "road": "Bleiblerville Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 10.6,
+      "start_mi": 23.7,
+      "end_mi": 34.31,
+      "road": "Emshoff Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.16,
+      "start_mi": 34.31,
+      "end_mi": 34.47,
+      "road": "Wonder Hill Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.22,
+      "start_mi": 34.47,
+      "end_mi": 34.69,
+      "road": "Wonder Hill Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.56,
+      "start_mi": 34.69,
+      "end_mi": 35.25,
+      "road": "Wonder Hill Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.47,
+      "start_mi": 35.25,
+      "end_mi": 39.72,
+      "road": "Stern Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.94,
+      "start_mi": 39.72,
+      "end_mi": 41.65,
+      "road": "Chadwick-Hogan Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 6.38,
+      "start_mi": 41.65,
+      "end_mi": 48.03,
+      "road": "Sempronius Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.04,
+      "start_mi": 48.03,
+      "end_mi": 55.07,
+      "road": "Kiemsteadt Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.09,
+      "start_mi": 55.07,
+      "end_mi": 56.16,
+      "road": "Kramer Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.4,
+      "start_mi": 56.16,
+      "end_mi": 60.55,
+      "road": "Lynn Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.61,
+      "start_mi": 60.55,
+      "end_mi": 61.16,
+      "road": "Loop 497"
+    }
+  ]
+}
