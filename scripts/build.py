@@ -837,14 +837,36 @@ def route_block(r, route, geo=None, variants=None):
 <div class="empty"><p>No route segmented yet.</p>
 <p>Caliche, chip seal, ranch two-track, pavement — split from the GPX and verified on the ground.</p></div>"""
 
-    if r.get("gpx"):
+    files = []
+    gdir = DATA / "gpx"
+    if gdir.exists():
+        for g in sorted(gdir.glob("*.gpx")):
+            stem = g.stem
+            if stem == r["id"]:
+                files.append((None, g.name))
+            elif stem.startswith(r["id"] + "-") and stem[len(r["id"]) + 1:].isdigit():
+                files.append((int(stem[len(r["id"]) + 1:]), g.name))
+    files.sort(key=lambda x: -(x[0] or 0))
+
+    out += "<h2>Routes</h2>"
+    if files:
+        links = " ".join(
+            f'<a class="dl" href="/gpx/{fn}" download>{d} mi</a>' if d
+            else f'<a class="dl" href="/gpx/{fn}" download>GPX</a>'
+            for d, fn in files)
+        who = f" Courses by {e(r['org'])}." if r.get("org") else ""
+        src = (f' <a href="{e(r["gpx"])}" rel="nofollow">Organizer\'s route page</a>.'
+               if r.get("gpx") else "")
+        out += f"""<p class="sub">Download and go pre-ride it.{who}{src}</p>
+<p class="dls">{links}</p>
+<p class="note">Route files belong to the organizer. Courses change year to year —
+check the organizer's page before race day.</p>"""
+    elif r.get("gpx"):
         host = r["gpx"].split("//")[-1].split("/")[0].replace("www.", "")
-        out += f"""<h2>Routes</h2>
-<div class="empty ok"><p>The organizer publishes GPX and TCX files for every distance.</p>
+        out += f"""<div class="empty ok"><p>The organizer publishes GPX and TCX files for every distance.</p>
 <p><a href="{e(r['gpx'])}" rel="nofollow">Download from {e(host)}</a> — go pre-ride it.</p></div>"""
     else:
-        out += """<h2>Routes</h2>
-<div class="empty"><p>No route files linked yet.</p>
+        out += """<div class="empty"><p>No route files linked yet.</p>
 <p>Most Texas organizers publish GPX openly. Send a link if you have one.</p></div>"""
     return out
 
@@ -1174,6 +1196,11 @@ margin:14px 0 12px;background:var(--caliche)}
 .readout b{color:var(--ink);font-weight:500}
 @media (max-width:620px){#routemap{height:240px}#routeprofile{height:120px}}
 .tt{background:var(--caliche);padding:14px 16px;margin-bottom:6px}
+.dls{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 0}
+a.dl{display:inline-block;background:var(--caliche);border:1px solid var(--caliche-dk);
+padding:7px 14px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;
+border-radius:3px;color:var(--ink);text-decoration:none}
+a.dl:hover{border-color:var(--green);color:var(--green-mid)}
 .dtabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
 .dtabs button{background:#fff;border:1px solid var(--caliche-dk);padding:6px 13px;
 font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;
@@ -1282,6 +1309,12 @@ def main():
         d = DIST / "races" / r["id"]
         d.mkdir(parents=True)
         (d / "index.html").write_text(race_page(r, weather, routes, reports, base, races, verifs, tires))
+
+    gsrc = DATA / "gpx"
+    if gsrc.exists():
+        gd = DIST / "gpx"; gd.mkdir(parents=True, exist_ok=True)
+        for g in gsrc.glob("*.gpx"):
+            shutil.copy(g, gd / g.name)
 
     rd = DIST / "report"; rd.mkdir()
     (rd / "index.html").write_text(report_page(races, base))
