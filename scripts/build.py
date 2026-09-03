@@ -193,7 +193,7 @@ def shell(title, desc, canonical, body, base, extra_head=""):
 <header class="masthead"><div class="mh">
   <a class="brand" href="/">
     <span class="shield"><b>FM</b><i></i><s>GRVL</s></span>
-    <span><span class="wm">FARM TO MARKET</span><span class="tag">Texas gravel, measured</span></span>
+    <span><span class="wm">FM GRAVEL</span><span class="tag">Texas gravel, measured</span></span>
   </a>
 </div></header>
 <main class="wrap">
@@ -268,7 +268,7 @@ tire data and race-day climate built from what riders actually report.</p>
 """
     desc = (f"All {len(races)} gravel races in Texas with dates, distances, surface "
             f"breakdowns and rider-reported tire data. No editorial scores.")
-    return shell("Every gravel race in Texas | Farm to Market", desc, "/", body, base)
+    return shell("Every gravel race in Texas | FM Gravel", desc, "/", body, base)
 
 
 def weather_block(w):
@@ -964,7 +964,7 @@ def race_page(r, weather, routes, reports, base, races, verifs=None, tires=None)
 <p><a href="/report/?race={r['id']}">Add a report</a> — tires, flats, conditions, and how it went.</p></div>
 {also}"""
 
-    title = f"{r['name']} — surface, tires and weather | Farm to Market"
+    title = f"{r['name']} — surface, tires and weather | FM Gravel"
     desc = (f"{r['name']} in {r['town']}, TX ({r.get('date','')}). "
             f"{dists}. Surface breakdown, rider-reported tire and flat data, and race-day climate.")
     return shell(title, desc[:300], f"/races/{r['id']}/", body,
@@ -1106,7 +1106,7 @@ document.getElementById('report-form').addEventListener('submit', function (ev) 
   err.textContent = '';
 }});
 </script>"""
-    return shell("Add a race report | Farm to Market",
+    return shell("Add a race report | FM Gravel",
                  "Report the tires, pressure, flats and conditions from any Texas gravel race, any year.",
                  "/report/", body, base)
 
@@ -1118,7 +1118,7 @@ def thanks_page(base):
 <p>Every figure on this site is built from reports like yours, and every one shows its sample size.</p>
 </div>
 <p style="margin-top:1.4rem"><a href="/">Back to all races</a></p>"""
-    return shell("Report added | Farm to Market", "Thanks for adding a race report.",
+    return shell("Report added | FM Gravel", "Thanks for adding a race report.",
                  "/report/thanks/", body, base)
 
 
