@@ -437,13 +437,20 @@ def tire_tool(r, prof, tires, base):
 Physics only — this is time you will lose to the road, not a prediction of your race.</p>
 {fl}
 <div class="tt" id="tt" data-tires='{rows}'>
-  <div class="ttrow">
-    <label for="tt-cl">Your frame clears</label>
-    <select id="tt-cl">
-      <option value="40">40 mm</option><option value="45">45 mm</option>
-      <option value="50" selected>50 mm</option><option value="55">55 mm</option>
-      <option value="61">2.4 in / 61 mm</option>
-    </select>
+  <div class="ttrow ttpair">
+    <span>
+      <label for="tt-min">At least</label>
+      <select id="tt-min">
+        <option value="0" selected>any width</option>
+        <option value="40">40 mm</option><option value="45">45 mm</option><option value="48">48 mm</option><option value="50">50 mm</option><option value="51">51 mm</option><option value="53">53 mm</option><option value="55">55 mm</option><option value="56">56 mm</option><option value="57">57 mm</option><option value="60">60 mm</option><option value="61">61 mm</option>
+      </select>
+    </span>
+    <span>
+      <label for="tt-cl">Your frame clears</label>
+      <select id="tt-cl">
+        <option value="40">40 mm</option><option value="45">45 mm</option><option value="48">48 mm</option><option value="50" selected>50 mm</option><option value="51">51 mm</option><option value="53">53 mm</option><option value="55">55 mm</option><option value="56">56 mm</option><option value="57">57 mm</option><option value="60">60 mm</option><option value="61">61 mm</option>
+      </select>
+    </span>
   </div>
   <div class="ttrow">
     <label>Gravel roughness</label>
@@ -463,7 +470,6 @@ Physics only — this is time you will lose to the road, not a prediction of you
       <input type="range" id="tt-d" min="10" max="130" step="1" value="{dist}"></div>
     <div class="ttrow"><label for="tt-v">Paved or chip seal, % <output id="o-v">{pav}</output></label>
       <input type="range" id="tt-v" min="0" max="90" step="1" value="{pav}"></div>
-    <div class="ttrow"><label><input type="checkbox" id="tt-g" checked> Gravel tires only</label></div>
   </details>
   <div id="tt-out"></div>
 </div>
@@ -481,7 +487,7 @@ Tread class is our own call, not part of the source data.</p>
 
   function draw() {{
     var w = +g('tt-w').value, pw = +g('tt-p').value, d = +g('tt-d').value,
-        pv = +g('tt-v').value, cl = +g('tt-cl').value, gravOnly = g('tt-g').checked;
+        pv = +g('tt-v').value, cl = +g('tt-cl').value, mn = +g('tt-min').value;
     ['w', 'p', 'd', 'v'].forEach(function (k) {{ g('o-' + k).textContent = g('tt-' + k).value; }});
     var N = w * 0.4536 * 9.81, MI = 1609.34;
     var dp = d * pv / 100 * MI, dg = d * (100 - pv) / 100 * MI;
@@ -489,16 +495,16 @@ Tread class is our own call, not part of the source data.</p>
     var rows = [];
     for (var i = 0; i < T.length; i++) {{
       var t = T[i];
-      if (t.w > cl || t.c[cat] == null) continue;
-      if (gravOnly && t.m) continue;
+      if (t.w > cl || t.w < mn || t.c[cat] == null) continue;
       rows.push({{ n: t.n, t: t.t, w: t.w,
                   e: t.c.pavement * N * dp + t.c[cat] * N * dg }});
     }}
     rows.sort(function (a, b) {{ return a.e - b.e; }});
     var out = g('tt-out');
     if (!rows.length) {{
-      out.innerHTML = '<p class="ttnone">Nothing tested fits ' + cl +
-        ' mm on Cat ' + cat.slice(3) + '. Widen the clearance or pick a smoother category.</p>';
+      out.innerHTML = '<p class="ttnone">Nothing tested falls between ' + (mn || 40) +
+        ' and ' + cl + ' mm with Cat ' + cat.slice(3) +
+        ' data. Widen the range or pick a smoother category.</p>';
       return;
     }}
     var best = rows[0].e, span = Math.max(rows[rows.length - 1].e - best, 1);
@@ -508,13 +514,13 @@ Tread class is our own call, not part of the source data.</p>
       var lab = k === 0 ? 'fastest' : (sec < 60 ? '+' + Math.round(sec) + ' sec'
         : '+' + Math.floor(sec / 60) + ':' + String(Math.round(sec % 60)).padStart(2, '0'));
       h += '<li><span class="ttn">' + r.n + '</span>'
-        + '<span class="tttag">' + (TL[r.t] || '') + '</span>'
+        + '<span class="tttag">' + r.w + ' mm' + (TL[r.t] ? ' · ' + TL[r.t] : '') + '</span>'
         + '<span class="ttbar"><i style="width:' +
           Math.max(2, (r.e - best) / span * 100).toFixed(1) + '%"></i></span>'
         + '<span class="ttd' + (k === 0 ? ' win' : '') + '">' + lab + '</span></li>';
     }}
-    out.innerHTML = h + '</ol><p class="note">' + rows.length +
-      ' tested tires fit ' + cl + ' mm.</p>';
+    out.innerHTML = h + '</ol><p class="note">' + rows.length + ' tested tires ' +
+      (mn ? 'between ' + mn + ' and ' + cl : 'up to ' + cl) + ' mm.</p>';
   }}
 
   box.addEventListener('input', draw);
@@ -602,12 +608,19 @@ verified — one answer never overrides anything on its own.
 </script>"""
 
 
-def route_viewer(r, geo_exists):
-    """Leaflet map + surface-coloured elevation profile, loaded from /routes/<id>.geojson."""
-    if not geo_exists:
+def route_viewer(r, variants):
+    """Leaflet map + surface-coloured elevation profile, one route per distance."""
+    if not variants:
         return ""
+    tabs = ""
+    if len(variants) > 1:
+        tabs = '<div class="dtabs" id="dtabs">' + "".join(
+            f'<button type="button" data-src="/routes/{v["stem"]}.geojson"'
+            f'{" class=\"on\"" if i == 0 else ""}>{v["dist"]} mi</button>'
+            for i, v in enumerate(variants)) + "</div>"
     return f"""
-<div id="routemap" data-src="/routes/{r['id']}.geojson"></div>
+{tabs}
+<div id="routemap" data-src="/routes/{variants[0]['stem']}.geojson"></div>
 <svg id="routeprofile" role="img" aria-label="Elevation profile coloured by road surface"></svg>
 <p class="readout" id="routereadout">Hover or drag across the profile to trace the course.</p>
 <p class="note" id="gradenote"></p>
@@ -617,8 +630,11 @@ def route_viewer(r, geo_exists):
 (function () {{
   var el = document.getElementById('routemap');
   if (!el || !window.L) return;
-  fetch(el.dataset.src).then(function (r) {{ return r.json(); }}).then(function (geo) {{
-    var map = L.map('routemap', {{ scrollWheelZoom: false }});
+  var map = null, layers = null;
+  function load(src) {{
+  fetch(src).then(function (r) {{ return r.json(); }}).then(function (geo) {{
+    if (map) {{ map.remove(); map = null; }}
+    map = L.map('routemap', {{ scrollWheelZoom: false }});
     L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png',
       {{ maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }}).addTo(map);
 
@@ -763,11 +779,21 @@ def route_viewer(r, geo_exists):
       map.removeLayer(cursor);
     }});
   }}).catch(function (e) {{ console.error(e); }});
+  }}
+  load(el.dataset.src);
+  var dt = document.getElementById('dtabs');
+  if (dt) dt.addEventListener('click', function (ev) {{
+    var b = ev.target.closest('button[data-src]');
+    if (!b) return;
+    var bs = dt.querySelectorAll('button');
+    for (var i = 0; i < bs.length; i++) bs[i].className = bs[i] === b ? 'on' : '';
+    load(b.dataset.src);
+  }});
 }})();
 </script>"""
 
 
-def route_block(r, route, geo=None):
+def route_block(r, route, geo=None, variants=None):
     if route:
         mix = "".join(
             f'<div style="width:{c["pct"]}%;background:{SURFACE_COLOR.get(c["surface"],"#B9B2A4")}"'
@@ -785,8 +811,9 @@ def route_block(r, route, geo=None):
         warn = f'<p class="note">{" · ".join(bits)}</p>' if bits else ""
         out = f"""<h2>Surface breakdown</h2>
 <div class="mix">{mix}</div><p class="legend">{legend}</p>
-<p class="note">{route['total_miles']} miles in {route['segment_count']} segments.</p>{warn}
-{route_viewer(r, (DATA / "routes" / (r["id"] + ".segments.geojson")).exists())}"""
+<p class="note">{route['total_miles']} miles in {route['segment_count']} segments{
+    f" · {len(variants)} distances mapped" if variants and len(variants) > 1 else ""}.</p>{warn}
+{route_viewer(r, variants)}"""
     else:
         out = """<h2>Surface breakdown</h2>
 <div class="empty"><p>No route segmented yet.</p>
@@ -843,13 +870,30 @@ def race_page(r, weather, routes, reports, base, races, verifs=None, tires=None)
     route = routes.get(r["id"])
     rows = reports.get(r["id"], [])
 
+    variants = []
+    rdir = DATA / "routes"
+    if rdir.exists():
+        for gp in rdir.glob("*.segments.geojson"):
+            stem = gp.name.split(".")[0]
+            if stem == r["id"]:
+                dist = None
+            elif stem.startswith(r["id"] + "-") and stem[len(r["id"]) + 1:].isdigit():
+                dist = int(stem[len(r["id"]) + 1:])
+            else:
+                continue
+            g = apply_verifications(r["id"], json.loads(gp.read_text()), verifs or {})
+            summ = recompute(g)
+            variants.append({"stem": stem, "dist": dist or round(summ["total_miles"]),
+                             "geo": g, "summ": summ})
+    variants.sort(key=lambda v: -v["dist"])
+
     geo = None
-    gpath = DATA / "routes" / (r["id"] + ".segments.geojson")
-    if gpath.exists():
-        geo = apply_verifications(r["id"], json.loads(gpath.read_text()), verifs or {})
-        route = dict(route or {}, **recompute(geo))
+    if variants:
         (DIST / "routes").mkdir(parents=True, exist_ok=True)
-        (DIST / "routes" / (r["id"] + ".geojson")).write_text(json.dumps(geo))
+        for v in variants:
+            (DIST / "routes" / (v["stem"] + ".geojson")).write_text(json.dumps(v["geo"]))
+        geo = variants[0]["geo"]
+        route = dict(route or {}, **variants[0]["summ"])
 
     dists = ", ".join(f"{x} mi" for x in r.get("d", [])) or "Varies by year"
     facts = f"""<dl class="facts">
@@ -871,7 +915,7 @@ def race_page(r, weather, routes, reports, base, races, verifs=None, tires=None)
 <p class="sub">{e(r['town'])}, TX · {e(r['county'])} County{' · night race' if r.get('night') else ''}</p>
 {facts}
 {weather_block(w)}
-{route_block(r, route, geo)}
+{route_block(r, route, geo, variants)}
 {tire_tool(r, course_profile(geo, w), tires, base)}
 {tire_block(rows)}
 {verify_ui(r, geo) if geo else ""}
@@ -1112,7 +1156,14 @@ margin:14px 0 12px;background:var(--caliche)}
 .readout b{color:var(--ink);font-weight:500}
 @media (max-width:620px){#routemap{height:240px}#routeprofile{height:120px}}
 .tt{background:var(--caliche);padding:14px 16px;margin-bottom:6px}
+.dtabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+.dtabs button{background:#fff;border:1px solid var(--caliche-dk);padding:6px 13px;
+font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;
+border-radius:3px;cursor:pointer;color:var(--ink-mid)}
+.dtabs button.on{background:var(--green);color:var(--caliche);border-color:var(--green)}
 .ttrow{margin-bottom:12px}
+.ttpair{display:flex;gap:18px;flex-wrap:wrap}
+.ttpair select{max-width:150px}
 .tt label{display:block;font-size:13px;color:var(--ink-mid);margin-bottom:5px}
 .tt select{width:100%;max-width:220px;padding:8px 10px;border:1px solid var(--caliche-dk);
 background:#fff;font-family:inherit;font-size:14px;border-radius:3px}
@@ -1126,7 +1177,7 @@ font-size:13px;border-radius:3px;cursor:pointer;color:var(--ink)}
 .ttmore summary{font-size:13px;color:var(--rust);cursor:pointer}
 .ttmore .ttrow{margin-top:10px}
 .ttlist{list-style:none;margin:14px 0 0}
-.ttlist li{display:grid;grid-template-columns:minmax(0,1fr) 76px 92px 62px;gap:10px;
+.ttlist li{display:grid;grid-template-columns:minmax(0,1fr) 118px 92px 62px;gap:10px;
 align-items:center;padding:7px 0;border-bottom:1px solid var(--caliche-dk)}
 .ttn{font-size:14px}
 .tttag{font-size:11px;color:var(--ink-mid)}
