@@ -86,12 +86,12 @@ def shell(title, desc, canonical, body, base, extra_head=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{base}/style.css">
+<link rel="stylesheet" href="/style.css">
 {extra_head}
 </head>
 <body>
 <header class="masthead"><div class="mh">
-  <a class="brand" href="{base}/">
+  <a class="brand" href="/">
     <span class="shield"><b>FM</b><i></i><s>GRVL</s></span>
     <span><span class="wm">FARM TO MARKET</span><span class="tag">Texas gravel, measured</span></span>
   </a>
@@ -137,7 +137,7 @@ def index_page(races, reports, base):
         n = len(reports.get(r["id"], []))
         dist = " / ".join(str(x) for x in r.get("d", [])) or "—"
         rows += f"""<tr>
-  <td><a href="{base}/races/{r['id']}/"><span class="rname">{e(r['name'])}</span></a>
+  <td><a href="/races/{r['id']}/"><span class="rname">{e(r['name'])}</span></a>
       {'<span class="night">NIGHT</span>' if r.get('night') else ''}
       <span class="rloc">{e(r['town'])}, TX</span></td>
   <td>{e(r.get('date','—'))}</td>
@@ -281,12 +281,12 @@ def race_page(r, weather, routes, reports, base, races):
 </dl>"""
 
     same_month = [x for x in races if x.get("m") == r.get("m") and x["id"] != r["id"]]
-    nearby = "".join(f'<li><a href="{base}/races/{x["id"]}/">{e(x["name"])}</a> — {e(x["town"])}</li>'
+    nearby = "".join(f'<li><a href="/races/{x["id"]}/">{e(x["name"])}</a> — {e(x["town"])}</li>'
                      for x in same_month[:5])
     also = (f'<h2>Also in {MONTHS[r["m"]] if r.get("m", 0) < 13 else "the calendar"}</h2>'
             f"<ul class=\"links\">{nearby}</ul>") if nearby else ""
 
-    body = f"""<p class="crumb"><a href="{base}/">All races</a></p>
+    body = f"""<p class="crumb"><a href="/">All races</a></p>
 <h1>{e(r['name'])}</h1>
 <p class="sub">{e(r['town'])}, TX · {e(r['county'])} County{' · night race' if r.get('night') else ''}</p>
 {facts}
@@ -295,7 +295,7 @@ def race_page(r, weather, routes, reports, base, races):
 {tire_block(rows)}
 <h2>Add your report</h2>
 <div class="empty ok"><p>Rode this race in any year? Two minutes of your memory makes this page useful for everyone else.</p>
-<p><a href="{base}/report/?race={r['id']}">Add a report</a> — tires, flats, conditions, and how it went.</p></div>
+<p><a href="/report/?race={r['id']}">Add a report</a> — tires, flats, conditions, and how it went.</p></div>
 {also}"""
 
     title = f"{r['name']} — surface, tires and weather | Farm to Market"
