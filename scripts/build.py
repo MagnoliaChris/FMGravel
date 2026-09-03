@@ -166,6 +166,9 @@ def clean_reports(rows):
     return out
 
 
+NOINDEX = False
+
+
 def shell(title, desc, canonical, body, base, extra_head=""):
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -174,6 +177,7 @@ def shell(title, desc, canonical, body, base, extra_head=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
+{'<meta name="robots" content="noindex, nofollow">' if NOINDEX else ''}
 <link rel="canonical" href="{base}{canonical}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
@@ -492,13 +496,15 @@ Tread class is our own call, not part of the source data.</p>
     var N = w * 0.4536 * 9.81, MI = 1609.34;
     var dp = d * pv / 100 * MI, dg = d * (100 - pv) / 100 * MI;
 
-    var rows = [];
+    var rows = [], above = [];
     for (var i = 0; i < T.length; i++) {{
       var t = T[i];
-      if (t.w > cl || t.w < mn || t.c[cat] == null) continue;
-      rows.push({{ n: t.n, t: t.t, w: t.w,
-                  e: t.c.pavement * N * dp + t.c[cat] * N * dg }});
+      if (t.c[cat] == null || t.w < mn) continue;
+      var en = t.c.pavement * N * dp + t.c[cat] * N * dg;
+      if (t.w > cl) above.push({{ n: t.n, w: t.w, e: en }});
+      else rows.push({{ n: t.n, t: t.t, w: t.w, e: en }});
     }}
+    above.sort(function (a, b) {{ return a.e - b.e; }});
     rows.sort(function (a, b) {{ return a.e - b.e; }});
     var out = g('tt-out');
     if (!rows.length) {{
@@ -519,8 +525,17 @@ Tread class is our own call, not part of the source data.</p>
           Math.max(2, (r.e - best) / span * 100).toFixed(1) + '%"></i></span>'
         + '<span class="ttd' + (k === 0 ? ' win' : '') + '">' + lab + '</span></li>';
     }}
-    out.innerHTML = h + '</ol><p class="note">' + rows.length + ' tested tires ' +
+    var foot = '<p class="note">' + rows.length + ' tested tires ' +
       (mn ? 'between ' + mn + ' and ' + cl : 'up to ' + cl) + ' mm.</p>';
+    if (above.length && above[0].e < best) {{
+      var save = (best - above[0].e) / pw;
+      var st = save < 60 ? Math.round(save) + ' sec'
+        : Math.floor(save / 60) + ':' + String(Math.round(save % 60)).padStart(2, '0');
+      foot += '<p class="wider">' + above[0].n + ' (' + above[0].w +
+        ' mm) would be <b>' + st + '</b> quicker again, but needs more clearance than ' +
+        cl + ' mm. ' + above.length + ' wider tires tested.</p>';
+    }}
+    out.innerHTML = h + '</ol>' + foot;
   }}
 
   box.addEventListener('input', draw);
@@ -1189,6 +1204,8 @@ align-items:center;padding:7px 0;border-bottom:1px solid var(--caliche-dk)}
 .ttd{text-align:right;font-size:13px;font-variant-numeric:tabular-nums}
 .ttd.win{color:var(--green-mid)}
 .ttnone{font-size:14px;color:var(--rust)}
+.wider{font-size:13px;color:var(--ink);background:var(--paper);border-left:3px solid var(--amber);
+padding:9px 12px;margin-top:10px}
 .flags{list-style:none;margin:0 0 14px}
 .flags li{font-size:13px;padding:7px 0 7px 12px;border-left:3px solid var(--amber);
 background:var(--caliche);margin-bottom:4px}
@@ -1243,8 +1260,12 @@ h1{font-size:25px}.facts dt{width:88px}}
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="", help="e.g. https://fmgravel.com (no trailing slash)")
+    ap.add_argument("--noindex", action="store_true",
+                    help="keep the site out of search while you gather feedback")
     args = ap.parse_args()
     base = args.base.rstrip("/")
+    global NOINDEX
+    NOINDEX = args.noindex
 
     races, weather, routes, reports, verifs, tires = load()
     if not races:
@@ -1272,7 +1293,8 @@ def main():
     (DIST / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>'
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
-    (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
+    (DIST / "robots.txt").write_text("User-agent: *\nDisallow: /\n" if NOINDEX
+        else f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
 
     def has_route(rid):
         d = DATA / "routes"
@@ -1288,6 +1310,8 @@ def main():
     print(f"  weather profiles: {have_w}/{len(races)}")
     print(f"  segmented routes: {have_r}/{len(races)}")
     print(f"  races with reports: {have_p}/{len(races)}")
+    if NOINDEX:
+        print("\n  NOINDEX is on — search engines are blocked. Drop --noindex to go public.")
     if not base:
         print("\n  No --base set. Set it before deploying or canonical URLs will be relative.")
 
