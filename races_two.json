@@ -1,0 +1,18 @@
+[
+  {
+    "id": "graffiti-grinder",
+    "name": "The Graffiti Grinder",
+    "lat": 29.493,
+    "lon": -97.7386,
+    "month_num": 12,
+    "day": 13
+  },
+  {
+    "id": "valley-of-tears",
+    "name": "Valley of Tears",
+    "lat": 34.3948,
+    "lon": -100.8951,
+    "month_num": 3,
+    "day": 6
+  }
+]

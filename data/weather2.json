@@ -1,28 +1,16 @@
 {
-  "come-and-grind-it": {
-    "race_id": "come-and-grind-it",
-    "name": "Come And Grind It",
+  "graffiti-grinder": {
+    "race_id": "graffiti-grinder",
+    "name": "The Graffiti Grinder",
     "sample_days": 105,
     "years": 15,
     "window_days": 7,
-    "high_median": 73,
-    "high_p90": 83,
-    "high_p10": 56,
-    "high_max": 88,
-    "high_min": 39,
+    "high_median": 65,
+    "high_p90": 78,
+    "high_p10": 55,
+    "high_max": 85,
+    "high_min": 45,
     "high_histogram": [
-      {
-        "lo": 35,
-        "hi": 40,
-        "n": 1,
-        "pct": 1.0
-      },
-      {
-        "lo": 40,
-        "hi": 45,
-        "n": 2,
-        "pct": 1.9
-      },
       {
         "lo": 45,
         "hi": 50,
@@ -32,280 +20,78 @@
       {
         "lo": 50,
         "hi": 55,
-        "n": 4,
-        "pct": 3.8
-      },
-      {
-        "lo": 55,
-        "hi": 60,
-        "n": 6,
-        "pct": 5.7
-      },
-      {
-        "lo": 60,
-        "hi": 65,
         "n": 7,
         "pct": 6.7
       },
       {
-        "lo": 65,
-        "hi": 70,
+        "lo": 55,
+        "hi": 60,
         "n": 17,
         "pct": 16.2
       },
       {
-        "lo": 70,
-        "hi": 75,
-        "n": 23,
-        "pct": 21.9
+        "lo": 60,
+        "hi": 65,
+        "n": 25,
+        "pct": 23.8
       },
       {
-        "lo": 75,
-        "hi": 80,
-        "n": 24,
-        "pct": 22.9
-      },
-      {
-        "lo": 80,
-        "hi": 85,
-        "n": 12,
-        "pct": 11.4
-      },
-      {
-        "lo": 85,
-        "hi": 90,
-        "n": 8,
-        "pct": 7.6
-      }
-    ],
-    "low_median": 53,
-    "feels_like_p90": 85,
-    "wind_median_mph": 14,
-    "gust_p90_mph": 38,
-    "wet_day_pct": 24,
-    "soaker_pct": 8,
-    "hot_day_pct": 0,
-    "freeze_risk_pct": 5,
-    "by_year_high": {
-      "2011": 78,
-      "2012": 75,
-      "2013": 74,
-      "2014": 69,
-      "2015": 59,
-      "2016": 77,
-      "2017": 76,
-      "2018": 62,
-      "2019": 71,
-      "2020": 66,
-      "2021": 68,
-      "2022": 70,
-      "2023": 83,
-      "2024": 79,
-      "2025": 87
-    },
-    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 73\u00b0F. Wildly variable \u2014 race-day highs run 56\u201383\u00b0F, so pack for both."
-  },
-  "milano-cookie-crusher": {
-    "race_id": "milano-cookie-crusher",
-    "name": "Milano Cookie Crusher",
-    "sample_days": 105,
-    "years": 15,
-    "window_days": 7,
-    "high_median": 60,
-    "high_p90": 72,
-    "high_p10": 43,
-    "high_max": 77,
-    "high_min": 37,
-    "high_histogram": [
-      {
-        "lo": 35,
-        "hi": 40,
-        "n": 7,
-        "pct": 6.7
-      },
-      {
-        "lo": 40,
-        "hi": 45,
-        "n": 7,
-        "pct": 6.7
-      },
-      {
-        "lo": 45,
-        "hi": 50,
-        "n": 12,
-        "pct": 11.4
-      },
-      {
-        "lo": 50,
-        "hi": 55,
-        "n": 12,
-        "pct": 11.4
-      },
-      {
-        "lo": 55,
-        "hi": 60,
+        "lo": 65,
+        "hi": 70,
         "n": 13,
         "pct": 12.4
       },
       {
-        "lo": 60,
-        "hi": 65,
-        "n": 24,
-        "pct": 22.9
-      },
-      {
-        "lo": 65,
-        "hi": 70,
-        "n": 17,
-        "pct": 16.2
-      },
-      {
         "lo": 70,
         "hi": 75,
-        "n": 8,
-        "pct": 7.6
+        "n": 22,
+        "pct": 21.0
       },
       {
         "lo": 75,
         "hi": 80,
-        "n": 5,
-        "pct": 4.8
-      }
-    ],
-    "low_median": 40,
-    "feels_like_p90": 70,
-    "wind_median_mph": 13,
-    "gust_p90_mph": 37,
-    "wet_day_pct": 24,
-    "soaker_pct": 10,
-    "hot_day_pct": 0,
-    "freeze_risk_pct": 16,
-    "by_year_high": {
-      "2011": 47,
-      "2012": 52,
-      "2013": 62,
-      "2014": 66,
-      "2015": 37,
-      "2016": 46,
-      "2017": 75,
-      "2018": 64,
-      "2019": 56,
-      "2020": 74,
-      "2021": 45,
-      "2022": 57,
-      "2023": 74,
-      "2024": 63,
-      "2025": 43
-    },
-    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 60\u00b0F. Wildly variable \u2014 race-day highs run 43\u201372\u00b0F, so pack for both; freezing starts happen (16% of mornings at or below 32\u00b0F)."
-  },
-  "zimmerhanzel-express": {
-    "race_id": "zimmerhanzel-express",
-    "name": "Zimmerhanzel Express",
-    "sample_days": 105,
-    "years": 15,
-    "window_days": 7,
-    "high_median": 67,
-    "high_p90": 76,
-    "high_p10": 45,
-    "high_max": 81,
-    "high_min": 31,
-    "high_histogram": [
-      {
-        "lo": 30,
-        "hi": 35,
-        "n": 2,
-        "pct": 1.9
-      },
-      {
-        "lo": 35,
-        "hi": 40,
-        "n": 3,
-        "pct": 2.9
-      },
-      {
-        "lo": 40,
-        "hi": 45,
-        "n": 4,
-        "pct": 3.8
-      },
-      {
-        "lo": 45,
-        "hi": 50,
-        "n": 5,
-        "pct": 4.8
-      },
-      {
-        "lo": 50,
-        "hi": 55,
-        "n": 5,
-        "pct": 4.8
-      },
-      {
-        "lo": 55,
-        "hi": 60,
-        "n": 8,
-        "pct": 7.6
-      },
-      {
-        "lo": 60,
-        "hi": 65,
-        "n": 17,
-        "pct": 16.2
-      },
-      {
-        "lo": 65,
-        "hi": 70,
-        "n": 20,
-        "pct": 19.0
-      },
-      {
-        "lo": 70,
-        "hi": 75,
-        "n": 30,
-        "pct": 28.6
-      },
-      {
-        "lo": 75,
-        "hi": 80,
-        "n": 9,
-        "pct": 8.6
+        "n": 14,
+        "pct": 13.3
       },
       {
         "lo": 80,
         "hi": 85,
-        "n": 2,
-        "pct": 1.9
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 1,
+        "pct": 1.0
       }
     ],
-    "low_median": 45,
-    "feels_like_p90": 76,
-    "wind_median_mph": 13,
-    "gust_p90_mph": 35,
-    "wet_day_pct": 25,
+    "low_median": 48,
+    "feels_like_p90": 80,
+    "wind_median_mph": 12,
+    "gust_p90_mph": 36,
+    "wet_day_pct": 18,
     "soaker_pct": 5,
     "hot_day_pct": 0,
-    "freeze_risk_pct": 10,
+    "freeze_risk_pct": 2,
     "by_year_high": {
-      "2011": 65,
-      "2012": 76,
-      "2013": 67,
-      "2014": 75,
-      "2015": 71,
-      "2016": 74,
-      "2017": 79,
-      "2018": 74,
-      "2019": 67,
-      "2020": 69,
+      "2011": 72,
+      "2012": 64,
+      "2013": 55,
+      "2014": 73,
+      "2015": 73,
+      "2016": 72,
+      "2017": 63,
+      "2018": 68,
+      "2019": 76,
+      "2020": 73,
       "2021": 61,
-      "2022": 69,
-      "2023": 39,
-      "2024": 71,
-      "2025": 71
+      "2022": 79,
+      "2023": 58,
+      "2024": 68,
+      "2025": 80
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
-    "verdict": "Typically 67\u00b0F. Wildly variable \u2014 race-day highs run 45\u201376\u00b0F, so pack for both."
+    "verdict": "Typically 65\u00b0F. Variable \u2014 typically 55\u201378\u00b0F."
   }
 }
