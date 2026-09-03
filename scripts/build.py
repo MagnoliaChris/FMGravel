@@ -371,72 +371,69 @@ def recompute(geo):
 
 
 def verify_ui(r, geo):
-    """Segment list a rider can correct, one tap per segment."""
-    rows = ""
+    """One dropdown, five buttons. Pick a stretch, say what it was."""
+    STATE_WORD = {"verified": "rider-verified", "disputed": "riders disagree", "draft": "OSM draft"}
+    opts = ""
     for i, f in enumerate(geo["features"]):
         p = f["properties"]
-        badge = {"verified": '<span class="tag ok">rider-verified</span>',
-                 "disputed": '<span class="tag no">riders disagree</span>'}.get(
-                     p.get("state", "draft"),
-                     '<span class="tag draft">OSM draft</span>')
-        votes = f'<span class="votes">{p["votes"]} report{"s" if p["votes"] != 1 else ""}</span>' \
-                if p.get("votes") else ""
-        buttons = "".join(
-            f'<button type="button" data-seg="{i}" data-ans="{k}" title="{hint}">{lab}</button>'
-            for k, lab, hint in VERIFY_CHOICES)
-        rows += f"""
-    <li data-seg="{i}">
-      <div class="seghead">
-        <span class="segmi">{p['start_mi']:.1f}–{p['end_mi']:.1f} mi</span>
-        <span class="segroad">{e(p.get('road') or '')}</span>
-        {badge}{votes}
-      </div>
-      <div class="segnow" style="border-left-color:{p['color']}">{e(p['label'])}</div>
-      <div class="segask">What was this stretch actually like?
-        <div class="segopts">{buttons}</div>
-      </div>
-    </li>"""
+        road = f" · {p['road']}" if p.get("road") else ""
+        state = STATE_WORD.get(p.get("state", "draft"), "OSM draft")
+        v = f", {p['votes']} report{'s' if p['votes'] != 1 else ''}" if p.get("votes") else ""
+        opts += (f'<option value="{i}" data-was="{e(p["label"])}">'
+                 f'{p["start_mi"]:.1f}–{p["end_mi"]:.1f} mi{e(road)}'
+                 f' — {e(p["label"])} ({state}{v})</option>')
+
+    buttons = "".join(
+        f'<button type="button" data-ans="{k}" title="{hint}">{lab}</button>'
+        for k, lab, hint in VERIFY_CHOICES)
+
+    verified = sum(1 for f in geo["features"] if f["properties"].get("state") == "verified")
 
     return f"""
-<h2>Help fix the surface data</h2>
+<h2>Ridden this? Help fix the surface data</h2>
 <p class="sub">Most of this comes from OpenStreetMap, which is often wrong about ranch roads.
-If you have ridden this course, correct any stretch below. Two riders agreeing marks it verified —
-one answer never overrides anything on its own.</p>
-<ol class="seglist" id="seglist" data-race="{r['id']}">{rows}</ol>
-<p class="note" id="verifynote"></p>
+Pick any stretch you remember and say what it actually was. Two riders agreeing marks it
+verified — one answer never overrides anything on its own.
+{f"So far {verified} of {len(geo['features'])} stretches are rider-verified." if verified else ""}</p>
+
+<div class="verifybox" id="verifybox" data-race="{r['id']}">
+  <label for="segpick">Which stretch?</label>
+  <select id="segpick">{opts}</select>
+  <label>What was it actually like?</label>
+  <div class="segopts" id="segopts">{buttons}</div>
+  <p class="note" id="verifynote"></p>
+</div>
 <script>
 (function () {{
-  var list = document.getElementById('seglist');
-  if (!list) return;
-  var race = list.dataset.race;
+  var box = document.getElementById('verifybox');
+  if (!box) return;
+  var pick = document.getElementById('segpick');
   var note = document.getElementById('verifynote');
-  list.addEventListener('click', function (ev) {{
+  var opts = document.getElementById('segopts');
+  opts.addEventListener('click', function (ev) {{
     var b = ev.target.closest('button[data-ans]');
     if (!b) return;
-    var li = b.closest('li');
-    li.querySelectorAll('button').forEach(function (x) {{ x.disabled = true; }});
+    var opt = pick.options[pick.selectedIndex];
+    opts.querySelectorAll('button').forEach(function (x) {{ x.disabled = true; }});
+    note.textContent = 'Saving…';
     var body = new URLSearchParams({{
-      'form-name': 'segment-verify',
-      race_id: race,
-      seg_index: b.dataset.seg,
-      answer: b.dataset.ans,
-      was: li.querySelector('.segnow').textContent.trim(),
-      road: (li.querySelector('.segroad') || {{}}).textContent || ''
+      'form-name': 'segment-verify', race_id: box.dataset.race,
+      seg_index: opt.value, answer: b.dataset.ans,
+      was: opt.dataset.was || '', road: opt.textContent
     }});
     fetch('/', {{ method: 'POST',
       headers: {{ 'Content-Type': 'application/x-www-form-urlencoded' }},
       body: body.toString() }})
       .then(function (res) {{
-        li.classList.add(res.ok ? 'done' : 'failed');
         note.textContent = res.ok
-          ? 'Thanks — recorded. It shows on the map once a second rider agrees.'
+          ? 'Thanks — recorded. It shows on the map once a second rider agrees. Add another if you like.'
           : 'That did not save. Try again in a moment.';
-        if (!res.ok) li.querySelectorAll('button').forEach(function (x) {{ x.disabled = false; }});
+        opts.querySelectorAll('button').forEach(function (x) {{ x.disabled = false; }});
+        if (res.ok && pick.selectedIndex < pick.options.length - 1) pick.selectedIndex += 1;
       }})
       .catch(function () {{
-        li.classList.add('failed');
         note.textContent = 'That did not save. Try again in a moment.';
-        li.querySelectorAll('button').forEach(function (x) {{ x.disabled = false; }});
+        opts.querySelectorAll('button').forEach(function (x) {{ x.disabled = false; }});
       }});
   }});
 }})();
@@ -889,25 +886,17 @@ margin:14px 0 12px;background:var(--caliche)}
 .readout{font-size:13px;color:var(--ink-mid);min-height:22px;margin-top:4px;font-variant-numeric:tabular-nums}
 .readout b{color:var(--ink);font-weight:500}
 @media (max-width:620px){#routemap{height:240px}#routeprofile{height:120px}}
-.seglist{list-style:none;counter-reset:seg;margin:6px 0 0}
-.seglist li{border-bottom:1px solid var(--caliche-dk);padding:12px 0}
-.seglist li.done{opacity:.55}
-.seghead{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;font-size:13px}
-.segmi{font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
-.segroad{color:var(--ink-mid)}
-.tag{font-size:11px;padding:1px 6px;border-radius:2px;white-space:nowrap}
-.tag.ok{background:var(--green);color:var(--caliche)}
-.tag.no{background:var(--rust);color:var(--caliche)}
-.tag.draft{background:var(--caliche);color:var(--ink-mid)}
-.votes{font-size:11px;color:var(--ink-mid)}
-.segnow{border-left:4px solid var(--caliche-dk);padding-left:8px;font-size:14px;margin:6px 0 8px}
-.segask{font-size:13px;color:var(--ink-mid)}
-.segopts{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-.segopts button{background:#fff;border:1px solid var(--caliche-dk);padding:6px 11px;
-font-size:13px;border-radius:3px;cursor:pointer;color:var(--ink)}
+.verifybox{background:var(--caliche);border-left:3px solid var(--green);padding:14px 16px}
+.verifybox label{display:block;font-size:13px;color:var(--ink-mid);margin:0 0 6px}
+.verifybox label+.segopts,.verifybox select+label{margin-top:12px}
+.verifybox select{width:100%;padding:9px 10px;border:1px solid var(--caliche-dk);
+background:#fff;font-family:inherit;font-size:14px;border-radius:3px}
+.segopts{display:flex;gap:6px;flex-wrap:wrap}
+.segopts button{background:#fff;border:1px solid var(--caliche-dk);padding:8px 13px;
+font-size:14px;border-radius:3px;cursor:pointer;color:var(--ink)}
 .segopts button:hover{border-color:var(--green)}
 .segopts button:disabled{opacity:.4;cursor:default}
-.seglist li.done .segask{display:none}
+#verifynote{min-height:18px}
 .note .ok{color:var(--green-mid);font-weight:500}
 .links{list-style:none;font-size:14px}
 .links li{padding:7px 0;border-bottom:1px solid var(--caliche-dk)}
