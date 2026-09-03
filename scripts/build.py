@@ -614,10 +614,13 @@ def route_viewer(r, variants):
         return ""
     tabs = ""
     if len(variants) > 1:
-        tabs = '<div class="dtabs" id="dtabs">' + "".join(
-            f'<button type="button" data-src="/routes/{v["stem"]}.geojson"'
-            f'{" class=\"on\"" if i == 0 else ""}>{v["dist"]} mi</button>'
-            for i, v in enumerate(variants)) + "</div>"
+        btns = []
+        for i, v in enumerate(variants):
+            cls = ' class="on"' if i == 0 else ""
+            btns.append('<button type="button" data-src="/routes/'
+                        + v["stem"] + '.geojson"' + cls + '>'
+                        + str(v["dist"]) + ' mi</button>')
+        tabs = '<div class="dtabs" id="dtabs">' + "".join(btns) + "</div>"
     return f"""
 {tabs}
 <div id="routemap" data-src="/routes/{variants[0]['stem']}.geojson"></div>
