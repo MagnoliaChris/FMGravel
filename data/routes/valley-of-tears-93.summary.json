@@ -1,0 +1,286 @@
+{
+  "name": "Valley of Tears 93",
+  "total_miles": 92.12,
+  "segment_count": 31,
+  "composition": [
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 34.32,
+      "pct": 37.3
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 33.11,
+      "pct": 35.9
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 19.58,
+      "pct": 21.3
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 5.13,
+      "pct": 5.6
+    }
+  ],
+  "unverified_pct": 5.6,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.33,
+      "start_mi": 0.0,
+      "end_mi": 0.33,
+      "road": "Main Street"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.39,
+      "start_mi": 0.33,
+      "end_mi": 4.72,
+      "road": "County Road 3"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.37,
+      "start_mi": 4.72,
+      "end_mi": 5.09,
+      "road": "Farm to Market Road 3323"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.61,
+      "start_mi": 5.09,
+      "end_mi": 6.7,
+      "road": "County Road BB"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 2.27,
+      "start_mi": 6.7,
+      "end_mi": 8.98,
+      "road": "County Road FF"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.89,
+      "start_mi": 8.98,
+      "end_mi": 9.86,
+      "road": "County Road DD"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.07,
+      "start_mi": 9.86,
+      "end_mi": 11.93,
+      "road": "Farm to Market Road 599"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.73,
+      "start_mi": 11.93,
+      "end_mi": 15.66,
+      "road": "County Road 28"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.97,
+      "start_mi": 15.66,
+      "end_mi": 18.64,
+      "road": "Farm to Market Road 689"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.99,
+      "start_mi": 18.64,
+      "end_mi": 23.63,
+      "road": "Caprock Canyons Trailway"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.81,
+      "start_mi": 23.63,
+      "end_mi": 24.44,
+      "road": "State Highway 86"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.51,
+      "start_mi": 24.44,
+      "end_mi": 27.95,
+      "road": "County Road 25"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.31,
+      "start_mi": 27.95,
+      "end_mi": 28.25,
+      "road": ""
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.34,
+      "start_mi": 28.25,
+      "end_mi": 28.59,
+      "road": ""
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.19,
+      "start_mi": 28.59,
+      "end_mi": 29.78,
+      "road": ""
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.75,
+      "start_mi": 29.78,
+      "end_mi": 31.53,
+      "road": "Trail J - Eagle Point Trail"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.92,
+      "start_mi": 31.53,
+      "end_mi": 32.45,
+      "road": "State Park Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.26,
+      "start_mi": 32.45,
+      "end_mi": 32.71,
+      "road": ""
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.53,
+      "start_mi": 32.71,
+      "end_mi": 34.24,
+      "road": "Trail G - Wild Horse Trail"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.17,
+      "start_mi": 34.24,
+      "end_mi": 34.41,
+      "road": "Trail G - Wild Horse Trail"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 13.53,
+      "start_mi": 34.41,
+      "end_mi": 47.94,
+      "road": "County Road 29"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.43,
+      "start_mi": 47.94,
+      "end_mi": 49.37,
+      "road": "Childress Avenue"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 3.94,
+      "start_mi": 49.37,
+      "end_mi": 53.31,
+      "road": "Road 4"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 11.78,
+      "start_mi": 53.31,
+      "end_mi": 65.09,
+      "road": "FM 656"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.38,
+      "start_mi": 65.09,
+      "end_mi": 66.47,
+      "road": "County Road 15"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 14.5,
+      "start_mi": 66.47,
+      "end_mi": 80.97,
+      "road": "County Road 15"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.33,
+      "start_mi": 80.97,
+      "end_mi": 81.3,
+      "road": "Farm-to-Market Road 657"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 2.58,
+      "start_mi": 81.3,
+      "end_mi": 83.87,
+      "road": "Caprock Canyons Trailway"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 3.02,
+      "start_mi": 83.87,
+      "end_mi": 86.89,
+      "road": "County Road T"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 4.85,
+      "start_mi": 86.89,
+      "end_mi": 91.73,
+      "road": "Caprock Canyons Trailway"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.39,
+      "start_mi": 91.73,
+      "end_mi": 92.12,
+      "road": "2nd Street"
+    }
+  ]
+}

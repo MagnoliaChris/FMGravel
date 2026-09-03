@@ -1,0 +1,110 @@
+{
+  "name": "Valley of Tears 20",
+  "total_miles": 19.29,
+  "segment_count": 9,
+  "composition": [
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 10.81,
+      "pct": 56.0
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 6.11,
+      "pct": 31.7
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 1.89,
+      "pct": 9.8
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 0.48,
+      "pct": 2.5
+    }
+  ],
+  "unverified_pct": 2.5,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.33,
+      "start_mi": 0.0,
+      "end_mi": 0.33,
+      "road": "Main Street"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.39,
+      "start_mi": 0.33,
+      "end_mi": 4.72,
+      "road": "County Road 3"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.37,
+      "start_mi": 4.72,
+      "end_mi": 5.09,
+      "road": "Farm to Market Road 3323"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.61,
+      "start_mi": 5.09,
+      "end_mi": 6.7,
+      "road": "County Road BB"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 1.72,
+      "start_mi": 6.7,
+      "end_mi": 8.42,
+      "road": "County Road FF"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.94,
+      "start_mi": 8.42,
+      "end_mi": 9.36,
+      "road": "County Road GG"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.19,
+      "start_mi": 9.36,
+      "end_mi": 10.55,
+      "road": "Farm to Market Road 2733"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 8.26,
+      "start_mi": 10.55,
+      "end_mi": 18.81,
+      "road": "County Road Y"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.48,
+      "start_mi": 18.81,
+      "end_mi": 19.29,
+      "road": "2nd Street"
+    }
+  ]
+}

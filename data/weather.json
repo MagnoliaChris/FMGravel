@@ -1642,5 +1642,203 @@
     },
     "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
     "verdict": "Typically 67\u00b0F. Wildly variable \u2014 race-day highs run 45\u201376\u00b0F, so pack for both."
+  },
+  "graffiti-grinder": {
+    "race_id": "graffiti-grinder",
+    "name": "The Graffiti Grinder",
+    "sample_days": 70,
+    "years": 10,
+    "window_days": 7,
+    "high_median": 65,
+    "high_p90": 80,
+    "high_p10": 56,
+    "high_max": 85,
+    "high_min": 51,
+    "high_histogram": [
+      {
+        "lo": 50,
+        "hi": 55,
+        "n": 4,
+        "pct": 5.7
+      },
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 9,
+        "pct": 12.9
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 20,
+        "pct": 28.6
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 11,
+        "pct": 15.7
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 12,
+        "pct": 17.1
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 8,
+        "pct": 11.4
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 5,
+        "pct": 7.1
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 1,
+        "pct": 1.4
+      }
+    ],
+    "low_median": 47,
+    "feels_like_p90": 80,
+    "wind_median_mph": 12,
+    "gust_p90_mph": 36,
+    "wet_day_pct": 14,
+    "soaker_pct": 4,
+    "hot_day_pct": 0,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2016": 72,
+      "2017": 63,
+      "2018": 68,
+      "2019": 76,
+      "2020": 73,
+      "2021": 61,
+      "2022": 79,
+      "2023": 58,
+      "2024": 68,
+      "2025": 80
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 65\u00b0F. Variable \u2014 typically 56\u201380\u00b0F."
+  },
+  "valley-of-tears": {
+    "race_id": "valley-of-tears",
+    "name": "Valley of Tears",
+    "sample_days": 70,
+    "years": 10,
+    "window_days": 7,
+    "high_median": 68,
+    "high_p90": 81,
+    "high_p10": 54,
+    "high_max": 88,
+    "high_min": 27,
+    "high_histogram": [
+      {
+        "lo": 25,
+        "hi": 30,
+        "n": 1,
+        "pct": 1.4
+      },
+      {
+        "lo": 30,
+        "hi": 35,
+        "n": 1,
+        "pct": 1.4
+      },
+      {
+        "lo": 35,
+        "hi": 40,
+        "n": 0,
+        "pct": 0.0
+      },
+      {
+        "lo": 40,
+        "hi": 45,
+        "n": 1,
+        "pct": 1.4
+      },
+      {
+        "lo": 45,
+        "hi": 50,
+        "n": 2,
+        "pct": 2.9
+      },
+      {
+        "lo": 50,
+        "hi": 55,
+        "n": 4,
+        "pct": 5.7
+      },
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 7,
+        "pct": 10.0
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 12,
+        "pct": 17.1
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 10,
+        "pct": 14.3
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 13,
+        "pct": 18.6
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 11,
+        "pct": 15.7
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 7,
+        "pct": 10.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 1,
+        "pct": 1.4
+      }
+    ],
+    "low_median": 43,
+    "feels_like_p90": 72,
+    "wind_median_mph": 17,
+    "gust_p90_mph": 35,
+    "wet_day_pct": 6,
+    "soaker_pct": 1,
+    "hot_day_pct": 0,
+    "freeze_risk_pct": 11,
+    "by_year_high": {
+      "2016": 77,
+      "2017": 84,
+      "2018": 61,
+      "2019": 58,
+      "2020": 64,
+      "2021": 63,
+      "2022": 54,
+      "2023": 74,
+      "2024": 69,
+      "2025": 70
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 68\u00b0F. Wildly variable \u2014 race-day highs run 54\u201381\u00b0F, so pack for both; wind is the defining factor \u2014 median max 17 mph; usually dry."
   }
 }
