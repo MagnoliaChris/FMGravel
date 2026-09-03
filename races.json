@@ -1,0 +1,162 @@
+[
+  {
+    "id": "beast-backroads",
+    "name": "Beast Of The Backroads",
+    "lat": 32.5007,
+    "lon": -94.7405,
+    "month_num": 3,
+    "day": 14
+  },
+  {
+    "id": "castell-grind",
+    "name": "Castell Grind",
+    "lat": 30.698,
+    "lon": -98.9564,
+    "month_num": 4,
+    "day": 11
+  },
+  {
+    "id": "central-texas-showdown",
+    "name": "Central Texas Showdown",
+    "lat": 30.698,
+    "lon": -98.9564,
+    "month_num": 10,
+    "day": 23
+  },
+  {
+    "id": "come-and-grind-it",
+    "name": "Come And Grind It",
+    "lat": 29.493,
+    "lon": -97.7386,
+    "month_num": 3,
+    "day": 7
+  },
+  {
+    "id": "doss-gravel",
+    "name": "Doss Gravel",
+    "lat": 30.3596,
+    "lon": -99.057,
+    "month_num": 9,
+    "day": 12
+  },
+  {
+    "id": "east-texas-showdown",
+    "name": "East Texas Showdown",
+    "lat": 30.7477,
+    "lon": -95.2166,
+    "month_num": 3,
+    "day": 27
+  },
+  {
+    "id": "gonzo-graveler",
+    "name": "The Gonzo Graveler",
+    "lat": 29.503,
+    "lon": -97.452,
+    "month_num": 5,
+    "day": 9
+  },
+  {
+    "id": "graffiti-grinder",
+    "name": "The Graffiti Grinder",
+    "lat": 29.493,
+    "lon": -97.7386,
+    "month_num": 12,
+    "day": 13
+  },
+  {
+    "id": "headlight-hustle",
+    "name": "Texas Headlight Hustle",
+    "lat": 29.6672,
+    "lon": -97.4913,
+    "month_num": 8,
+    "day": 8
+  },
+  {
+    "id": "jailbreak",
+    "name": "Jailbreak Gravel Challenge",
+    "lat": 30.7719,
+    "lon": -96.0777,
+    "month_num": 4,
+    "day": 18
+  },
+  {
+    "id": "leesville-night-shot",
+    "name": "Leesville Night Shot",
+    "lat": 29.493,
+    "lon": -97.7386,
+    "month_num": 6,
+    "day": 27
+  },
+  {
+    "id": "lit-whizzy",
+    "name": "The Lit Whizzy",
+    "lat": 29.6672,
+    "lon": -97.4913,
+    "month_num": 2,
+    "day": 7
+  },
+  {
+    "id": "mcdade-night-raid",
+    "name": "McDade Night Raid",
+    "lat": 30.2874,
+    "lon": -97.2308,
+    "month_num": 7,
+    "day": 18
+  },
+  {
+    "id": "milano-cookie-crusher",
+    "name": "Milano Cookie Crusher",
+    "lat": 30.7057,
+    "lon": -96.8636,
+    "month_num": 1,
+    "day": 10
+  },
+  {
+    "id": "rattlesnake",
+    "name": "Rattlesnake Gravel Grind",
+    "lat": 32.4709,
+    "lon": -100.4059,
+    "month_num": 3,
+    "day": 18
+  },
+  {
+    "id": "renegade-rambler",
+    "name": "Renegade Rambler",
+    "lat": 33.1637,
+    "lon": -96.36,
+    "month_num": 2,
+    "day": 28
+  },
+  {
+    "id": "texas-three-step",
+    "name": "Texas Three Step",
+    "lat": 29.7269,
+    "lon": -99.762,
+    "month_num": 11,
+    "day": 7
+  },
+  {
+    "id": "valley-of-tears",
+    "name": "Valley of Tears",
+    "lat": 34.3948,
+    "lon": -100.8951,
+    "month_num": 3,
+    "day": 6
+  },
+  {
+    "id": "wire-donkey",
+    "name": "The Wire Donkey",
+    "lat": 30.0269,
+    "lon": -96.3011,
+    "month_num": 4,
+    "day": 25
+  },
+  {
+    "id": "zimmerhanzel-express",
+    "name": "Zimmerhanzel Express",
+    "lat": 30.008,
+    "lon": -97.155,
+    "month_num": 2,
+    "day": 1
+  }
+]

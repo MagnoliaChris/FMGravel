@@ -1,0 +1,1337 @@
+{
+  "beast-backroads": {
+    "race_id": "beast-backroads",
+    "name": "Beast Of The Backroads",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 70,
+    "high_p90": 79,
+    "high_p10": 59,
+    "high_max": 83,
+    "high_min": 53,
+    "high_histogram": [
+      {
+        "lo": 50,
+        "hi": 55,
+        "n": 3,
+        "pct": 2.9
+      },
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 13,
+        "pct": 12.4
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 16,
+        "pct": 15.2
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 19,
+        "pct": 18.1
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 19,
+        "pct": 18.1
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 29,
+        "pct": 27.6
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 6,
+        "pct": 5.7
+      }
+    ],
+    "low_median": 52,
+    "feels_like_p90": 79,
+    "wind_median_mph": 12,
+    "gust_p90_mph": 34,
+    "wet_day_pct": 29,
+    "soaker_pct": 11,
+    "hot_day_pct": 0,
+    "freeze_risk_pct": 1,
+    "by_year_high": {
+      "2011": 65,
+      "2012": 78,
+      "2013": 72,
+      "2014": 65,
+      "2015": 62,
+      "2016": 81,
+      "2017": 59,
+      "2018": 61,
+      "2019": 69,
+      "2020": 76,
+      "2021": 72,
+      "2022": 71,
+      "2023": 60,
+      "2024": 81,
+      "2025": 82
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 70\u00b0F and unremarkable."
+  },
+  "castell-grind": {
+    "race_id": "castell-grind",
+    "name": "Castell Grind",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 81,
+    "high_p90": 92,
+    "high_p10": 72,
+    "high_max": 97,
+    "high_min": 60,
+    "high_histogram": [
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 2,
+        "pct": 1.9
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 4,
+        "pct": 3.8
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 15,
+        "pct": 14.3
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 26,
+        "pct": 24.8
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 20,
+        "pct": 19.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 16,
+        "pct": 15.2
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 17,
+        "pct": 16.2
+      },
+      {
+        "lo": 95,
+        "hi": 100,
+        "n": 4,
+        "pct": 3.8
+      }
+    ],
+    "low_median": 60,
+    "feels_like_p90": 90,
+    "wind_median_mph": 15,
+    "gust_p90_mph": 38,
+    "wet_day_pct": 14,
+    "soaker_pct": 5,
+    "hot_day_pct": 20,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 76,
+      "2012": 81,
+      "2013": 69,
+      "2014": 92,
+      "2015": 75,
+      "2016": 86,
+      "2017": 77,
+      "2018": 81,
+      "2019": 81,
+      "2020": 81,
+      "2021": 91,
+      "2022": 91,
+      "2023": 74,
+      "2024": 78,
+      "2025": 89
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 81\u00b0F. Heat is a real possibility (20% of days at 90\u00b0f+); wind is the defining factor \u2014 median max 15 mph."
+  },
+  "doss-gravel": {
+    "race_id": "doss-gravel",
+    "name": "Doss Gravel",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 87,
+    "high_p90": 92,
+    "high_p10": 78,
+    "high_max": 99,
+    "high_min": 63,
+    "high_histogram": [
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 2,
+        "pct": 1.9
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 4,
+        "pct": 3.8
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 8,
+        "pct": 7.6
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 22,
+        "pct": 21.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 45,
+        "pct": 42.9
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 17,
+        "pct": 16.2
+      },
+      {
+        "lo": 95,
+        "hi": 100,
+        "n": 6,
+        "pct": 5.7
+      }
+    ],
+    "low_median": 68,
+    "feels_like_p90": 95,
+    "wind_median_mph": 10,
+    "gust_p90_mph": 28,
+    "wet_day_pct": 16,
+    "soaker_pct": 7,
+    "hot_day_pct": 22,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 98,
+      "2012": 91,
+      "2013": 89,
+      "2014": 84,
+      "2015": 87,
+      "2016": 85,
+      "2017": 88,
+      "2018": 80,
+      "2019": 88,
+      "2020": 83,
+      "2021": 84,
+      "2022": 87,
+      "2023": 86,
+      "2024": 90,
+      "2025": 90
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 87\u00b0F. Heat is a real possibility (22% of days at 90\u00b0f+)."
+  },
+  "east-texas-showdown": {
+    "race_id": "east-texas-showdown",
+    "name": "East Texas Showdown",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 75,
+    "high_p90": 82,
+    "high_p10": 68,
+    "high_max": 87,
+    "high_min": 57,
+    "high_histogram": [
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 3,
+        "pct": 2.9
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 11,
+        "pct": 10.5
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 32,
+        "pct": 30.5
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 31,
+        "pct": 29.5
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 20,
+        "pct": 19.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 3,
+        "pct": 2.9
+      }
+    ],
+    "low_median": 59,
+    "feels_like_p90": 86,
+    "wind_median_mph": 11,
+    "gust_p90_mph": 37,
+    "wet_day_pct": 23,
+    "soaker_pct": 7,
+    "hot_day_pct": 0,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 75,
+      "2012": 79,
+      "2013": 68,
+      "2014": 68,
+      "2015": 72,
+      "2016": 74,
+      "2017": 84,
+      "2018": 78,
+      "2019": 71,
+      "2020": 85,
+      "2021": 77,
+      "2022": 82,
+      "2023": 78,
+      "2024": 64,
+      "2025": 68
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 75\u00b0F and unremarkable."
+  },
+  "headlight-hustle": {
+    "race_id": "headlight-hustle",
+    "name": "Texas Headlight Hustle",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 99,
+    "high_p90": 103,
+    "high_p10": 92,
+    "high_max": 106,
+    "high_min": 83,
+    "high_histogram": [
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 4,
+        "pct": 3.8
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 15,
+        "pct": 14.3
+      },
+      {
+        "lo": 95,
+        "hi": 100,
+        "n": 45,
+        "pct": 42.9
+      },
+      {
+        "lo": 100,
+        "hi": 105,
+        "n": 34,
+        "pct": 32.4
+      },
+      {
+        "lo": 105,
+        "hi": 110,
+        "n": 6,
+        "pct": 5.7
+      }
+    ],
+    "low_median": 78,
+    "feels_like_p90": 108,
+    "wind_median_mph": 13,
+    "gust_p90_mph": 29,
+    "wet_day_pct": 11,
+    "soaker_pct": 4,
+    "hot_day_pct": 95,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 104,
+      "2012": 99,
+      "2013": 103,
+      "2014": 102,
+      "2015": 100,
+      "2016": 100,
+      "2017": 90,
+      "2018": 97,
+      "2019": 103,
+      "2020": 98,
+      "2021": 91,
+      "2022": 98,
+      "2023": 105,
+      "2024": 100,
+      "2025": 101
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 99\u00b0F. Expect heat \u2014 95% of race-window days hit 90\u00b0f or more."
+  },
+  "jailbreak": {
+    "race_id": "jailbreak",
+    "name": "Jailbreak Gravel Challenge",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 78,
+    "high_p90": 86,
+    "high_p10": 68,
+    "high_max": 93,
+    "high_min": 61,
+    "high_histogram": [
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 6,
+        "pct": 5.7
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 8,
+        "pct": 7.6
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 22,
+        "pct": 21.0
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 29,
+        "pct": 27.6
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 27,
+        "pct": 25.7
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 10,
+        "pct": 9.5
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 3,
+        "pct": 2.9
+      }
+    ],
+    "low_median": 60,
+    "feels_like_p90": 88,
+    "wind_median_mph": 14,
+    "gust_p90_mph": 34,
+    "wet_day_pct": 29,
+    "soaker_pct": 10,
+    "hot_day_pct": 3,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 92,
+      "2012": 77,
+      "2013": 75,
+      "2014": 75,
+      "2015": 78,
+      "2016": 71,
+      "2017": 73,
+      "2018": 81,
+      "2019": 73,
+      "2020": 74,
+      "2021": 65,
+      "2022": 78,
+      "2023": 77,
+      "2024": 86,
+      "2025": 87
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 78\u00b0F and unremarkable."
+  },
+  "lit-whizzy": {
+    "race_id": "lit-whizzy",
+    "name": "The Lit Whizzy",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 67,
+    "high_p90": 79,
+    "high_p10": 50,
+    "high_max": 86,
+    "high_min": 33,
+    "high_histogram": [
+      {
+        "lo": 30,
+        "hi": 35,
+        "n": 2,
+        "pct": 1.9
+      },
+      {
+        "lo": 35,
+        "hi": 40,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 40,
+        "hi": 45,
+        "n": 4,
+        "pct": 3.8
+      },
+      {
+        "lo": 45,
+        "hi": 50,
+        "n": 3,
+        "pct": 2.9
+      },
+      {
+        "lo": 50,
+        "hi": 55,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 21,
+        "pct": 20.0
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 12,
+        "pct": 11.4
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 22,
+        "pct": 21.0
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 12,
+        "pct": 11.4
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 15,
+        "pct": 14.3
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 3,
+        "pct": 2.9
+      }
+    ],
+    "low_median": 46,
+    "feels_like_p90": 79,
+    "wind_median_mph": 13,
+    "gust_p90_mph": 34,
+    "wet_day_pct": 17,
+    "soaker_pct": 2,
+    "hot_day_pct": 0,
+    "freeze_risk_pct": 10,
+    "by_year_high": {
+      "2011": 55,
+      "2012": 62,
+      "2013": 76,
+      "2014": 35,
+      "2015": 68,
+      "2016": 64,
+      "2017": 86,
+      "2018": 49,
+      "2019": 72,
+      "2020": 71,
+      "2021": 68,
+      "2022": 59,
+      "2023": 75,
+      "2024": 69,
+      "2025": 82
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 67\u00b0F and unremarkable."
+  },
+  "mcdade-night-raid": {
+    "race_id": "mcdade-night-raid",
+    "name": "McDade Night Raid",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 95,
+    "high_p90": 103,
+    "high_p10": 88,
+    "high_max": 106,
+    "high_min": 79,
+    "high_histogram": [
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 17,
+        "pct": 16.2
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 34,
+        "pct": 32.4
+      },
+      {
+        "lo": 95,
+        "hi": 100,
+        "n": 30,
+        "pct": 28.6
+      },
+      {
+        "lo": 100,
+        "hi": 105,
+        "n": 20,
+        "pct": 19.0
+      },
+      {
+        "lo": 105,
+        "hi": 110,
+        "n": 2,
+        "pct": 1.9
+      }
+    ],
+    "low_median": 76,
+    "feels_like_p90": 106,
+    "wind_median_mph": 11,
+    "gust_p90_mph": 27,
+    "wet_day_pct": 14,
+    "soaker_pct": 2,
+    "hot_day_pct": 82,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 99,
+      "2012": 90,
+      "2013": 89,
+      "2014": 79,
+      "2015": 94,
+      "2016": 94,
+      "2017": 96,
+      "2018": 104,
+      "2019": 99,
+      "2020": 94,
+      "2021": 88,
+      "2022": 101,
+      "2023": 105,
+      "2024": 94,
+      "2025": 92
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 95\u00b0F. Expect heat \u2014 82% of race-window days hit 90\u00b0f or more."
+  },
+  "renegade-rambler": {
+    "race_id": "renegade-rambler",
+    "name": "Renegade Rambler",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 64,
+    "high_p90": 74,
+    "high_p10": 44,
+    "high_max": 85,
+    "high_min": 30,
+    "high_histogram": [
+      {
+        "lo": 25,
+        "hi": 30,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 30,
+        "hi": 35,
+        "n": 2,
+        "pct": 1.9
+      },
+      {
+        "lo": 35,
+        "hi": 40,
+        "n": 4,
+        "pct": 3.8
+      },
+      {
+        "lo": 40,
+        "hi": 45,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 45,
+        "hi": 50,
+        "n": 4,
+        "pct": 3.8
+      },
+      {
+        "lo": 50,
+        "hi": 55,
+        "n": 14,
+        "pct": 13.3
+      },
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 10,
+        "pct": 9.5
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 16,
+        "pct": 15.2
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 22,
+        "pct": 21.0
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 19,
+        "pct": 18.1
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 7,
+        "pct": 6.7
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 1,
+        "pct": 1.0
+      }
+    ],
+    "low_median": 42,
+    "feels_like_p90": 72,
+    "wind_median_mph": 14,
+    "gust_p90_mph": 36,
+    "wet_day_pct": 26,
+    "soaker_pct": 6,
+    "hot_day_pct": 0,
+    "freeze_risk_pct": 15,
+    "by_year_high": {
+      "2011": 69,
+      "2012": 69,
+      "2013": 54,
+      "2014": 72,
+      "2015": 32,
+      "2016": 69,
+      "2017": 76,
+      "2018": 67,
+      "2019": 48,
+      "2020": 60,
+      "2021": 71,
+      "2022": 60,
+      "2023": 74,
+      "2024": 71,
+      "2025": 69
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 64\u00b0F. Freezing starts happen (15% of mornings at or below 32\u00b0f)."
+  },
+  "texas-three-step": {
+    "race_id": "texas-three-step",
+    "name": "Texas Three Step",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 73,
+    "high_p90": 80,
+    "high_p10": 62,
+    "high_max": 88,
+    "high_min": 52,
+    "high_histogram": [
+      {
+        "lo": 50,
+        "hi": 55,
+        "n": 2,
+        "pct": 1.9
+      },
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 12,
+        "pct": 11.4
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 17,
+        "pct": 16.2
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 29,
+        "pct": 27.6
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 27,
+        "pct": 25.7
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 11,
+        "pct": 10.5
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 2,
+        "pct": 1.9
+      }
+    ],
+    "low_median": 56,
+    "feels_like_p90": 83,
+    "wind_median_mph": 11,
+    "gust_p90_mph": 32,
+    "wet_day_pct": 24,
+    "soaker_pct": 4,
+    "hot_day_pct": 0,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 73,
+      "2012": 81,
+      "2013": 64,
+      "2014": 63,
+      "2015": 64,
+      "2016": 74,
+      "2017": 79,
+      "2018": 80,
+      "2019": 70,
+      "2020": 74,
+      "2021": 69,
+      "2022": 78,
+      "2023": 79,
+      "2024": 75,
+      "2025": 88
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 73\u00b0F and unremarkable."
+  },
+  "wire-donkey": {
+    "race_id": "wire-donkey",
+    "name": "The Wire Donkey",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 82,
+    "high_p90": 89,
+    "high_p10": 74,
+    "high_max": 92,
+    "high_min": 67,
+    "high_histogram": [
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 3,
+        "pct": 2.9
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 10,
+        "pct": 9.5
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 24,
+        "pct": 22.9
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 41,
+        "pct": 39.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 23,
+        "pct": 21.9
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 4,
+        "pct": 3.8
+      }
+    ],
+    "low_median": 64,
+    "feels_like_p90": 90,
+    "wind_median_mph": 14,
+    "gust_p90_mph": 37,
+    "wet_day_pct": 22,
+    "soaker_pct": 6,
+    "hot_day_pct": 4,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 89,
+      "2012": 85,
+      "2013": 73,
+      "2014": 87,
+      "2015": 86,
+      "2016": 85,
+      "2017": 82,
+      "2018": 83,
+      "2019": 79,
+      "2020": 76,
+      "2021": 84,
+      "2022": 79,
+      "2023": 74,
+      "2024": 84,
+      "2025": 81
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 82\u00b0F and unremarkable."
+  },
+  "central-texas-showdown": {
+    "race_id": "central-texas-showdown",
+    "name": "Central Texas Showdown",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 82,
+    "high_p90": 88,
+    "high_p10": 70,
+    "high_max": 93,
+    "high_min": 59,
+    "high_histogram": [
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 2,
+        "pct": 1.9
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 3,
+        "pct": 2.9
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 10,
+        "pct": 9.5
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 24,
+        "pct": 22.9
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 29,
+        "pct": 27.6
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 26,
+        "pct": 24.8
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 6,
+        "pct": 5.7
+      }
+    ],
+    "low_median": 61,
+    "feels_like_p90": 88,
+    "wind_median_mph": 12,
+    "gust_p90_mph": 33,
+    "wet_day_pct": 17,
+    "soaker_pct": 11,
+    "hot_day_pct": 6,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 81,
+      "2012": 84,
+      "2013": 78,
+      "2014": 79,
+      "2015": 78,
+      "2016": 79,
+      "2017": 82,
+      "2018": 69,
+      "2019": 82,
+      "2020": 77,
+      "2021": 86,
+      "2022": 85,
+      "2023": 82,
+      "2024": 91,
+      "2025": 90
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 82\u00b0F and unremarkable."
+  },
+  "gonzo-graveler": {
+    "race_id": "gonzo-graveler",
+    "name": "The Gonzo Graveler",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 85,
+    "high_p90": 93,
+    "high_p10": 79,
+    "high_max": 98,
+    "high_min": 70,
+    "high_histogram": [
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 2,
+        "pct": 1.9
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 11,
+        "pct": 10.5
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 43,
+        "pct": 41.0
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 25,
+        "pct": 23.8
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 16,
+        "pct": 15.2
+      },
+      {
+        "lo": 95,
+        "hi": 100,
+        "n": 7,
+        "pct": 6.7
+      }
+    ],
+    "low_median": 68,
+    "feels_like_p90": 98,
+    "wind_median_mph": 15,
+    "gust_p90_mph": 36,
+    "wet_day_pct": 31,
+    "soaker_pct": 11,
+    "hot_day_pct": 22,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 94,
+      "2012": 81,
+      "2013": 82,
+      "2014": 79,
+      "2015": 86,
+      "2016": 85,
+      "2017": 85,
+      "2018": 91,
+      "2019": 82,
+      "2020": 79,
+      "2021": 90,
+      "2022": 97,
+      "2023": 78,
+      "2024": 90,
+      "2025": 81
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 85\u00b0F. Heat is a real possibility (22% of days at 90\u00b0f+); wind is the defining factor \u2014 median max 15 mph; wet roughly 31% of the time."
+  },
+  "leesville-night-shot": {
+    "race_id": "leesville-night-shot",
+    "name": "Leesville Night Shot",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 93,
+    "high_p90": 100,
+    "high_p10": 87,
+    "high_max": 107,
+    "high_min": 81,
+    "high_histogram": [
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 27,
+        "pct": 25.7
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 32,
+        "pct": 30.5
+      },
+      {
+        "lo": 95,
+        "hi": 100,
+        "n": 27,
+        "pct": 25.7
+      },
+      {
+        "lo": 100,
+        "hi": 105,
+        "n": 12,
+        "pct": 11.4
+      },
+      {
+        "lo": 105,
+        "hi": 110,
+        "n": 2,
+        "pct": 1.9
+      }
+    ],
+    "low_median": 76,
+    "feels_like_p90": 105,
+    "wind_median_mph": 12,
+    "gust_p90_mph": 31,
+    "wet_day_pct": 26,
+    "soaker_pct": 5,
+    "hot_day_pct": 70,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 101,
+      "2012": 102,
+      "2013": 99,
+      "2014": 90,
+      "2015": 87,
+      "2016": 91,
+      "2017": 82,
+      "2018": 95,
+      "2019": 91,
+      "2020": 90,
+      "2021": 88,
+      "2022": 98,
+      "2023": 101,
+      "2024": 98,
+      "2025": 92
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 93\u00b0F. Expect heat \u2014 70% of race-window days hit 90\u00b0f or more."
+  },
+  "rattlesnake": {
+    "race_id": "rattlesnake",
+    "name": "Rattlesnake Gravel Grind",
+    "sample_days": 105,
+    "years": 15,
+    "window_days": 7,
+    "high_median": 72,
+    "high_p90": 85,
+    "high_p10": 57,
+    "high_max": 93,
+    "high_min": 50,
+    "high_histogram": [
+      {
+        "lo": 45,
+        "hi": 50,
+        "n": 1,
+        "pct": 1.0
+      },
+      {
+        "lo": 50,
+        "hi": 55,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 55,
+        "hi": 60,
+        "n": 12,
+        "pct": 11.4
+      },
+      {
+        "lo": 60,
+        "hi": 65,
+        "n": 15,
+        "pct": 14.3
+      },
+      {
+        "lo": 65,
+        "hi": 70,
+        "n": 13,
+        "pct": 12.4
+      },
+      {
+        "lo": 70,
+        "hi": 75,
+        "n": 17,
+        "pct": 16.2
+      },
+      {
+        "lo": 75,
+        "hi": 80,
+        "n": 20,
+        "pct": 19.0
+      },
+      {
+        "lo": 80,
+        "hi": 85,
+        "n": 12,
+        "pct": 11.4
+      },
+      {
+        "lo": 85,
+        "hi": 90,
+        "n": 5,
+        "pct": 4.8
+      },
+      {
+        "lo": 90,
+        "hi": 95,
+        "n": 5,
+        "pct": 4.8
+      }
+    ],
+    "low_median": 48,
+    "feels_like_p90": 78,
+    "wind_median_mph": 18,
+    "gust_p90_mph": 43,
+    "wet_day_pct": 11,
+    "soaker_pct": 2,
+    "hot_day_pct": 5,
+    "freeze_risk_pct": 0,
+    "by_year_high": {
+      "2011": 85,
+      "2012": 82,
+      "2013": 68,
+      "2014": 85,
+      "2015": 65,
+      "2016": 64,
+      "2017": 82,
+      "2018": 80,
+      "2019": 63,
+      "2020": 76,
+      "2021": 61,
+      "2022": 63,
+      "2023": 51,
+      "2024": 60,
+      "2025": 93
+    },
+    "attribution": "Historical weather: Open-Meteo ERA5 (CC BY 4.0)",
+    "verdict": "Typically 72\u00b0F. Wind is the defining factor \u2014 median max 18 mph."
+  }
+}

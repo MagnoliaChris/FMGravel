@@ -41,11 +41,11 @@ def fetch(lat, lon, start, end, offline=None):
          "wind_speed_unit": "mph", "precipitation_unit": "inch",
          "timezone": "America/Chicago"}
     for attempt in range(3):
-        r = requests.get(ARCHIVE, params=p, timeout=90)
+        r = requests.get(ARCHIVE, params=p, timeout=300)
         if r.status_code == 200:
             return r.json()
         print(f"    HTTP {r.status_code}, retrying in 15s")
-        time.sleep(15)
+        time.sleep(30)
     raise RuntimeError("Open-Meteo archive failed three times")
 
 

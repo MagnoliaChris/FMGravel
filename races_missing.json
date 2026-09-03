@@ -1,0 +1,42 @@
+[
+  {
+    "id": "come-and-grind-it",
+    "name": "Come And Grind It",
+    "lat": 29.493,
+    "lon": -97.7386,
+    "month_num": 3,
+    "day": 7
+  },
+  {
+    "id": "graffiti-grinder",
+    "name": "The Graffiti Grinder",
+    "lat": 29.493,
+    "lon": -97.7386,
+    "month_num": 12,
+    "day": 13
+  },
+  {
+    "id": "milano-cookie-crusher",
+    "name": "Milano Cookie Crusher",
+    "lat": 30.7057,
+    "lon": -96.8636,
+    "month_num": 1,
+    "day": 10
+  },
+  {
+    "id": "valley-of-tears",
+    "name": "Valley of Tears",
+    "lat": 34.3948,
+    "lon": -100.8951,
+    "month_num": 3,
+    "day": 6
+  },
+  {
+    "id": "zimmerhanzel-express",
+    "name": "Zimmerhanzel Express",
+    "lat": 30.008,
+    "lon": -97.155,
+    "month_num": 2,
+    "day": 1
+  }
+]
