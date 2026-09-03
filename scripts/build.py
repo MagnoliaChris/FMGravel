@@ -1271,8 +1271,15 @@ def main():
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
 
+    def has_route(rid):
+        d = DATA / "routes"
+        return any(g.name.split(".")[0] == rid or
+                   (g.name.split(".")[0].startswith(rid + "-") and
+                    g.name.split(".")[0][len(rid) + 1:].isdigit())
+                   for g in d.glob("*.segments.geojson")) if d.exists() else False
+
     have_w = sum(1 for r in races if r["id"] in weather)
-    have_r = sum(1 for r in races if r["id"] in routes)
+    have_r = sum(1 for r in races if has_route(r["id"]))
     have_p = sum(1 for r in races if reports.get(r["id"]))
     print(f"Built {len(urls)} pages into dist/")
     print(f"  weather profiles: {have_w}/{len(races)}")
