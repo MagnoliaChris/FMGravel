@@ -25,7 +25,7 @@ from collections import Counter
 
 import numpy as np
 
-OVERPASS = "https://overpass-api.de/api/interpreter"
+OVERPASS = "https://overpass.kumi.systems/api/interpreter"
 
 # OSM surface tag -> our category. Anything unlisted falls through to unknown.
 SURFACE_MAP = {
@@ -100,7 +100,7 @@ def fetch_ways(bb, offline=None):
         import requests
         q = overpass_query(bb)
         for attempt in range(3):
-            r = requests.post(OVERPASS, data={"data": q}, timeout=200)
+            r = requests.post(OVERPASS, data={"data": q}, timeout=300, headers={"User-Agent": "fmgravel.com surface tool"})
             if r.status_code == 200:
                 data = r.json()
                 break

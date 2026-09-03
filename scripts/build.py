@@ -24,11 +24,15 @@ Usage:
 """
 
 import argparse, csv, html, json, os, shutil, sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA, DIST = ROOT / "data", ROOT / "dist"
+
+LABEL_OF = {"caliche": "Caliche / gravel", "chip_seal": "Chip seal",
+            "two_track": "Ranch two-track", "pavement": "Pavement",
+            "sand": "Sand", "unknown": "Unverified"}
 
 SURFACE_COLOR = {"caliche": "#C98A24", "chip_seal": "#A8481F",
                  "two_track": "#7A7266", "pavement": "#D6CDBB",
@@ -59,15 +63,107 @@ def load():
         for f in rdir.glob("*.summary.json"):
             routes[f.name.split(".")[0]] = json.loads(f.read_text())
 
-    reports = defaultdict(list)
-    cf = DATA / "reports.csv"
-    if cf.exists():
-        with cf.open() as fh:
-            for row in csv.DictReader(fh):
-                if row.get("race_id"):
-                    reports[row["race_id"]].append(row)
+    rows = fetch_netlify_submissions()
+    if not rows:
+        cf = DATA / "reports.csv"
+        if cf.exists():
+            with cf.open() as fh:
+                rows = [r for r in csv.DictReader(fh) if r.get("race_id")]
 
-    return races, weather, routes, reports
+    rows = clean_reports(rows)
+
+    # keep a copy in the repo so a failed API call never blanks the site
+    if rows:
+        cols = sorted({k for r in rows for k in r})
+        with (DATA / "reports.csv").open("w", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=cols)
+            w.writeheader()
+            w.writerows(rows)
+
+    reports = defaultdict(list)
+    for r in rows:
+        reports[r["race_id"]].append(r)
+
+    return races, weather, routes, reports, load_verifications()
+
+
+
+def fetch_netlify_submissions(form="race-report"):
+    """Pull form submissions from the Netlify API at build time.
+
+    Needs NETLIFY_AUTH_TOKEN set as an environment variable in Netlify
+    (Project configuration -> Environment variables). SITE_ID is provided
+    by Netlify automatically during builds.
+
+    Returns [] and prints a note on any failure — a flaky API call should
+    never break the build, it should just mean this deploy shows the last
+    known data from data/reports.csv.
+    """
+    import os, urllib.request, urllib.error
+
+    token = os.environ.get("NETLIFY_AUTH_TOKEN", "").strip()
+    site = os.environ.get("SITE_ID", "").strip()
+    if not token or not site:
+        return []
+
+    def get(url):
+        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read().decode())
+
+    try:
+        forms = get(f"https://api.netlify.com/api/v1/sites/{site}/forms")
+        form = next((f for f in forms if f.get("name") == form), None)
+        if not form:
+            return []
+            return []
+
+        rows, page = [], 1
+        while page <= 20:
+            batch = get(f"https://api.netlify.com/api/v1/forms/{form['id']}"
+                        f"/submissions?per_page=100&page={page}")
+            if not batch:
+                break
+            rows.extend(batch)
+            if len(batch) < 100:
+                break
+            page += 1
+
+        out = []
+        for sub in rows:
+            d = dict(sub.get("data") or {})
+            d["submitted_at"] = sub.get("created_at", "")
+            if d.get("race_id"):
+                out.append(d)
+        print(f"  fetched {len(out)} submissions from Netlify")
+        return out
+    except Exception as ex:
+        print(f"  Netlify submissions unavailable ({ex}) — falling back to reports.csv")
+        return []
+
+
+def clean_reports(rows):
+    """Drop obvious junk. Keeps the site honest without a manual review step."""
+    seen, out = set(), []
+    for r in rows:
+        rid = (r.get("race_id") or "").strip()
+        if not rid:
+            continue
+        # one report per race+year+handle+weight; re-submits overwrite
+        key = (rid, r.get("year", ""), (r.get("handle") or "").lower().strip(),
+               r.get("rider_weight", ""), r.get("width", ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        # a report with no flat answer tells the charts nothing
+        if not (r.get("flats") or "").strip():
+            continue
+        # trim free text that arrives with links — the usual spam signature
+        tip = (r.get("tip") or "")
+        if "http://" in tip or "https://" in tip or "www." in tip:
+            r["tip"] = ""
+        out.append(r)
+    return out
 
 
 def shell(title, desc, canonical, body, base, extra_head=""):
@@ -201,7 +297,258 @@ def weather_block(w):
 {w['hot_day_pct']}% hit 90°F or more. {e(w.get('attribution',''))}.</p>"""
 
 
-def route_block(r, route):
+
+
+VERIFY_CHOICES = [
+    ("caliche",   "Caliche or gravel",        "loose stone, white-ish, washboard"),
+    ("chip_seal", "Chip seal",                "tar and gravel, rough, sealed"),
+    ("two_track", "Dirt or ranch two-track",  "unsealed, ruts, grass down the middle"),
+    ("pavement",  "Smooth asphalt",           "proper blacktop"),
+    ("sand",      "Sand",                     "loose and deep"),
+]
+
+
+def load_verifications():
+    """Rider segment reports from data/verifications.csv (or the Netlify API)."""
+    rows = fetch_netlify_submissions(form="segment-verify")
+    if not rows:
+        vf = DATA / "verifications.csv"
+        if vf.exists():
+            with vf.open() as fh:
+                rows = [r for r in csv.DictReader(fh) if r.get("race_id")]
+    out = defaultdict(list)
+    for r in rows:
+        try:
+            key = (r["race_id"], int(r["seg_index"]))
+        except (KeyError, ValueError):
+            continue
+        if r.get("answer") in dict((c[0], 1) for c in VERIFY_CHOICES):
+            out[key].append(r)
+    return out
+
+
+def apply_verifications(slug, geo, verifs):
+    """Promote a segment once two riders agree. Flag it when they don't.
+
+    Three honest states, all shown on the page:
+      draft     — OpenStreetMap tags, nobody has confirmed
+      verified  — two or more riders agree
+      disputed  — riders disagree; we say so rather than pick
+    """
+    for i, f in enumerate(geo["features"]):
+        rows = verifs.get((slug, i), [])
+        p = f["properties"]
+        p["votes"] = len(rows)
+        p["state"] = "draft"
+        if not rows:
+            continue
+        tally = Counter(r["answer"] for r in rows)
+        top, n = tally.most_common(1)[0]
+        rival = max((c for a, c in tally.items() if a != top), default=0)
+        if n >= 2 and n > rival:
+            p["surface"], p["label"] = top, LABEL_OF[top]
+            p["color"] = SURFACE_COLOR[top]
+            p["state"] = "verified"
+        elif n == rival:
+            p["state"] = "disputed"
+    return geo
+
+
+def recompute(geo):
+    total = sum(f["properties"]["miles"] for f in geo["features"]) or 1
+    by = defaultdict(float)
+    for f in geo["features"]:
+        by[f["properties"]["surface"]] += f["properties"]["miles"]
+    comp = [{"surface": k, "label": LABEL_OF[k], "color": SURFACE_COLOR[k],
+             "miles": round(v, 2), "pct": round(v / total * 100, 1)}
+            for k, v in sorted(by.items(), key=lambda x: -x[1])]
+    verified_mi = sum(f["properties"]["miles"] for f in geo["features"]
+                      if f["properties"].get("state") == "verified")
+    return {"composition": comp, "total_miles": round(total, 2),
+            "segment_count": len(geo["features"]),
+            "unverified_pct": round(by.get("unknown", 0) / total * 100, 1),
+            "rider_verified_pct": round(verified_mi / total * 100, 1)}
+
+
+def verify_ui(r, geo):
+    """Segment list a rider can correct, one tap per segment."""
+    rows = ""
+    for i, f in enumerate(geo["features"]):
+        p = f["properties"]
+        badge = {"verified": '<span class="tag ok">rider-verified</span>',
+                 "disputed": '<span class="tag no">riders disagree</span>'}.get(
+                     p.get("state", "draft"),
+                     '<span class="tag draft">OSM draft</span>')
+        votes = f'<span class="votes">{p["votes"]} report{"s" if p["votes"] != 1 else ""}</span>' \
+                if p.get("votes") else ""
+        buttons = "".join(
+            f'<button type="button" data-seg="{i}" data-ans="{k}" title="{hint}">{lab}</button>'
+            for k, lab, hint in VERIFY_CHOICES)
+        rows += f"""
+    <li data-seg="{i}">
+      <div class="seghead">
+        <span class="segmi">{p['start_mi']:.1f}–{p['end_mi']:.1f} mi</span>
+        <span class="segroad">{e(p.get('road') or '')}</span>
+        {badge}{votes}
+      </div>
+      <div class="segnow" style="border-left-color:{p['color']}">{e(p['label'])}</div>
+      <div class="segask">What was this stretch actually like?
+        <div class="segopts">{buttons}</div>
+      </div>
+    </li>"""
+
+    return f"""
+<h2>Help fix the surface data</h2>
+<p class="sub">Most of this comes from OpenStreetMap, which is often wrong about ranch roads.
+If you have ridden this course, correct any stretch below. Two riders agreeing marks it verified —
+one answer never overrides anything on its own.</p>
+<ol class="seglist" id="seglist" data-race="{r['id']}">{rows}</ol>
+<p class="note" id="verifynote"></p>
+<script>
+(function () {{
+  var list = document.getElementById('seglist');
+  if (!list) return;
+  var race = list.dataset.race;
+  var note = document.getElementById('verifynote');
+  list.addEventListener('click', function (ev) {{
+    var b = ev.target.closest('button[data-ans]');
+    if (!b) return;
+    var li = b.closest('li');
+    li.querySelectorAll('button').forEach(function (x) {{ x.disabled = true; }});
+    var body = new URLSearchParams({{
+      'form-name': 'segment-verify',
+      race_id: race,
+      seg_index: b.dataset.seg,
+      answer: b.dataset.ans,
+      was: li.querySelector('.segnow').textContent.trim(),
+      road: (li.querySelector('.segroad') || {{}}).textContent || ''
+    }});
+    fetch('/', {{ method: 'POST',
+      headers: {{ 'Content-Type': 'application/x-www-form-urlencoded' }},
+      body: body.toString() }})
+      .then(function (res) {{
+        li.classList.add(res.ok ? 'done' : 'failed');
+        note.textContent = res.ok
+          ? 'Thanks — recorded. It shows on the map once a second rider agrees.'
+          : 'That did not save. Try again in a moment.';
+        if (!res.ok) li.querySelectorAll('button').forEach(function (x) {{ x.disabled = false; }});
+      }})
+      .catch(function () {{
+        li.classList.add('failed');
+        note.textContent = 'That did not save. Try again in a moment.';
+        li.querySelectorAll('button').forEach(function (x) {{ x.disabled = false; }});
+      }});
+  }});
+}})();
+</script>"""
+
+
+def route_viewer(r, geo_exists):
+    """Leaflet map + surface-coloured elevation profile, loaded from /routes/<id>.geojson."""
+    if not geo_exists:
+        return ""
+    return f"""
+<div id="routemap" data-src="/routes/{r['id']}.geojson"></div>
+<svg id="routeprofile" role="img" aria-label="Elevation profile coloured by road surface"></svg>
+<p class="readout" id="routereadout">Hover or drag across the profile to trace the course.</p>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function () {{
+  var el = document.getElementById('routemap');
+  if (!el || !window.L) return;
+  fetch(el.dataset.src).then(function (r) {{ return r.json(); }}).then(function (geo) {{
+    var map = L.map('routemap', {{ scrollWheelZoom: false }});
+    L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png',
+      {{ maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }}).addTo(map);
+
+    var bounds = [], pts = [], mi = 0;
+    geo.features.forEach(function (f) {{
+      var c = f.geometry.coordinates, e = f.properties.elev_ft || [];
+      var per = c.length > 1 ? f.properties.miles / (c.length - 1) : 0;
+      var ll = c.map(function (xy) {{ return [xy[1], xy[0]]; }});
+      ll.forEach(function (p) {{ bounds.push(p); }});
+      L.polyline(ll, {{ color: f.properties.color, weight: 5, opacity: .95 }})
+        .bindTooltip(f.properties.label + (f.properties.road ? ' · ' + f.properties.road : '')
+                     + ' · ' + f.properties.miles + ' mi').addTo(map);
+      c.forEach(function (xy, i) {{
+        pts.push({{ lat: xy[1], lon: xy[0], ele: e[i] || 0, mi: mi,
+                   color: f.properties.color, label: f.properties.label,
+                   road: f.properties.road }});
+        mi += per;
+      }});
+    }});
+    map.fitBounds(bounds, {{ padding: [16, 16] }});
+    var cursor = L.circleMarker(bounds[0],
+      {{ radius: 6, color: '#1F3B2C', fillColor: '#FBF9F4', fillOpacity: 1, weight: 2 }});
+
+    var svg = document.getElementById('routeprofile');
+    var total = pts[pts.length - 1].mi;
+    var W = svg.clientWidth || 900, H = 150, padL = 40, padB = 20, padT = 10;
+    var eles = pts.map(function (p) {{ return p.ele; }});
+    var lo = Math.min.apply(null, eles), hi = Math.max.apply(null, eles);
+    var span = Math.max(hi - lo, 1);
+    function X(m) {{ return padL + (m / total) * (W - padL - 8); }}
+    function Y(v) {{ return padT + (1 - (v - lo) / span) * (H - padT - padB); }}
+
+    var bands = '', run = [pts[0]];
+    function band(seg) {{
+      if (seg.length < 2) return '';
+      var top = seg.map(function (p) {{ return X(p.mi).toFixed(1) + ',' + Y(p.ele).toFixed(1); }}).join(' ');
+      return '<polygon points="' + X(seg[0].mi).toFixed(1) + ',' + (H - padB) + ' ' + top + ' '
+             + X(seg[seg.length - 1].mi).toFixed(1) + ',' + (H - padB)
+             + '" fill="' + seg[0].color + '" opacity=".92"/>';
+    }}
+    for (var i = 1; i < pts.length; i++) {{
+      if (pts[i].color !== run[0].color) {{ bands += band(run); run = [pts[i]]; }}
+      else run.push(pts[i]);
+    }}
+    bands += band(run);
+
+    var ticks = [0, .25, .5, .75, 1].map(function (f) {{
+      var anchor = f === 0 ? 'start' : (f === 1 ? 'end' : 'middle');
+      return '<text x="' + X(total * f) + '" y="' + (H - 5) + '" font-size="11" fill="#5C5850"'
+           + ' text-anchor="' + anchor + '">' + Math.round(total * f) + '</text>';
+    }}).join('');
+
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.innerHTML = '<line x1="' + padL + '" y1="' + (H - padB) + '" x2="' + (W - 8)
+      + '" y2="' + (H - padB) + '" stroke="#D6CDBB"/>' + bands
+      + '<text x="2" y="' + (Y(hi) + 4) + '" font-size="11" fill="#5C5850">' + Math.round(hi) + '</text>'
+      + '<text x="2" y="' + (Y(lo) + 4) + '" font-size="11" fill="#5C5850">' + Math.round(lo) + '</text>'
+      + ticks + '<line id="rp-cur" x1="0" y1="' + padT + '" x2="0" y2="' + (H - padB)
+      + '" stroke="#A8481F" stroke-width="1.5" opacity="0"/>';
+
+    var cur = svg.querySelector('#rp-cur');
+    var out = document.getElementById('routereadout');
+    function move(clientX) {{
+      var box = svg.getBoundingClientRect();
+      var m = ((clientX - box.left) / box.width * W - padL) / (W - padL - 8) * total;
+      m = Math.max(0, Math.min(total, m));
+      var best = pts[0], bd = Infinity;
+      for (var j = 0; j < pts.length; j++) {{
+        var d = Math.abs(pts[j].mi - m);
+        if (d < bd) {{ bd = d; best = pts[j]; }}
+      }}
+      cur.setAttribute('x1', X(best.mi)); cur.setAttribute('x2', X(best.mi));
+      cur.setAttribute('opacity', 1);
+      out.innerHTML = '<b>Mile ' + best.mi.toFixed(1) + '</b> · ' + Math.round(best.ele)
+                    + ' ft · ' + best.label + (best.road ? ' · ' + best.road : '');
+      cursor.setLatLng([best.lat, best.lon]).addTo(map);
+    }}
+    svg.addEventListener('mousemove', function (ev) {{ move(ev.clientX); }});
+    svg.addEventListener('touchmove', function (ev) {{ move(ev.touches[0].clientX); ev.preventDefault(); }});
+    svg.addEventListener('mouseleave', function () {{
+      cur.setAttribute('opacity', 0);
+      out.textContent = 'Hover or drag across the profile to trace the course.';
+      map.removeLayer(cursor);
+    }});
+  }}).catch(function (e) {{ console.error(e); }});
+}})();
+</script>"""
+
+
+def route_block(r, route, geo=None):
     if route:
         mix = "".join(
             f'<div style="width:{c["pct"]}%;background:{SURFACE_COLOR.get(c["surface"],"#B9B2A4")}"'
@@ -210,11 +557,17 @@ def route_block(r, route):
             f'<span class="sw" style="background:{SURFACE_COLOR.get(c["surface"],"#B9B2A4")}"></span>'
             f'{c["label"]} {c["pct"]}%' for c in route["composition"])
         unv = route.get("unverified_pct", 0)
-        warn = (f'<p class="note warn">{unv}% of this route has no verified surface.</p>'
-                if unv else "")
+        rv = route.get("rider_verified_pct", 0)
+        bits = []
+        if rv:
+            bits.append(f'<span class="ok">{rv}% confirmed by riders</span>')
+        if unv:
+            bits.append(f'<span class="warn">{unv}% still unverified</span>')
+        warn = f'<p class="note">{" · ".join(bits)}</p>' if bits else ""
         out = f"""<h2>Surface breakdown</h2>
 <div class="mix">{mix}</div><p class="legend">{legend}</p>
-<p class="note">{route['total_miles']} miles in {route['segment_count']} segments.</p>{warn}"""
+<p class="note">{route['total_miles']} miles in {route['segment_count']} segments.</p>{warn}
+{route_viewer(r, (DATA / "routes" / (r["id"] + ".segments.geojson")).exists())}"""
     else:
         out = """<h2>Surface breakdown</h2>
 <div class="empty"><p>No route segmented yet.</p>
@@ -247,7 +600,7 @@ def tire_block(rows):
         if r.get("flats", "").strip().lower() not in ("", "no flats", "0"):
             widths[w]["flat"] += 1
 
-    order = ["Under 40mm", "40–42mm", "45mm", "50mm", "55mm"]
+    order = [w for w in WIDTHS if not w.startswith("Don")]
     keys = [k for k in order if k in widths] + [k for k in widths if k not in order]
     peak = max([widths[k]["flat"] / widths[k]["n"] * 100 for k in keys] or [1])
 
@@ -266,10 +619,18 @@ def tire_block(rows):
 <p class="note">{len(rows)} rider reports. Widths under 15 reports are directional only.</p>"""
 
 
-def race_page(r, weather, routes, reports, base, races):
+def race_page(r, weather, routes, reports, base, races, verifs=None):
     w = weather.get(r["id"])
     route = routes.get(r["id"])
     rows = reports.get(r["id"], [])
+
+    geo = None
+    gpath = DATA / "routes" / (r["id"] + ".segments.geojson")
+    if gpath.exists():
+        geo = apply_verifications(r["id"], json.loads(gpath.read_text()), verifs or {})
+        route = dict(route or {}, **recompute(geo))
+        (DIST / "routes").mkdir(parents=True, exist_ok=True)
+        (DIST / "routes" / (r["id"] + ".geojson")).write_text(json.dumps(geo))
 
     dists = ", ".join(f"{x} mi" for x in r.get("d", [])) or "Varies by year"
     facts = f"""<dl class="facts">
@@ -291,8 +652,9 @@ def race_page(r, weather, routes, reports, base, races):
 <p class="sub">{e(r['town'])}, TX · {e(r['county'])} County{' · night race' if r.get('night') else ''}</p>
 {facts}
 {weather_block(w)}
-{route_block(r, route)}
+{route_block(r, route, geo)}
 {tire_block(rows)}
+{verify_ui(r, geo) if geo else ""}
 <h2>Add your report</h2>
 <div class="empty ok"><p>Rode this race in any year? Two minutes of your memory makes this page useful for everyone else.</p>
 <p><a href="/report/?race={r['id']}">Add a report</a> — tires, flats, conditions, and how it went.</p></div>
@@ -345,7 +707,7 @@ def report_page(races, base):
 submitted so the data can be weighted honestly. Two minutes.</p>
 
 <form name="race-report" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-      action="/thanks/" id="report-form">
+      action="/report/thanks/" id="report-form">
   <input type="hidden" name="form-name" value="race-report">
   <p class="hidden-field"><label>Leave this empty: <input name="bot-field"></label></p>
 
@@ -417,6 +779,11 @@ submitted so the data can be weighted honestly. Two minutes.</p>
   <p class="err" id="err" role="alert"></p>
 </form>
 
+<form name="segment-verify" data-netlify="true" hidden>
+  <input type="text" name="race_id"><input type="text" name="seg_index">
+  <input type="text" name="answer"><input type="text" name="was"><input type="text" name="road">
+</form>
+
 <script>
 document.querySelectorAll('input[type=range]').forEach(function (s) {{
   var o = document.getElementById('out-' + s.id);
@@ -448,7 +815,7 @@ def thanks_page(base):
 </div>
 <p style="margin-top:1.4rem"><a href="/">Back to all races</a></p>"""
     return shell("Report added | Farm to Market", "Thanks for adding a race report.",
-                 "/thanks/", body, base)
+                 "/report/thanks/", body, base)
 
 
 CSS = """:root{--green:#1F3B2C;--green-mid:#3C6349;--caliche:#E9E3D6;--caliche-dk:#D6CDBB;
@@ -516,6 +883,32 @@ border:1px solid var(--caliche-dk);margin-bottom:6px}
 .axis{display:flex;gap:12px;font-size:12px;color:var(--ink-mid);text-align:center}
 .axis span{flex:1}
 .axis small{display:block;color:#B9B2A4}
+#routemap{height:320px;border:1px solid var(--caliche-dk);border-radius:3px;
+margin:14px 0 12px;background:var(--caliche)}
+#routeprofile{width:100%;height:150px;display:block;cursor:crosshair;touch-action:none}
+.readout{font-size:13px;color:var(--ink-mid);min-height:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+.readout b{color:var(--ink);font-weight:500}
+@media (max-width:620px){#routemap{height:240px}#routeprofile{height:120px}}
+.seglist{list-style:none;counter-reset:seg;margin:6px 0 0}
+.seglist li{border-bottom:1px solid var(--caliche-dk);padding:12px 0}
+.seglist li.done{opacity:.55}
+.seghead{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;font-size:13px}
+.segmi{font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.segroad{color:var(--ink-mid)}
+.tag{font-size:11px;padding:1px 6px;border-radius:2px;white-space:nowrap}
+.tag.ok{background:var(--green);color:var(--caliche)}
+.tag.no{background:var(--rust);color:var(--caliche)}
+.tag.draft{background:var(--caliche);color:var(--ink-mid)}
+.votes{font-size:11px;color:var(--ink-mid)}
+.segnow{border-left:4px solid var(--caliche-dk);padding-left:8px;font-size:14px;margin:6px 0 8px}
+.segask{font-size:13px;color:var(--ink-mid)}
+.segopts{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.segopts button{background:#fff;border:1px solid var(--caliche-dk);padding:6px 11px;
+font-size:13px;border-radius:3px;cursor:pointer;color:var(--ink)}
+.segopts button:hover{border-color:var(--green)}
+.segopts button:disabled{opacity:.4;cursor:default}
+.seglist li.done .segask{display:none}
+.note .ok{color:var(--green-mid);font-weight:500}
 .links{list-style:none;font-size:14px}
 .links li{padding:7px 0;border-bottom:1px solid var(--caliche-dk)}
 .note{font-size:12px;color:var(--ink-mid);margin-top:10px}
@@ -556,7 +949,7 @@ def main():
     args = ap.parse_args()
     base = args.base.rstrip("/")
 
-    races, weather, routes, reports = load()
+    races, weather, routes, reports, verifs = load()
     if not races:
         sys.exit("No races found in data/races/")
 
@@ -570,12 +963,12 @@ def main():
     for r in races:
         d = DIST / "races" / r["id"]
         d.mkdir(parents=True)
-        (d / "index.html").write_text(race_page(r, weather, routes, reports, base, races))
+        (d / "index.html").write_text(race_page(r, weather, routes, reports, base, races, verifs))
 
     rd = DIST / "report"; rd.mkdir()
     (rd / "index.html").write_text(report_page(races, base))
-    td = DIST / "thanks"; td.mkdir()
-    (td / "index.html").write_text(thanks_page(base))
+    (rd / "thanks").mkdir()
+    (rd / "thanks" / "index.html").write_text(thanks_page(base))
 
     urls = ["/", "/report/"] + [f"/races/{r['id']}/" for r in races]
     sm = "".join(f"<url><loc>{base}{u}</loc></url>" for u in urls)

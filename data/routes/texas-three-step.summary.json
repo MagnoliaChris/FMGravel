@@ -1,0 +1,199 @@
+{
+  "name": "Texas Three Step 50",
+  "total_miles": 49.44,
+  "segment_count": 21,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#B9B2A4",
+      "miles": 26.46,
+      "pct": 53.5
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#D6CDBB",
+      "miles": 21.85,
+      "pct": 44.2
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#7A7266",
+      "miles": 1.17,
+      "pct": 2.4
+    }
+  ],
+  "unverified_pct": 53.5,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 4.79,
+      "start_mi": 0.0,
+      "end_mi": 4.79,
+      "road": "Ranch Road 336"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.5,
+      "start_mi": 4.79,
+      "end_mi": 5.29,
+      "road": ""
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.81,
+      "start_mi": 5.29,
+      "end_mi": 6.1,
+      "road": ""
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.04,
+      "start_mi": 6.1,
+      "end_mi": 7.14,
+      "road": ""
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.44,
+      "start_mi": 7.14,
+      "end_mi": 7.57,
+      "road": ""
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.33,
+      "start_mi": 7.57,
+      "end_mi": 7.9,
+      "road": ""
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 3.85,
+      "start_mi": 7.9,
+      "end_mi": 11.75,
+      "road": "Ranch Road 336"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.12,
+      "start_mi": 11.75,
+      "end_mi": 20.87,
+      "road": "Kent Creek Ranch Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 3.85,
+      "start_mi": 20.87,
+      "end_mi": 24.72,
+      "road": "Ranch Road 336"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.56,
+      "start_mi": 24.72,
+      "end_mi": 28.27,
+      "road": "Cedar Creek Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 3.95,
+      "start_mi": 28.27,
+      "end_mi": 32.22,
+      "road": "Ranch Road 336"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 6.42,
+      "start_mi": 32.22,
+      "end_mi": 38.65,
+      "road": "South Evergreen Street"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.81,
+      "start_mi": 38.65,
+      "end_mi": 41.45,
+      "road": "FM 1120"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.33,
+      "start_mi": 41.45,
+      "end_mi": 42.78,
+      "road": "Little Dry Frio Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.73,
+      "start_mi": 42.78,
+      "end_mi": 43.51,
+      "road": "Little Dry Frio Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.66,
+      "start_mi": 43.51,
+      "end_mi": 44.16,
+      "road": "Little Dry Frio Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.72,
+      "start_mi": 44.16,
+      "end_mi": 44.88,
+      "road": "Little Dry Frio Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.3,
+      "start_mi": 44.88,
+      "end_mi": 46.18,
+      "road": "East Ranch Road 337"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.31,
+      "start_mi": 46.18,
+      "end_mi": 48.49,
+      "road": "Camino del Paso"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.64,
+      "start_mi": 48.49,
+      "end_mi": 49.13,
+      "road": "East Ranch Road 337"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.32,
+      "start_mi": 49.13,
+      "end_mi": 49.44,
+      "road": "Pecan Lane"
+    }
+  ]
+}
