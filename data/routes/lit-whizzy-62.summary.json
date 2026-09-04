@@ -1,0 +1,175 @@
+{
+  "name": "The Lit Whizzy 62",
+  "total_miles": 61.21,
+  "segment_count": 18,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 46.26,
+      "pct": 75.6
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 8.85,
+      "pct": 14.5
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 6.1,
+      "pct": 10.0
+    }
+  ],
+  "unverified_pct": 75.6,
+  "segments": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.24,
+      "start_mi": 0.0,
+      "end_mi": 0.24,
+      "road": "North 2nd Street"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.52,
+      "start_mi": 0.24,
+      "end_mi": 1.76,
+      "road": "FM 794"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 8.81,
+      "start_mi": 1.76,
+      "end_mi": 10.57,
+      "road": "County Road 232"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.34,
+      "start_mi": 10.57,
+      "end_mi": 10.91,
+      "road": "FM 794"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.33,
+      "start_mi": 10.91,
+      "end_mi": 18.24,
+      "road": "County Road 239"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.32,
+      "start_mi": 18.24,
+      "end_mi": 19.56,
+      "road": "County Road 240"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.24,
+      "start_mi": 19.56,
+      "end_mi": 23.81,
+      "road": "County Road 433"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.51,
+      "start_mi": 23.81,
+      "end_mi": 24.32,
+      "road": "TX 97"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.53,
+      "start_mi": 24.32,
+      "end_mi": 31.84,
+      "road": "County Road 422 South"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.39,
+      "start_mi": 31.84,
+      "end_mi": 32.23,
+      "road": "County Road 422 South"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.98,
+      "start_mi": 32.23,
+      "end_mi": 35.21,
+      "road": "County Road 431"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.56,
+      "start_mi": 35.21,
+      "end_mi": 36.77,
+      "road": "FM 1296"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.37,
+      "start_mi": 36.77,
+      "end_mi": 39.14,
+      "road": "County Road 447"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.83,
+      "start_mi": 39.14,
+      "end_mi": 39.97,
+      "road": "FM 1296"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.34,
+      "start_mi": 39.97,
+      "end_mi": 49.31,
+      "road": "County Road 444"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 7.14,
+      "start_mi": 49.31,
+      "end_mi": 56.45,
+      "road": "County Road 443"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.34,
+      "start_mi": 56.45,
+      "end_mi": 57.78,
+      "road": "FM 1386"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.42,
+      "start_mi": 57.78,
+      "end_mi": 61.21,
+      "road": "County Road 281"
+    }
+  ]
+}

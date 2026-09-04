@@ -1,0 +1,191 @@
+{
+  "name": "Renegade Rambler 65",
+  "total_miles": 64.21,
+  "segment_count": 20,
+  "composition": [
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 35.82,
+      "pct": 55.8
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 21.58,
+      "pct": 33.6
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 6.81,
+      "pct": 10.6
+    }
+  ],
+  "unverified_pct": 33.6,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.47,
+      "start_mi": 0.0,
+      "end_mi": 2.47,
+      "road": "Northeast Texas Trail"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.61,
+      "start_mi": 2.47,
+      "end_mi": 6.08,
+      "road": "Northeast Texas Trail"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 8.98,
+      "start_mi": 6.08,
+      "end_mi": 15.07,
+      "road": "County Road 1100"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.67,
+      "start_mi": 15.07,
+      "end_mi": 15.74,
+      "road": "FM 1562"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.28,
+      "start_mi": 15.74,
+      "end_mi": 23.02,
+      "road": "County Road 1135"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.38,
+      "start_mi": 23.02,
+      "end_mi": 23.4,
+      "road": "North Oak Street"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 7.81,
+      "start_mi": 23.4,
+      "end_mi": 31.21,
+      "road": "County Road 4670"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.6,
+      "start_mi": 31.21,
+      "end_mi": 32.8,
+      "road": "F C 4725"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.84,
+      "start_mi": 32.8,
+      "end_mi": 33.65,
+      "road": "Farm-to-Market Road 1553"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 2.14,
+      "start_mi": 33.65,
+      "end_mi": 35.79,
+      "road": "County Road 4800"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.16,
+      "start_mi": 35.79,
+      "end_mi": 35.95,
+      "road": ""
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 6.36,
+      "start_mi": 35.95,
+      "end_mi": 42.31,
+      "road": "County Road 4850"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 2.98,
+      "start_mi": 42.31,
+      "end_mi": 45.28,
+      "road": "County Road 1053"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.64,
+      "start_mi": 45.28,
+      "end_mi": 48.92,
+      "road": "County Road 1048"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.21,
+      "start_mi": 48.92,
+      "end_mi": 49.13,
+      "road": "Northeast Texas Trail"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.36,
+      "start_mi": 49.13,
+      "end_mi": 49.49,
+      "road": "South Second Street"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 4.5,
+      "start_mi": 49.49,
+      "end_mi": 54.0,
+      "road": "County Road 1089"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 1.16,
+      "start_mi": 54.0,
+      "end_mi": 55.16,
+      "road": "County Road 1098"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 6.61,
+      "start_mi": 55.16,
+      "end_mi": 61.76,
+      "road": "Northeast Texas Trail"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.45,
+      "start_mi": 61.76,
+      "end_mi": 64.21,
+      "road": "Northeast Texas Trail"
+    }
+  ]
+}

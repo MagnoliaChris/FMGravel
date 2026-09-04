@@ -1,0 +1,174 @@
+{
+  "name": "Zimmerhanzel Express 60",
+  "total_miles": 60.96,
+  "segment_count": 17,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 30.14,
+      "pct": 49.4
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 16.34,
+      "pct": 26.8
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 12.06,
+      "pct": 19.8
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 2.43,
+      "pct": 4.0
+    }
+  ],
+  "unverified_pct": 49.4,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.03,
+      "start_mi": 0.0,
+      "end_mi": 1.03,
+      "road": "Zapalac Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.76,
+      "start_mi": 1.03,
+      "end_mi": 8.79,
+      "road": "Old Smithville Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.19,
+      "start_mi": 8.79,
+      "end_mi": 9.98,
+      "road": "Hellinger Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 4.7,
+      "start_mi": 9.98,
+      "end_mi": 14.68,
+      "road": "Hellinger Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.7,
+      "start_mi": 14.68,
+      "end_mi": 17.38,
+      "road": "Rosanky Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.04,
+      "start_mi": 17.38,
+      "end_mi": 19.42,
+      "road": "Rosanky Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 4.97,
+      "start_mi": 19.42,
+      "end_mi": 24.39,
+      "road": "Father Anders Loop"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.36,
+      "start_mi": 24.39,
+      "end_mi": 25.75,
+      "road": "FM 1115"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.94,
+      "start_mi": 25.75,
+      "end_mi": 28.69,
+      "road": "County Road 446"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 3.48,
+      "start_mi": 28.69,
+      "end_mi": 32.17,
+      "road": "Elm Creek Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.52,
+      "start_mi": 32.17,
+      "end_mi": 34.69,
+      "road": "Harold Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 5.96,
+      "start_mi": 34.69,
+      "end_mi": 40.65,
+      "road": "Jeddo Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 7.89,
+      "start_mi": 40.65,
+      "end_mi": 48.54,
+      "road": "Patterson Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 2.48,
+      "start_mi": 48.54,
+      "end_mi": 51.01,
+      "road": "Zimmerhanzel Road"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.24,
+      "start_mi": 51.01,
+      "end_mi": 52.26,
+      "road": "Hellinger Road"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 7.7,
+      "start_mi": 52.26,
+      "end_mi": 59.96,
+      "road": "Old Smithville Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.01,
+      "start_mi": 59.96,
+      "end_mi": 60.96,
+      "road": "Zapalac Road"
+    }
+  ]
+}

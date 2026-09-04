@@ -1,0 +1,159 @@
+{
+  "name": "Come And Grind It 66",
+  "total_miles": 64.84,
+  "segment_count": 16,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 50.34,
+      "pct": 77.6
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 10.59,
+      "pct": 16.3
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 3.9,
+      "pct": 6.0
+    }
+  ],
+  "unverified_pct": 77.6,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.21,
+      "start_mi": 0.0,
+      "end_mi": 1.21,
+      "road": "FM 1682"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 8.11,
+      "start_mi": 1.21,
+      "end_mi": 9.32,
+      "road": "County Road 104"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.85,
+      "start_mi": 9.32,
+      "end_mi": 10.18,
+      "road": "FM 1682"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 10.35,
+      "start_mi": 10.18,
+      "end_mi": 20.52,
+      "road": "County Road 145"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.76,
+      "start_mi": 20.52,
+      "end_mi": 22.28,
+      "road": ""
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 6.24,
+      "start_mi": 22.28,
+      "end_mi": 28.52,
+      "road": "County Road 132"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.54,
+      "start_mi": 28.52,
+      "end_mi": 32.06,
+      "road": "County Road 120"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.55,
+      "start_mi": 32.06,
+      "end_mi": 32.61,
+      "road": "County Road 155"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.02,
+      "start_mi": 32.61,
+      "end_mi": 33.63,
+      "road": "FM 1682"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 8.11,
+      "start_mi": 33.63,
+      "end_mi": 41.74,
+      "road": "County Road 104"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.82,
+      "start_mi": 41.74,
+      "end_mi": 42.56,
+      "road": "FM 1682"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 10.35,
+      "start_mi": 42.56,
+      "end_mi": 52.91,
+      "road": "County Road 145"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 1.75,
+      "start_mi": 52.91,
+      "end_mi": 54.66,
+      "road": ""
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 6.24,
+      "start_mi": 54.66,
+      "end_mi": 60.9,
+      "road": "County Road 132"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.54,
+      "start_mi": 60.9,
+      "end_mi": 64.44,
+      "road": "County Road 120"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.39,
+      "start_mi": 64.44,
+      "end_mi": 64.84,
+      "road": "County Road 155"
+    }
+  ]
+}

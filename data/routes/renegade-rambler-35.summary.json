@@ -1,0 +1,87 @@
+{
+  "name": "Renegade Rambler 35",
+  "total_miles": 35.26,
+  "segment_count": 7,
+  "composition": [
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 15.57,
+      "pct": 44.2
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 14.56,
+      "pct": 41.3
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 5.12,
+      "pct": 14.5
+    }
+  ],
+  "unverified_pct": 44.2,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.47,
+      "start_mi": 0.0,
+      "end_mi": 2.47,
+      "road": "Northeast Texas Trail"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 3.66,
+      "start_mi": 2.47,
+      "end_mi": 6.13,
+      "road": "Northeast Texas Trail"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 9.16,
+      "start_mi": 6.13,
+      "end_mi": 15.29,
+      "road": "County Road 1100"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.22,
+      "start_mi": 15.29,
+      "end_mi": 15.51,
+      "road": "FM 1562"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 6.41,
+      "start_mi": 15.51,
+      "end_mi": 21.93,
+      "road": "County Road 1147"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 10.9,
+      "start_mi": 21.93,
+      "end_mi": 32.83,
+      "road": "Northeast Texas Trail"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.43,
+      "start_mi": 32.83,
+      "end_mi": 35.26,
+      "road": "Northeast Texas Trail"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "name": "Texas Chainring Massacre 52",
+  "total_miles": 50.25,
+  "segment_count": 20,
+  "composition": [
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "color": "#C98A24",
+      "miles": 24.12,
+      "pct": 48.0
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "color": "#4A5568",
+      "miles": 21.78,
+      "pct": 43.3
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "color": "#9A9389",
+      "miles": 3.94,
+      "pct": 7.8
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "color": "#6B5A45",
+      "miles": 0.42,
+      "pct": 0.8
+    }
+  ],
+  "unverified_pct": 7.8,
+  "segments": [
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.16,
+      "start_mi": 0.0,
+      "end_mi": 0.16,
+      "road": "South Lee Street"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.43,
+      "start_mi": 0.16,
+      "end_mi": 0.59,
+      "road": "Newton Street"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.28,
+      "start_mi": 0.59,
+      "end_mi": 0.87,
+      "road": "North Lee Street"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.3,
+      "start_mi": 0.87,
+      "end_mi": 3.17,
+      "road": "North Lee Street"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 3.23,
+      "start_mi": 3.17,
+      "end_mi": 6.39,
+      "road": "County Road 202"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 3.01,
+      "start_mi": 6.39,
+      "end_mi": 9.4,
+      "road": "County Road 322"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 1.23,
+      "start_mi": 9.4,
+      "end_mi": 10.63,
+      "road": "County Road 356"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 1.84,
+      "start_mi": 10.63,
+      "end_mi": 12.47,
+      "road": "Farm-to-Market Road 51"
+    },
+    {
+      "surface": "two_track",
+      "label": "Ranch two-track",
+      "miles": 0.42,
+      "start_mi": 12.47,
+      "end_mi": 12.89,
+      "road": "West Farm-to-Market Road 922"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.42,
+      "start_mi": 12.89,
+      "end_mi": 13.31,
+      "road": "County Road 381"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 10.65,
+      "start_mi": 13.31,
+      "end_mi": 23.97,
+      "road": "County Road 333"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.59,
+      "start_mi": 23.97,
+      "end_mi": 26.55,
+      "road": "Fortenberry Road"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 9.25,
+      "start_mi": 26.55,
+      "end_mi": 35.8,
+      "road": "Waide Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.47,
+      "start_mi": 35.8,
+      "end_mi": 38.27,
+      "road": "Waide Road"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.72,
+      "start_mi": 38.27,
+      "end_mi": 39.0,
+      "road": "Farm-to-Market Road 2450"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 5.02,
+      "start_mi": 39.0,
+      "end_mi": 44.02,
+      "road": "County Road 321"
+    },
+    {
+      "surface": "caliche",
+      "label": "Caliche / gravel",
+      "miles": 2.99,
+      "start_mi": 44.02,
+      "end_mi": 47.01,
+      "road": "County Road 332"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 2.81,
+      "start_mi": 47.01,
+      "end_mi": 49.81,
+      "road": "West Farm-to-Market Road 922"
+    },
+    {
+      "surface": "unknown",
+      "label": "Unverified",
+      "miles": 0.28,
+      "start_mi": 49.81,
+      "end_mi": 50.1,
+      "road": "Williams Street"
+    },
+    {
+      "surface": "pavement",
+      "label": "Pavement",
+      "miles": 0.16,
+      "start_mi": 50.1,
+      "end_mi": 50.25,
+      "road": "South Lee Street"
+    }
+  ]
+}
