@@ -234,7 +234,7 @@
    }
   },
   {
-   "name": "Scwhalbe Thunder Burt SG 29 x 2.1",
+   "name": "Schwalbe Thunder Burt SG 29 x 2.1",
    "width_mm": 53,
    "tread": "knob",
    "mtb": true,
@@ -343,18 +343,6 @@
   },
   {
    "name": "Schwalbe Thunder Burt SG 29 x 2.25",
-   "width_mm": 57,
-   "tread": "knob",
-   "mtb": true,
-   "crr": {
-    "pavement": 0.0042,
-    "cat1": 0.0081,
-    "cat2": 0.0103,
-    "cat3": 0.0151
-   }
-  },
-  {
-   "name": "Scwhalbe Thunder Burt SG 29 x 2.25",
    "width_mm": 57,
    "tread": "knob",
    "mtb": true,
@@ -533,5 +521,6 @@
     "cat3": 0.0144
    }
   }
- ]
+ ],
+ "dedup_note": "Source sheet lists Thunder Burt SG 29x2.25 twice with a brand typo; kept once."
 }
